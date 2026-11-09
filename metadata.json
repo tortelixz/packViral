@@ -1,0 +1,6 @@
+{
+  "name": "Pack Verso - 50.000 Cortes Virais",
+  "description": "Pack com mais de 50.000 vídeos e cortes virais prontos para postar e crescer sem aparecer no TikTok e Instagram.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
