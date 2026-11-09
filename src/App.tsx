@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import UpPage from './UpPage';
+import { 
+  trackPageView, 
+  trackViewContent, 
+  trackInitiateCheckout 
+} from './utils/metaPixel';
 import { 
   CheckCircle, 
   ShieldCheck, 
@@ -161,10 +167,34 @@ const faqItems = [
 ];
 
 export default function App() {
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(3);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [policyModal, setPolicyModal] = useState<'privacy' | 'terms' | null>(null);
   const [toastNotification, setToastNotification] = useState<string | null>(null);
+
+  const [currentPath, setCurrentPath] = useState(() => 
+    typeof window !== 'undefined' ? window.location.pathname : '/'
+  );
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  useEffect(() => {
+    trackPageView();
+    trackViewContent('Pack Verso - 50.000 Cortes Virais', 19.90);
+  }, []);
+
+  const navigateToUp = () => {
+    trackInitiateCheckout('Pack Verso Básico - Redirecionamento Up', 10.00);
+    window.history.pushState({}, '', '/up');
+    setCurrentPath('/up');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
 
   // Auto carousel rotation
   useEffect(() => {
@@ -207,6 +237,10 @@ export default function App() {
     setActiveSlide((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length);
   };
 
+  if (currentPath === '/up' || currentPath === '/up/' || currentPath.startsWith('/up')) {
+    return <UpPage />;
+  }
+
   return (
     <div className="min-h-screen bg-black text-white font-['Montserrat'] selection:bg-yellow-400 selection:text-black">
       
@@ -219,11 +253,11 @@ export default function App() {
       )}
 
       {/* HEADER / HERO SECTION */}
-      <section className="relative pt-8 pb-14 px-4 sm:px-6 bg-gradient-to-b from-neutral-950 to-black overflow-hidden border-b border-neutral-900">
+      <section className="relative pt-6 pb-10 px-4 sm:px-6 bg-gradient-to-b from-neutral-950 to-black overflow-hidden border-b border-neutral-900">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           
           {/* Main Hook Headline */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-[900] tracking-tight text-[#FFDE1A] uppercase leading-[1.15] mb-4 drop-shadow-[0_2px_12px_rgba(255,222,26,0.3)]">
+          <h1 className="text-2xl sm:text-5xl md:text-6xl font-[900] tracking-tight text-[#FFDE1A] uppercase leading-[1.15] mb-3 drop-shadow-[0_2px_12px_rgba(255,222,26,0.3)]">
             PARE DE PERDER TEMPO CRIANDO CONTEÚDO DO ZERO
           </h1>
 
@@ -305,54 +339,77 @@ export default function App() {
             Resultados de quem utiliza cortes virais para crescer e monetizar:
           </p>
 
-          <div className="relative overflow-hidden rounded-3xl bg-[#111111] border border-neutral-800 p-4 sm:p-6 shadow-2xl">
-            {/* Slide */}
-            <div className="flex flex-col items-center text-center">
-              <div className="w-full max-w-md h-52 sm:h-64 rounded-2xl overflow-hidden mb-4 bg-black flex items-center justify-center border border-neutral-700/60">
+          <div className="relative w-full overflow-hidden flex flex-col items-center">
+            {/* 3 Cards Side-by-Side */}
+            <div className="w-full flex items-center justify-center gap-2 sm:gap-4 md:gap-6 py-2 px-1">
+              
+              {/* Left Slide (Previous) */}
+              <div 
+                onClick={prevSlide}
+                className="w-[28%] sm:w-[28%] max-w-[280px] shrink-0 transform scale-90 opacity-60 hover:opacity-85 transition-all duration-300 cursor-pointer rounded-[18px] sm:rounded-[24px] overflow-hidden shadow-lg border border-neutral-800"
+                title={carouselSlides[(activeSlide - 1 + carouselSlides.length) % carouselSlides.length].handle}
+              >
                 <img 
-                  src={carouselSlides[activeSlide].image} 
-                  alt={carouselSlides[activeSlide].handle}
-                  className="w-full h-full object-contain sm:object-cover"
+                  src={carouselSlides[(activeSlide - 1 + carouselSlides.length) % carouselSlides.length].image} 
+                  alt={carouselSlides[(activeSlide - 1 + carouselSlides.length) % carouselSlides.length].handle}
+                  className="w-full h-auto object-cover rounded-[18px] sm:rounded-[24px] select-none"
+                  draggable={false}
                 />
               </div>
 
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-lg sm:text-xl font-bold text-white">
-                  {carouselSlides[activeSlide].handle}
-                </span>
-                <span className="bg-[#FFDE1A]/20 text-[#FFDE1A] text-xs font-bold px-2 py-0.5 rounded">
-                  {carouselSlides[activeSlide].followers}
-                </span>
+              {/* Center Slide (Active) */}
+              <div 
+                className="w-[44%] sm:w-[42%] max-w-[390px] shrink-0 transform scale-100 z-10 transition-all duration-300 rounded-[20px] sm:rounded-[28px] overflow-hidden shadow-[0_10px_35px_rgba(0,0,0,0.8)] border-2 border-neutral-700/80"
+                title={carouselSlides[activeSlide].handle}
+              >
+                <img 
+                  src={carouselSlides[activeSlide].image} 
+                  alt={carouselSlides[activeSlide].handle}
+                  className="w-full h-auto object-cover rounded-[20px] sm:rounded-[28px] select-none"
+                  draggable={false}
+                />
               </div>
-              <p className="text-xs sm:text-sm text-gray-400">
-                Nicho: {carouselSlides[activeSlide].niche}
-              </p>
+
+              {/* Right Slide (Next) */}
+              <div 
+                onClick={nextSlide}
+                className="w-[28%] sm:w-[28%] max-w-[280px] shrink-0 transform scale-90 opacity-60 hover:opacity-85 transition-all duration-300 cursor-pointer rounded-[18px] sm:rounded-[24px] overflow-hidden shadow-lg border border-neutral-800"
+                title={carouselSlides[(activeSlide + 1) % carouselSlides.length].handle}
+              >
+                <img 
+                  src={carouselSlides[(activeSlide + 1) % carouselSlides.length].image} 
+                  alt={carouselSlides[(activeSlide + 1) % carouselSlides.length].handle}
+                  className="w-full h-auto object-cover rounded-[18px] sm:rounded-[24px] select-none"
+                  draggable={false}
+                />
+              </div>
+
             </div>
 
             {/* Navigation buttons */}
             <button 
               onClick={prevSlide}
               aria-label="Slide anterior"
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black text-white p-2.5 rounded-full border border-neutral-700 transition-colors"
+              className="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white p-2 sm:p-2.5 rounded-full border border-neutral-700 transition-colors cursor-pointer shadow-xl backdrop-blur-sm"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button 
               onClick={nextSlide}
               aria-label="Próximo slide"
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-black text-white p-2.5 rounded-full border border-neutral-700 transition-colors"
+              className="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white p-2 sm:p-2.5 rounded-full border border-neutral-700 transition-colors cursor-pointer shadow-xl backdrop-blur-sm"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
 
             {/* Dots */}
-            <div className="flex justify-center gap-2 mt-4">
+            <div className="flex justify-center gap-2 mt-5 sm:mt-6">
               {carouselSlides.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveSlide(idx)}
-                  className={`h-2 rounded-full transition-all ${
-                    activeSlide === idx ? 'w-6 bg-[#FFDE1A]' : 'w-2 bg-neutral-600'
+                  className={`h-2 rounded-full transition-all cursor-pointer ${
+                    activeSlide === idx ? 'w-6 bg-[#FFDE1A]' : 'w-2 bg-neutral-600 hover:bg-neutral-500'
                   }`}
                   aria-label={`Ir para slide ${idx + 1}`}
                 />
@@ -647,13 +704,22 @@ export default function App() {
                 </ul>
               </div>
 
-              <a 
-                href="https://packverso.shop/up/?utm_source=organic" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full max-w-[260px] mx-auto py-3 px-6 rounded-full font-[800] text-base bg-[#001455] text-[#9507C9] border-2 border-[#9B04BE] shadow-[0_0_12px_rgba(155,4,190,0.5)_inset] hover:bg-[#A204E7] hover:text-white transition-all uppercase tracking-wide block my-4"
+              <button 
+                type="button"
+                onClick={navigateToUp}
+                className="w-full max-w-[260px] mx-auto py-3 px-6 rounded-full font-[800] text-base bg-[#001455] text-[#9507C9] border-2 border-[#9B04BE] shadow-[0_0_12px_rgba(155,4,190,0.5)_inset] hover:bg-[#A204E7] hover:text-white transition-all uppercase tracking-wide block my-3 cursor-pointer"
               >
                 QUERO O BÁSICO
+              </button>
+
+              <a 
+                href="https://pay.wiapy.com/2w3O7s9uCmeZ"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackInitiateCheckout('Pack Verso Básico Direto', 10.00)}
+                className="text-xs text-neutral-400 hover:text-[#00FF20] underline transition-colors block mb-2 cursor-pointer"
+              >
+                (ou ir direto para o básico de R$10)
               </a>
 
               <p className="mt-4 text-xs sm:text-sm italic font-bold text-white text-center leading-relaxed">
@@ -778,10 +844,11 @@ export default function App() {
 
               {/* Button */}
               <a 
-                href="https://pay.wiapy.com/i6H0rDMR-x?utm_source=organic" 
+                href="https://pay.wiapy.com/j3wwzlE9xobB" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-full py-4 px-6 rounded-full font-[900] text-lg sm:text-xl text-white bg-[#08D825] border border-[#2EA81F] shadow-[0_0_20px_6px_rgba(8,216,37,0.7)] hover:shadow-[0_0_30px_10px_rgba(8,216,37,0.9)] hover:scale-105 active:scale-95 transition-all block uppercase tracking-wider my-2"
+                onClick={() => trackInitiateCheckout('Pack Verso Premium', 19.90)}
+                className="w-full py-4 px-6 rounded-full font-[900] text-lg sm:text-xl text-white bg-[#08D825] border border-[#2EA81F] shadow-[0_0_20px_6px_rgba(8,216,37,0.7)] hover:shadow-[0_0_30px_10px_rgba(8,216,37,0.9)] hover:scale-105 active:scale-95 transition-all block uppercase tracking-wider my-2 text-center cursor-pointer"
               >
                 LIBERAR SUPER PACK
               </a>
@@ -976,6 +1043,8 @@ export default function App() {
           </div>
         </div>
       )}
+
+      {/* End Policy Modal */}
 
     </div>
   );
