@@ -3,7 +3,8 @@ import UpPage from './UpPage';
 import { 
   trackPageView, 
   trackViewContent, 
-  trackInitiateCheckout 
+  trackInitiateCheckout,
+  getCheckoutUrl
 } from './utils/metaPixel';
 import { 
   CheckCircle, 
@@ -191,7 +192,8 @@ export default function App() {
 
   const navigateToUp = () => {
     trackInitiateCheckout('Pack Verso Básico - Redirecionamento Up', 10.00);
-    window.history.pushState({}, '', '/up');
+    const search = typeof window !== 'undefined' ? window.location.search : '';
+    window.history.pushState({}, '', '/up' + search);
     setCurrentPath('/up');
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
@@ -713,7 +715,7 @@ export default function App() {
               </button>
 
               <a 
-                href="https://pay.wiapy.com/2w3O7s9uCmeZ"
+                href={getCheckoutUrl('https://pay.wiapy.com/2w3O7s9uCmeZ')}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackInitiateCheckout('Pack Verso Básico Direto', 10.00)}
@@ -844,7 +846,7 @@ export default function App() {
 
               {/* Button */}
               <a 
-                href="https://pay.wiapy.com/j3wwzlE9xobB" 
+                href={getCheckoutUrl('https://pay.wiapy.com/j3wwzlE9xobB')}
                 target="_blank" 
                 rel="noopener noreferrer"
                 onClick={() => trackInitiateCheckout('Pack Verso Premium', 19.90)}

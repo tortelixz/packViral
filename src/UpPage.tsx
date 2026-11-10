@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { 
   trackPageView, 
   trackViewContent, 
-  trackInitiateCheckout 
+  trackInitiateCheckout,
+  getCheckoutUrl
 } from './utils/metaPixel';
 
 export default function UpPage() {
@@ -179,7 +180,7 @@ export default function UpPage() {
           {/* CTA Button */}
           <div className="my-4 w-full flex justify-center">
             <a 
-              href="https://pay.wiapy.com/VHc7vm529eCu" 
+              href={getCheckoutUrl('https://pay.wiapy.com/VHc7vm529eCu')} 
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackInitiateCheckout('Super Oferta Pack Verso Completo', 15.90)}
@@ -215,7 +216,7 @@ export default function UpPage() {
         {/* Fallback option link outside inner box */}
         <div className="text-center mt-6">
           <a 
-            href="https://pay.wiapy.com/2w3O7s9uCmeZ"
+            href={getCheckoutUrl('https://pay.wiapy.com/2w3O7s9uCmeZ')}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackInitiateCheckout('Oferta Básica Pack Verso Fallback Up', 10.00)}

@@ -164,3 +164,34 @@ export function trackLead(contentName: string, value?: number) {
 export function trackCustom(eventName: string, data?: Record<string, any>) {
   trackMetaEvent(eventName, data);
 }
+
+/**
+ * Appends current URL search parameters (UTMs, fbclid, etc.) to checkout links
+ * ensuring Wiapy and UTMify receive full attribution parameters.
+ */
+export function getCheckoutUrl(baseUrl: string): string {
+  if (typeof window === 'undefined') return baseUrl;
+
+  try {
+    const currentParams = new URLSearchParams(window.location.search);
+    if (!currentParams.toString()) return baseUrl;
+
+    const urlObj = new URL(baseUrl);
+    currentParams.forEach((val, key) => {
+      urlObj.searchParams.set(key, val);
+    });
+
+    // Gateway compatibility: ensure src & sck parameters are set if utm_source/utm_campaign exist
+    if (!urlObj.searchParams.has('src') && urlObj.searchParams.has('utm_source')) {
+      urlObj.searchParams.set('src', urlObj.searchParams.get('utm_source') || '');
+    }
+    if (!urlObj.searchParams.has('sck') && urlObj.searchParams.has('utm_campaign')) {
+      urlObj.searchParams.set('sck', urlObj.searchParams.get('utm_campaign') || '');
+    }
+
+    return urlObj.toString();
+  } catch {
+    return baseUrl;
+  }
+}
+
