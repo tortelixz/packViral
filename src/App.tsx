@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import UpPage from './UpPage';
+import VSLPlayer from './components/VSLPlayer';
 import { 
   trackPageView, 
   trackViewContent, 
@@ -26,7 +27,9 @@ import {
   FileCheck,
   Music,
   Smile,
-  X
+  X,
+  ArrowDown,
+  ArrowRight
 } from 'lucide-react';
 
 // Verification/Instagram results for carousel
@@ -128,22 +131,16 @@ const categories = [
 // Testimonials
 const testimonials = [
   {
-    name: 'Marcos Alves',
-    avatar: '/assets/avatar-marcos.jpg',
-    date: 'Há 2 dias',
-    quote: '"Bati 10k seguidores no TikTok em poucos dias só postando os cortes. Loucura total, já comecei a monetizar!"'
+    image: '/assets/review-andre.png',
+    name: 'André Martins'
   },
   {
-    name: 'Gabriel Martins',
-    avatar: '/assets/avatar-gabriel.jpg',
-    date: 'Ontem',
-    quote: '"Eu trabalhava o dia todo e não tinha tempo para editar nada. Agora consigo criar vídeos inéditos em menos de 2 minutos."'
+    image: '/assets/review-lucas.png',
+    name: 'Lucas Almeida'
   },
   {
-    name: 'Lucas Ferreira',
-    avatar: '/assets/avatar-lucas.jpg',
-    date: 'Há 5 dias',
-    quote: '"O conteúdo realmente converte. Já fiz minha primeira venda como afiliado usando apenas os vídeos."'
+    image: '/assets/review-juliana.png',
+    name: 'Juliana Santos'
   }
 ];
 
@@ -187,11 +184,11 @@ export default function App() {
 
   useEffect(() => {
     trackPageView();
-    trackViewContent('Pack Verso - 50.000 Cortes Virais', 19.90);
+    trackViewContent('Pack Verso - 50.000 Cortes Virais', 19.00);
   }, []);
 
   const navigateToUp = () => {
-    trackInitiateCheckout('Pack Verso Básico - Redirecionamento Up', 10.00);
+    trackInitiateCheckout('Pack Verso Básico - Redirecionamento Up', 19.00);
     const search = typeof window !== 'undefined' ? window.location.search : '';
     window.history.pushState({}, '', '/up' + search);
     setCurrentPath('/up');
@@ -244,177 +241,78 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white font-['Montserrat'] selection:bg-yellow-400 selection:text-black">
+    <div className="min-h-screen bg-black text-white font-['Montserrat'] selection:bg-[#58D4F2] selection:text-white">
       
       {/* Toast Notification */}
       {toastNotification && (
-        <div className="fixed bottom-4 left-4 z-50 bg-[#111111] border border-[#FFDE1A]/50 text-white px-4 py-2.5 rounded-xl shadow-2xl flex items-center gap-3 animate-bounce text-sm">
-          <div className="w-2.5 h-2.5 rounded-full bg-green-400 animate-ping" />
+        <div className="fixed bottom-4 left-4 z-50 bg-[#08090C] border border-[#58D4F2] text-white px-4 py-2.5 rounded-xl shadow-2xl flex items-center gap-3 text-sm">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#0AE028]" />
           <span>{toastNotification}</span>
         </div>
       )}
 
       {/* HEADER / HERO SECTION */}
-      <section className="relative pt-6 pb-10 px-4 sm:px-6 bg-gradient-to-b from-neutral-950 to-black overflow-hidden border-b border-neutral-900">
-        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+      <section className="relative pt-6 pb-8 sm:pt-10 sm:pb-12 px-4 sm:px-6 bg-black overflow-hidden border-b border-white/10">
+        <div className="max-w-6xl mx-auto text-center flex flex-col items-center relative z-10">
           
+          {/* Top Status Pill / Urgency Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DC2626] border border-[#EF4444]/50 text-white text-[11px] sm:text-xs font-extrabold tracking-[0.14em] uppercase mb-4">
+            <span>🔥EM ALTA NO BRASIL!</span>
+          </div>
+
           {/* Main Hook Headline */}
-          <h1 className="text-2xl sm:text-5xl md:text-6xl font-[900] tracking-tight text-[#FFDE1A] uppercase leading-[1.15] mb-3 drop-shadow-[0_2px_12px_rgba(255,222,26,0.3)]">
-            PARE DE PERDER TEMPO CRIANDO CONTEÚDO DO ZERO
+          <h1 className="font-['Plus_Jakarta_Sans',sans-serif] text-[clamp(1.875rem,7.6vw,4.75rem)] font-[800] tracking-[-0.035em] text-white leading-[1.06] mb-4 text-balance w-full max-w-6xl">
+            Pare de perder tempo <span className="gradient-blue-text">criando conteúdo do zero</span>
           </h1>
 
           {/* Subhead */}
-          <p className="text-base sm:text-xl font-medium text-gray-200 max-w-2xl mb-8 leading-relaxed">
-            Use <span className="text-[#FFDE1A] font-bold">50.000 Vídeos Prontos</span> que já viralizaram e comece a crescer hoje mesmo, sem aparecer.
+          <p className="text-base sm:text-xl font-medium text-neutral-300 max-w-2xl mb-4 sm:mb-6 leading-relaxed">
+            Use <span className="text-white font-bold underline decoration-[#4A72A3] underline-offset-4">50.000 Vídeos Prontos</span> que já viralizaram e comece a crescer hoje mesmo, sem aparecer.
           </p>
 
-          {/* 3D Pack Mockup Image */}
-          <div className="relative group my-2 cursor-pointer transition-transform duration-300 hover:scale-105" onClick={scrollToOffers}>
-            <div className="absolute inset-0 bg-[#FFDE1A]/20 blur-3xl rounded-full opacity-60 group-hover:opacity-90 transition-opacity" />
-            <img 
-              src="/assets/embalagem-packviral.png" 
-              alt="Embalagem PackViral preta e dourada" 
-              className="relative w-64 sm:w-80 md:w-96 mx-auto drop-shadow-[0_15px_35px_rgba(0,0,0,0.8)] rounded-2xl"
-            />
-          </div>
-
-          {/* Price Anchor */}
-          <div className="mt-8 mb-6 flex flex-col items-center">
-            <p className="text-2xl sm:text-3xl font-bold text-gray-300">
-              DE <span className="line-through text-red-500 font-extrabold decoration-red-500 decoration-3">R$67,00</span>
-            </p>
-            <p className="text-lg sm:text-xl font-bold text-gray-100 mt-1">
-              Por apenas
-            </p>
-            <div className="text-6xl sm:text-8xl font-[900] text-[#0BF504] tracking-tight leading-none my-1 drop-shadow-[0_0_25px_rgba(11,245,4,0.4)]">
-              R$10
-            </div>
-            <p className="text-sm sm:text-base font-semibold text-gray-300 tracking-wider uppercase mt-1">
-              RISCO ZERO!
-            </p>
-          </div>
+          {/* VSL Video Player */}
+          <VSLPlayer videoSrc="/videoplayback.mp4" className="my-2" />
 
           {/* Main CTA Button */}
           <button 
             onClick={scrollToOffers}
-            className="w-full max-w-md py-4 px-8 rounded-full text-white font-extrabold text-lg sm:text-xl tracking-wide uppercase flex items-center justify-center gap-2 green-glow-button animate-pulse-glow transition-all"
+            className="mt-5 sm:mt-6 w-full max-w-md py-4 sm:py-5 px-8 rounded-full text-white font-[900] text-lg sm:text-xl tracking-wider uppercase flex items-center justify-center gap-3 green-glow-button animate-pulse-glow transition-all cursor-pointer relative overflow-hidden group shadow-[0_0_30px_rgba(10,224,40,0.6)]"
           >
-            <span>QUERO ACESSO IMEDIATO</span>
-            <img src="/assets/aistudio/26a1_d3a6d0c1.svg" alt="⚡" className="w-5 h-5 inline-block" />
+            <span className="relative z-10 flex items-center gap-2 drop-shadow-md">
+              QUERO ACESSO IMEDIATO
+              <img src="/assets/aistudio/26a1_d3a6d0c1.svg" alt="⚡" className="w-6 h-6 inline-block" />
+            </span>
           </button>
-        </div>
-      </section>
 
-      {/* QUICK BENEFITS BAR */}
-      <section className="py-12 px-4 bg-black" id="ancora">
-        <div className="max-w-4xl mx-auto flex flex-col items-center">
-          
-          {/* Glowing box with 3 pills */}
-          <div className="w-full max-w-2xl bg-[#0e0e0e] border-2 border-yellow-400/60 rounded-3xl p-6 sm:p-8 shadow-[0_0_20px_rgba(255,222,26,0.25)]">
-            <ul className="space-y-4 sm:space-y-5">
-              <li className="flex items-center gap-3 sm:gap-4 text-base sm:text-xl font-semibold text-white">
-                <CheckCircle className="w-6 h-6 text-[#24EE05] shrink-0" />
-                <span>Poste em menos de 30 segundos</span>
-              </li>
-              <li className="flex items-center gap-3 sm:gap-4 text-base sm:text-xl font-semibold text-white">
-                <EyeOff className="w-6 h-6 text-[#24EE05] shrink-0" />
-                <span>Ideal para perfis anônimos</span>
-              </li>
-              <li className="flex items-center gap-3 sm:gap-4 text-base sm:text-xl font-semibold text-white">
-                <Radio className="w-6 h-6 text-[#24EE05] shrink-0" />
-                <span>Conteúdo infinito para viralizar</span>
-              </li>
-            </ul>
-          </div>
+          {/* First Month Results */}
+          <div className="mt-8 sm:mt-10 w-full max-w-4xl">
+            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-xl sm:text-2xl md:text-3xl font-[800] text-white tracking-[-0.02em] mb-2 flex items-center justify-center gap-2.5 sm:gap-3">
+              <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 gradient-blue-text shrink-0 animate-arrow-bounce" />
+              <span>Resultado do primeiro mês usando esse Pack</span>
+              <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 gradient-blue-text shrink-0 animate-arrow-bounce" />
+            </h2>
+            <p className="text-xs sm:text-sm font-medium text-white mb-4 flex items-center justify-center gap-1.5">
+              <span>Arraste para o lado</span>
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0" />
+            </p>
 
-          {/* Section Title */}
-          <h2 className="mt-10 text-2xl sm:text-4xl font-extrabold text-center tracking-tight text-white">
-            <span className="text-[#FFDE1A]">VOCÊ NÃO PRECISA CRIAR CONTEÚDO</span>
-          </h2>
-        </div>
-      </section>
-
-      {/* PROOF CAROUSEL SECTION */}
-      <section className="py-8 px-4 bg-black">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-center text-sm sm:text-base text-gray-400 mb-6 font-medium">
-            Resultados de quem utiliza cortes virais para crescer e monetizar:
-          </p>
-
-          <div className="relative w-full overflow-hidden flex flex-col items-center">
-            {/* 3 Cards Side-by-Side */}
-            <div className="w-full flex items-center justify-center gap-2 sm:gap-4 md:gap-6 py-2 px-1">
-              
-              {/* Left Slide (Previous) */}
-              <div 
-                onClick={prevSlide}
-                className="w-[28%] sm:w-[28%] max-w-[280px] shrink-0 transform scale-90 opacity-60 hover:opacity-85 transition-all duration-300 cursor-pointer rounded-[18px] sm:rounded-[24px] overflow-hidden shadow-lg border border-neutral-800"
-                title={carouselSlides[(activeSlide - 1 + carouselSlides.length) % carouselSlides.length].handle}
-              >
-                <img 
-                  src={carouselSlides[(activeSlide - 1 + carouselSlides.length) % carouselSlides.length].image} 
-                  alt={carouselSlides[(activeSlide - 1 + carouselSlides.length) % carouselSlides.length].handle}
-                  className="w-full h-auto object-cover rounded-[18px] sm:rounded-[24px] select-none"
-                  draggable={false}
-                />
-              </div>
-
-              {/* Center Slide (Active) */}
-              <div 
-                className="w-[44%] sm:w-[42%] max-w-[390px] shrink-0 transform scale-100 z-10 transition-all duration-300 rounded-[20px] sm:rounded-[28px] overflow-hidden shadow-[0_10px_35px_rgba(0,0,0,0.8)] border-2 border-neutral-700/80"
-                title={carouselSlides[activeSlide].handle}
-              >
-                <img 
-                  src={carouselSlides[activeSlide].image} 
-                  alt={carouselSlides[activeSlide].handle}
-                  className="w-full h-auto object-cover rounded-[20px] sm:rounded-[28px] select-none"
-                  draggable={false}
-                />
-              </div>
-
-              {/* Right Slide (Next) */}
-              <div 
-                onClick={nextSlide}
-                className="w-[28%] sm:w-[28%] max-w-[280px] shrink-0 transform scale-90 opacity-60 hover:opacity-85 transition-all duration-300 cursor-pointer rounded-[18px] sm:rounded-[24px] overflow-hidden shadow-lg border border-neutral-800"
-                title={carouselSlides[(activeSlide + 1) % carouselSlides.length].handle}
-              >
-                <img 
-                  src={carouselSlides[(activeSlide + 1) % carouselSlides.length].image} 
-                  alt={carouselSlides[(activeSlide + 1) % carouselSlides.length].handle}
-                  className="w-full h-auto object-cover rounded-[18px] sm:rounded-[24px] select-none"
-                  draggable={false}
-                />
-              </div>
-
-            </div>
-
-            {/* Navigation buttons */}
-            <button 
-              onClick={prevSlide}
-              aria-label="Slide anterior"
-              className="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white p-2 sm:p-2.5 rounded-full border border-neutral-700 transition-colors cursor-pointer shadow-xl backdrop-blur-sm"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button 
-              onClick={nextSlide}
-              aria-label="Próximo slide"
-              className="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 z-20 bg-black/80 hover:bg-black text-white p-2 sm:p-2.5 rounded-full border border-neutral-700 transition-colors cursor-pointer shadow-xl backdrop-blur-sm"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-
-            {/* Dots */}
-            <div className="flex justify-center gap-2 mt-5 sm:mt-6">
-              {carouselSlides.map((_, idx) => (
-                <button
+            <div className="flex sm:grid sm:grid-cols-3 gap-4 sm:gap-5 items-start overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+              {[
+                { src: '/assets/result-1.webp', alt: 'Resultado de desempenho no primeiro mês com 25.8M de alcance' },
+                { src: '/assets/result-2.webp', alt: 'Resultado de recompensas estimadas no primeiro mês' },
+                { src: '/assets/result-3.webp', alt: 'Depoimento de cliente com vídeos batendo mais de 1M de views em 4 dias' }
+              ].map((item, idx) => (
+                <div
                   key={idx}
-                  onClick={() => setActiveSlide(idx)}
-                  className={`h-2 rounded-full transition-all cursor-pointer ${
-                    activeSlide === idx ? 'w-6 bg-[#FFDE1A]' : 'w-2 bg-neutral-600 hover:bg-neutral-500'
-                  }`}
-                  aria-label={`Ir para slide ${idx + 1}`}
-                />
+                  className="bg-[#07080A] border border-white/10 hover:border-[#58D4F2] rounded-2xl overflow-hidden shadow-2xl transition-all duration-200 w-[76%] sm:w-full shrink-0 sm:shrink snap-center"
+                >
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-auto block object-contain select-none"
+                    draggable={false}
+                  />
+                </div>
               ))}
             </div>
           </div>
@@ -422,73 +320,77 @@ export default function App() {
       </section>
 
       {/* MINDSET HIGHLIGHT BOX */}
-      <section className="py-12 px-4 bg-black">
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-[#0b0b0b] border-2 border-yellow-400/80 rounded-[36px] p-8 sm:p-10 text-center shadow-[0_0_25px_rgba(255,222,26,0.3)] space-y-3">
-            <h3 className="text-lg sm:text-2xl font-medium text-white">
-              Quem cresce hoje não <span className="text-[#FFDE1A] font-bold underline decoration-2">cria do zero.</span>
+      <section className="py-4 sm:py-6 px-4 bg-black">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-[#07080A] border border-[#58D4F2] rounded-2xl p-4 sm:p-7 text-center shadow-xl space-y-1 relative overflow-hidden">
+            <div className="absolute top-0 left-10 right-10 h-[1px] bg-gradient-to-r from-transparent via-[#58D4F2]/60 to-transparent pointer-events-none" />
+            <h3 className="font-['Plus_Jakarta_Sans',sans-serif] text-base sm:text-xl font-semibold text-white relative z-10">
+              É assim que os perfis de cortes <span className="gradient-blue-text font-extrabold underline decoration-[#3A6091] decoration-2 underline-offset-4">crescem hoje.</span>
             </h3>
-            <p className="text-base sm:text-xl font-normal text-gray-300">
+            <p className="text-sm sm:text-lg font-normal text-neutral-300 relative z-10">
               Eles reaproveitam vídeos que já viralizaram.
             </p>
-            <h4 className="text-2xl sm:text-4xl font-extrabold text-[#FFDE1A] pt-2">
-              O jogo é volume, não perfeição.
+            <h4 className="font-['Plus_Jakarta_Sans',sans-serif] text-base sm:text-2xl font-[800] gradient-blue-text pt-1 tracking-tight leading-tight relative z-10">
+              O jogo é colocar mais vídeos no ar todos os dias.
             </h4>
           </div>
         </div>
       </section>
 
+
+
       {/* "É SIMPLES ASSIM" - 4 STEPS */}
-      <section className="py-16 px-4 bg-black border-t border-neutral-900">
+      <section className="py-7 sm:py-10 px-3 sm:px-4 bg-[#040406] border-t border-white/10">
         <div className="max-w-5xl mx-auto text-center">
           
           {/* Animated Arrow */}
-          <div className="text-[#FFDE1A] text-5xl font-black mb-4 animate-arrow-bounce">
+          <div className="gradient-blue-text text-2xl sm:text-3xl font-black mb-1 animate-arrow-bounce">
             ↓
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-12">
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-4xl font-[800] text-white tracking-[-0.02em] mb-5 sm:mb-7 uppercase">
             É SIMPLES ASSIM
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
             
             {/* Step 1 */}
-            <div className="bg-[#111111] border border-neutral-800 hover:border-[#FFDE1A] rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,222,26,0.15)] group min-h-[220px]">
-              <div className="w-14 h-14 rounded-xl bg-[#FFDE1A] text-black font-black text-2xl flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform">
+            <div className="bg-[#08090C] border border-white/10 hover:border-[#58D4F2] rounded-xl sm:rounded-2xl p-3 sm:p-5 flex flex-col items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-xl group min-h-[130px] sm:min-h-[180px] relative overflow-hidden">
+              <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#112238] border border-[#58D4F2] text-[#D8E5F3] font-['Plus_Jakarta_Sans',sans-serif] font-[800] text-sm sm:text-lg flex items-center justify-center mb-2.5 sm:mb-3.5 shadow-md group-hover:scale-105 transition-transform">
                 1
               </div>
-              <h3 className="text-lg font-bold text-white leading-snug">
+              <h3 className="text-xs sm:text-base font-bold text-white leading-tight">
                 Escolha um vídeo<br />pronto
               </h3>
             </div>
 
             {/* Step 2 */}
-            <div className="bg-[#111111] border border-neutral-800 hover:border-[#FFDE1A] rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,222,26,0.15)] group min-h-[220px]">
-              <div className="w-14 h-14 rounded-xl bg-[#FFDE1A] text-black font-black text-2xl flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform">
+            <div className="bg-[#08090C] border border-white/10 hover:border-[#58D4F2] rounded-xl sm:rounded-2xl p-3 sm:p-5 flex flex-col items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-xl group min-h-[130px] sm:min-h-[180px] relative overflow-hidden">
+              <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#112238] border border-[#58D4F2] text-[#D8E5F3] font-['Plus_Jakarta_Sans',sans-serif] font-[800] text-sm sm:text-lg flex items-center justify-center mb-2.5 sm:mb-3.5 shadow-md group-hover:scale-105 transition-transform">
                 2
               </div>
-              <h3 className="text-lg font-bold text-white leading-snug">
+              <h3 className="text-xs sm:text-base font-bold text-white leading-tight">
                 Poste no TikTok ou<br />Instagram
               </h3>
             </div>
 
             {/* Step 3 */}
-            <div className="bg-[#111111] border border-neutral-800 hover:border-[#FFDE1A] rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,222,26,0.15)] group min-h-[220px]">
-              <div className="w-14 h-14 rounded-xl bg-[#FFDE1A] text-black font-black text-2xl flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform">
+            <div className="bg-[#08090C] border border-white/10 hover:border-[#58D4F2] rounded-xl sm:rounded-2xl p-3 sm:p-5 flex flex-col items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-xl group min-h-[130px] sm:min-h-[180px] relative overflow-hidden">
+              <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#112238] border border-[#58D4F2] text-[#D8E5F3] font-['Plus_Jakarta_Sans',sans-serif] font-[800] text-sm sm:text-lg flex items-center justify-center mb-2.5 sm:mb-3.5 shadow-md group-hover:scale-105 transition-transform">
                 3
               </div>
-              <h3 className="text-lg font-bold text-white leading-snug">
+              <h3 className="text-xs sm:text-base font-bold text-white leading-tight">
                 Repita todos<br />os dias
               </h3>
             </div>
 
             {/* Step 4 - Rocket */}
-            <div className="bg-[#111111] border border-[#FFDE1A]/40 hover:border-[#FFDE1A] rounded-2xl p-6 sm:p-8 flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,222,26,0.2)] group min-h-[220px]">
-              <div className="text-4xl mb-5 animate-rocket-float">
-                <img src="/assets/aistudio/1f680_3892ef66.svg" alt="🚀" className="w-12 h-12" />
+            <div className="bg-[#07090D] border border-[#58D4F2] hover:border-[#3A6091] rounded-xl sm:rounded-2xl p-3 sm:p-5 flex flex-col items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-xl group min-h-[130px] sm:min-h-[180px] relative overflow-hidden">
+              <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-[#58D4F2]/60 to-transparent pointer-events-none" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 mb-2.5 sm:mb-3.5 flex items-center justify-center animate-rocket-float">
+                <img src="/assets/aistudio/1f680_3892ef66.svg" alt="🚀" className="w-7 h-7 sm:w-9 sm:h-9" />
               </div>
-              <h3 className="text-lg font-bold text-[#FFDE1A] leading-snug">
+              <h3 className="text-xs sm:text-base font-bold text-[#7AA0CC] leading-tight">
                 Comece a crescer
               </h3>
             </div>
@@ -498,29 +400,29 @@ export default function App() {
       </section>
 
       {/* 50.000 CORTES PRONTOS PARA POSTAR - CATEGORIES GRID */}
-      <section className="py-16 px-4 bg-black border-t border-neutral-900">
+      <section className="py-6 sm:py-8 px-4 bg-black border-t border-white/10">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-5xl font-[900] text-center tracking-tight mb-12">
-            <span className="text-[#FFDE1A]">50.000 CORTES PRONTOS </span>PARA POSTAR
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-4xl font-[800] text-center tracking-[-0.02em] mb-5 sm:mb-7 text-white">
+            <span className="gradient-blue-text">50.000 CORTES PRONTOS </span>PARA POSTAR
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
             {categories.map((cat, idx) => (
               <div 
                 key={idx} 
-                className="bg-[#000000] border-2 border-[#3F3F3F] hover:border-[#ECCA0080] hover:shadow-[0px_0px_10px_4px_rgba(235,202,0,0.5)_inset,0_0_15px_rgba(235,202,0,0.3)] rounded-[12px] overflow-hidden transition-all duration-300 flex flex-col group cursor-pointer"
+                className="bg-[#07080A] border border-white/10 hover:border-[#58D4F2] hover:-translate-y-1 hover:shadow-xl rounded-2xl overflow-hidden transition-all duration-200 flex flex-col group cursor-pointer"
               >
                 <div className="w-full aspect-[400/218] overflow-hidden bg-black">
                   <img 
                     src={cat.image} 
                     alt={cat.description} 
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                     loading="lazy"
                   />
                 </div>
 
-                <div className="p-3.5 sm:p-4 flex-1 flex items-center justify-center text-center">
-                  <p className="text-[13px] sm:text-[14px] font-[500] text-[#DBDBDB] leading-snug">
+                <div className="p-4 flex-1 flex items-center justify-center text-center border-t border-white/5">
+                  <p className="text-[13px] sm:text-[14px] font-[500] text-neutral-300 leading-snug">
                     {cat.description}
                   </p>
                 </div>
@@ -531,13 +433,13 @@ export default function App() {
       </section>
 
       {/* POR QUE ESSE PACK FUNCIONA */}
-      <section className="py-16 px-4 bg-black border-t border-neutral-900">
+      <section className="py-6 sm:py-8 px-4 bg-[#040406] border-t border-white/10">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-5xl font-[900] text-center tracking-tight mb-10 text-white">
-            POR QUE ESSE <span className="text-[#FFDE1A]">PACK FUNCIONA</span>
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-4xl font-[800] text-center tracking-[-0.02em] mb-4 sm:mb-6 text-white">
+            POR QUE ESSE <span className="gradient-blue-text">PACK FUNCIONA</span>
           </h2>
 
-          <div className="space-y-4 max-w-2xl mx-auto">
+          <div className="space-y-2.5 sm:space-y-3 max-w-2xl mx-auto">
             {[
               'Não precisa aparecer',
               'Não precisa editar',
@@ -547,9 +449,11 @@ export default function App() {
             ].map((text, idx) => (
               <div 
                 key={idx}
-                className="w-full min-h-[58px] flex items-center px-6 py-3.5 bg-[#111111] border-l-4 border-[#FFDE1A] rounded-r-xl text-white font-semibold text-base sm:text-lg transition-transform duration-300 hover:translate-x-2 hover:bg-[#151515] hover:shadow-[0_5px_25px_rgba(255,222,26,0.1)]"
+                className="w-full min-h-[52px] sm:min-h-[58px] flex items-center gap-3.5 sm:gap-4 px-4 sm:px-6 py-3 sm:py-3.5 bg-[#08090C] border border-white/10 hover:border-[#58D4F2] rounded-xl text-white font-semibold text-sm sm:text-base transition-all duration-200 hover:translate-x-1.5 hover:bg-[#0C0E13]"
               >
-                <span className="text-[#FFDE1A] font-extrabold text-2xl mr-4 leading-none">✓</span>
+                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#112238] border border-[#58D4F2] flex items-center justify-center shrink-0">
+                  <span className="text-[#7AA0CC] font-extrabold text-xs sm:text-sm leading-none">✓</span>
+                </div>
                 <span>{text}</span>
               </div>
             ))}
@@ -557,59 +461,65 @@ export default function App() {
         </div>
       </section>
 
+      {/* BÔNUS SECTION */}
+      <section className="py-6 sm:py-8 px-4 bg-[#040406] border-t border-white/10">
+        <div className="max-w-[1060px] mx-auto text-center flex flex-col items-center">
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[24px] sm:text-[34px] font-[800] tracking-[-0.02em] mb-4 sm:mb-6 flex items-center justify-center gap-2.5 sm:gap-3 uppercase">
+            <img src="/assets/aistudio/1f381_05a65621.svg" alt="🎁" className="w-7 h-7 sm:w-8 sm:h-8 inline-block" />
+            <span className="text-white">VOCÊ AINDA <span className="gradient-blue-text">RECEBE BÔNUS</span></span>
+          </h2>
+
+          <div 
+            className="w-full max-w-[920px] bg-[#07080A] border border-[#58D4F2] rounded-2xl grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10 shadow-xl relative overflow-hidden"
+          >
+            <div className="absolute top-0 left-10 right-10 h-[1px] bg-gradient-to-r from-transparent via-[#58D4F2]/60 to-transparent pointer-events-none" />
+            <div className="flex items-center justify-center gap-3 px-5 py-4 sm:py-5 text-sm sm:text-base font-bold text-white">
+              <svg className="w-5 h-5 text-[#30FF00] shrink-0 fill-current" viewBox="0 0 24 24">
+                <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
+                <path d="M19 3C19 5 17.5 6.5 15.5 6.5C17.5 6.5 19 8 19 10C19 8 20.5 6.5 22.5 6.5C20.5 6.5 19 5 19 3Z" />
+              </svg>
+              <span>Banco de Memes Virais</span>
+            </div>
+            <div className="flex items-center justify-center gap-3 px-5 py-4 sm:py-5 text-sm sm:text-base font-bold text-white">
+              <svg className="w-5 h-5 text-[#30FF00] shrink-0 fill-current" viewBox="0 0 24 24">
+                <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
+                <path d="M19 3C19 5 17.5 6.5 15.5 6.5C17.5 6.5 19 8 19 10C19 8 20.5 6.5 22.5 6.5C20.5 6.5 19 5 19 3Z" />
+              </svg>
+              <span>Stories Prontos</span>
+            </div>
+            <div className="flex items-center justify-center gap-3 px-5 py-4 sm:py-5 text-sm sm:text-base font-bold text-white">
+              <svg className="w-5 h-5 text-[#30FF00] shrink-0 fill-current" viewBox="0 0 24 24">
+                <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
+                <path d="M19 3C19 5 17.5 6.5 15.5 6.5C17.5 6.5 19 8 19 10C19 8 20.5 6.5 22.5 6.5C20.5 6.5 19 5 19 3Z" />
+              </svg>
+              <span>Musicas Virais em Alta</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* TESTIMONIALS */}
-      <section className="py-16 px-4 bg-black border-t border-neutral-900">
+      <section className="py-6 sm:py-8 px-4 bg-black border-t border-white/10">
         <div className="max-w-[1060px] mx-auto">
           
-          <div className="text-center mb-8">
-            <h2 className="text-[28px] sm:text-[36px] font-[900] tracking-[-1.4px] text-white uppercase leading-[1.08] font-['Arial',sans-serif]">
-              PESSOAS COMUNS JÁ ESTÃO <span className="text-[#FFDE1A]">USANDO</span>
+          <div className="text-center mb-4 sm:mb-5">
+            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[26px] sm:text-[36px] font-[800] tracking-[-0.02em] text-white uppercase leading-[1.1]">
+              PESSOAS COMUNS JÁ ESTÃO <span className="gradient-blue-text">USANDO</span>
             </h2>
-            <p className="mt-4 text-[#D7D9DA] text-[15px] font-normal leading-normal">
-              Junte-se a mais de <strong className="text-[#FFDE1A] font-[800]">4.850 alunos</strong> que estão viralizando todos os dias.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7">
+          <div className="flex sm:grid sm:grid-cols-3 gap-4 sm:gap-5 items-start overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {testimonials.map((test, idx) => (
               <div 
                 key={idx} 
-                className="relative bg-[#0B1212] border border-[#FFDE1A]/[0.22] rounded-[12px] p-[28px_24px_25px] shadow-[0_0_0_1px_rgba(255,255,255,0.015)_inset] flex flex-col justify-between overflow-hidden"
-                style={{
-                  background: 'radial-gradient(circle at 20% 0%, rgba(255,222,26,0.045), transparent 38%), #0B1212'
-                }}
+                className="bg-[#07080A] border border-white/10 hover:border-[#58D4F2] rounded-2xl overflow-hidden shadow-2xl transition-all duration-200 w-[82%] sm:w-full shrink-0 sm:shrink snap-center"
               >
-                {/* Top golden hairline */}
-                <div className="absolute top-0 left-5 right-5 h-[1px] bg-gradient-to-r from-transparent via-[#FFDE1A]/50 to-transparent pointer-events-none" />
-
-                {/* Watermark quotes */}
-                <div className="absolute right-4 -top-2 text-white/[0.035] text-[66px] font-[900] leading-none select-none pointer-events-none">
-                  “
-                </div>
-
-                <div className="flex items-center gap-3.5 relative z-10">
-                  <img 
-                    src={test.avatar} 
-                    alt={test.name} 
-                    className="w-[55px] h-[55px] rounded-full object-cover border-2 border-[#FFDE1A] p-0.5 bg-[#111] shrink-0" 
-                  />
-                  <div className="flex flex-col min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-[16px] font-[800] text-white whitespace-nowrap">{test.name}</span>
-                      <span className="inline-flex items-center gap-1 px-1.5 py-1 rounded-[2px] bg-[#FFDE1A]/[0.12] text-[#FFDE1A] text-[9px] font-[900] uppercase leading-none tracking-normal">
-                        <span className="text-[11px] leading-none">✓</span> COMPRA VERIFICADA
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-3 mt-2">
-                      <span className="text-[#FFDE1A] text-[15px] tracking-[2px] leading-none">★★★★★</span>
-                      <span className="text-[10px] text-[#666D70] font-normal">{test.date}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <p className="mt-5 text-[#D4D6D7] text-[14px] leading-[1.65] italic font-[600] relative z-10">
-                  {test.quote}
-                </p>
+                <img 
+                  src={test.image} 
+                  alt={test.name}
+                  className="w-full h-auto block object-contain select-none"
+                  draggable={false}
+                />
               </div>
             ))}
           </div>
@@ -617,248 +527,216 @@ export default function App() {
         </div>
       </section>
 
-      {/* BÔNUS SECTION */}
-      <section className="pt-8 pb-16 px-4 bg-black">
-        <div className="max-w-[1060px] mx-auto text-center flex flex-col items-center">
-          <h2 className="text-[26px] sm:text-[34px] font-[900] tracking-tight mb-7 flex items-center justify-center gap-2.5 uppercase font-['Montserrat',sans-serif]">
-            <img src="/assets/aistudio/1f381_05a65621.svg" alt="🎁" className="w-8 h-8 sm:w-9 sm:h-9 inline-block" />
-            <span className="text-white">VOCÊ AINDA <span className="text-[#FFDE1A]">RECEBE BÔNUS</span></span>
-          </h2>
-
-          <div 
-            className="w-full max-w-[890px] bg-black border-2 border-[#ECE109] rounded-[17px] py-6 px-6 sm:px-12 flex justify-center"
-            style={{
-              boxShadow: '0px 0px 10px 7px rgba(222, 228, 0, 0.5) inset, 0px 0px 15px rgba(236, 225, 9, 0.35)'
-            }}
-          >
-            <ul className="flex flex-col items-center gap-4 text-center">
-              <li className="flex items-center gap-3 text-lg sm:text-[22px] font-[600] text-white">
-                <svg className="w-6 h-6 text-[#30FF00] shrink-0 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
-                  <path d="M19 3C19 5 17.5 6.5 15.5 6.5C17.5 6.5 19 8 19 10C19 8 20.5 6.5 22.5 6.5C20.5 6.5 19 5 19 3Z" />
-                </svg>
-                <span>Banco de Memes Virais</span>
-              </li>
-              <li className="flex items-center gap-3 text-lg sm:text-[22px] font-[600] text-white">
-                <svg className="w-6 h-6 text-[#30FF00] shrink-0 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
-                  <path d="M19 3C19 5 17.5 6.5 15.5 6.5C17.5 6.5 19 8 19 10C19 8 20.5 6.5 22.5 6.5C20.5 6.5 19 5 19 3Z" />
-                </svg>
-                <span>Stories Prontos</span>
-              </li>
-              <li className="flex items-center gap-3 text-lg sm:text-[22px] font-[600] text-white">
-                <svg className="w-6 h-6 text-[#30FF00] shrink-0 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
-                  <path d="M19 3C19 5 17.5 6.5 15.5 6.5C17.5 6.5 19 8 19 10C19 8 20.5 6.5 22.5 6.5C20.5 6.5 19 5 19 3Z" />
-                </svg>
-                <span>Musicas Virais em Alta</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
       {/* OFFERS SECTION (ESCOLHA A MELHOR OFERTA PARA VOCÊ) */}
-      <section className="py-20 px-4 bg-black border-t border-neutral-900" id="escolha">
+      <section className="py-8 sm:py-12 px-4 bg-black border-t border-white/10" id="escolha">
         <div className="max-w-5xl mx-auto">
           
-          <h2 className="text-3xl sm:text-5xl font-[900] text-center text-[#FFDE1A] tracking-tight mb-14 uppercase">
-            ESCOLHA A MELHOR OFERTA PARA VOCÊ
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-4xl font-[800] text-center text-white tracking-[-0.02em] mb-6 sm:mb-8 uppercase">
+            ESCOLHA A <span className="gradient-blue-text">MELHOR OFERTA</span> PARA VOCÊ
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
             
             {/* OFERTA BÁSICA */}
-            <div className="bg-[#181818] border-2 border-[#888888] rounded-[18px] p-6 sm:p-8 flex flex-col text-center relative shadow-xl">
-              <div className="inline-block self-center bg-[#474747] text-white font-[800] italic text-xl py-2 px-8 rounded-2xl mb-4">
-                OFERTA BÁSICA
+            <div className="bg-[#18181B] border border-neutral-700 rounded-2xl p-6 sm:p-9 flex flex-col justify-between text-center relative shadow-2xl hover:border-neutral-500 transition-colors">
+              <div>
+                <div className="inline-block bg-neutral-800 text-white font-[900] italic text-lg sm:text-xl py-2 px-8 rounded-2xl mb-4 uppercase tracking-wide">
+                  OFERTA BÁSICA
+                </div>
+
+                <p className="text-sm sm:text-base italic text-neutral-400 mb-0.5">
+                  De <span className="line-through text-red-500 font-bold decoration-2">R$67,00</span>
+                </p>
+                <p className="text-sm sm:text-base italic text-neutral-300 mb-2">
+                  por apenas:
+                </p>
+                
+                <div className="text-7xl sm:text-8xl font-[900] text-[#00FF20] my-3 leading-none">
+                  R$19
+                </div>
+
+                <div className="my-6">
+                  <ul className="space-y-0 text-center font-bold italic text-sm sm:text-base text-white">
+                    <li className="flex items-center justify-center gap-2 py-2">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
+                      <span>50.000 Cortes Virais</span>
+                    </li>
+                    <div className="w-[65%] border-t border-dotted border-neutral-700 mx-auto my-1.5" />
+                    
+                    <li className="flex items-center justify-center gap-2 py-2">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
+                      <span>Acesso Imediato</span>
+                    </li>
+                    <div className="w-[65%] border-t border-dotted border-neutral-700 mx-auto my-1.5" />
+
+                    <li className="flex items-center justify-center gap-2 py-2">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
+                      <span>Garantia de 7 dias</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
 
-              <p className="text-sm sm:text-base italic text-white mb-0.5">
-                De <span className="line-through text-red-600 font-bold">R$67,00</span>
-              </p>
-              <p className="text-sm sm:text-base italic text-white mb-2">
-                por apenas:
-              </p>
-              
-              <div className="text-7xl sm:text-8xl font-[900] text-[#00FF20] my-2 leading-none drop-shadow-[0_0_15px_rgba(0,255,32,0.3)]">
-                R$10
+              <div>
+                <button 
+                  type="button"
+                  onClick={navigateToUp}
+                  className="w-full max-w-[270px] mx-auto py-3.5 px-6 rounded-full font-[900] text-base bg-[#001455] text-[#9507C9] border-2 border-[#9B04BE] shadow-[0_0_15px_rgba(155,4,190,0.5)] hover:bg-[#A204E7] hover:text-white hover:scale-105 transition-all uppercase tracking-wide block my-3 cursor-pointer"
+                >
+                  QUERO O BÁSICO
+                </button>
+
+                <a 
+                  href={getCheckoutUrl('https://pay.wiapy.com/j3wwzlE9xobB')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackInitiateCheckout('Pack Verso Básico Direto', 19.00)}
+                  className="text-xs text-neutral-400 hover:text-[#00FF20] underline transition-colors block mb-3 cursor-pointer font-medium"
+                >
+                  (ou ir direto para o básico de R$19)
+                </a>
+
+                <p className="mt-4 text-xs sm:text-sm italic font-bold text-neutral-300 text-center leading-relaxed">
+                  ATENÇÃO: Logo abaixo temos uma oferta ainda mais VANTAJOSA para você! Veja 👇👇👇
+                </p>
               </div>
-
-              <div className="my-5">
-                <ul className="space-y-0 text-center font-bold italic text-sm sm:text-base text-white">
-                  <li className="flex items-center justify-center gap-2 py-1.5">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>50.000 Cortes Virais</span>
-                  </li>
-                  <div className="w-[60%] border-t border-dotted border-neutral-500 mx-auto my-1.5" />
-                  
-                  <li className="flex items-center justify-center gap-2 py-1.5">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>Acesso Imediato</span>
-                  </li>
-                  <div className="w-[60%] border-t border-dotted border-neutral-500 mx-auto my-1.5" />
-
-                  <li className="flex items-center justify-center gap-2 py-1.5">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>Garantia de 7 dias</span>
-                  </li>
-                </ul>
-              </div>
-
-              <button 
-                type="button"
-                onClick={navigateToUp}
-                className="w-full max-w-[260px] mx-auto py-3 px-6 rounded-full font-[800] text-base bg-[#001455] text-[#9507C9] border-2 border-[#9B04BE] shadow-[0_0_12px_rgba(155,4,190,0.5)_inset] hover:bg-[#A204E7] hover:text-white transition-all uppercase tracking-wide block my-3 cursor-pointer"
-              >
-                QUERO O BÁSICO
-              </button>
-
-              <a 
-                href={getCheckoutUrl('https://pay.wiapy.com/2w3O7s9uCmeZ')}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackInitiateCheckout('Pack Verso Básico Direto', 10.00)}
-                className="text-xs text-neutral-400 hover:text-[#00FF20] underline transition-colors block mb-2 cursor-pointer"
-              >
-                (ou ir direto para o básico de R$10)
-              </a>
-
-              <p className="mt-4 text-xs sm:text-sm italic font-bold text-white text-center leading-relaxed">
-                ATENÇÃO: Logo abaixo temos uma oferta ainda mais VANTAJOSA para você! Veja 👇👇👇
-              </p>
             </div>
 
-            {/* OFERTA PREMIUM (FEATURED) */}
-            <div className="bg-[#000000] border-2 border-[#FFDE1A] shadow-[0_0_20px_3px_#FFDE1A,inset_0_0_10px_rgba(255,222,26,0.15)] rounded-[18px] p-6 sm:p-8 flex flex-col text-center relative mt-4 md:mt-0">
+            {/* OFERTA PREMIUM (FEATURED LUXURY CARD) */}
+            <div className="bg-[radial-gradient(ellipse_at_center,#040A16_0%,#091832_52%,#143466_100%)] border-2 border-[#58D4F2] shadow-2xl rounded-2xl p-6 sm:p-9 flex flex-col justify-between text-center relative mt-6 md:mt-0 overflow-visible">
+              <div className="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-[#58D4F2]/70 to-transparent pointer-events-none" />
               
               {/* Badge Mais Vendido */}
-              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#49F503] border-2 border-[#FFDE1A] text-black font-bold italic text-xs sm:text-sm py-0.5 px-3.5 rounded-full flex items-center gap-1 shadow-md whitespace-nowrap">
-                <span>🔥 Mais Vendido</span>
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#49F503] border-2 border-[#58D4F2] text-black font-[900] italic text-xs sm:text-sm py-1 px-4 rounded-full flex items-center gap-1.5 shadow-xl whitespace-nowrap">
+                <span>🔥 MAIS VENDIDO</span>
               </div>
 
-              <div className="mt-2 mb-3 inline-block self-center bg-[#30FF00] text-black font-[900] italic text-xl sm:text-2xl py-2 px-8 rounded-2xl shadow-md uppercase">
-                OFERTA PREMIUM
+              <div>
+                <div className="mt-2 mb-4 inline-block bg-[#30FF00] text-black font-[900] italic text-xl sm:text-2xl py-2 px-8 rounded-2xl shadow-lg uppercase tracking-wide">
+                  OFERTA PREMIUM
+                </div>
+
+                {/* Bundle Mockup Image (Pack Verso + Memes + Músicas + Efeitos) */}
+                <div className="w-full my-3 flex justify-center">
+                  <img 
+                    src="/assets/packviral-kit-sem-fundo.png" 
+                    alt="Kit PackViral Definitivo de Conteúdo Viral" 
+                    className="w-60 sm:w-68 max-w-full object-contain drop-shadow-xl"
+                  />
+                </div>
+
+                <p className="text-sm sm:text-base italic text-gray-300 mb-0.5">
+                  De <span className="line-through text-red-600 font-bold decoration-2">R$97,00</span>
+                </p>
+                <p className="text-sm sm:text-base italic text-gray-200 mb-2">
+                  por apenas:
+                </p>
+
+                {/* Price */}
+                <div className="flex items-start justify-center font-[900] text-[#00ff88] my-2 leading-none">
+                  <span className="text-2xl sm:text-3xl font-extrabold mr-1 mt-2">R$</span>
+                  <span className="text-6xl sm:text-8xl tracking-tighter">29</span>
+                  <span className="text-3xl sm:text-4xl font-extrabold mt-1 tracking-tight">,90</span>
+                </div>
+
+                {/* Features list with dotted separators */}
+                <div className="my-3">
+                  <ul className="space-y-0 text-center font-bold italic text-sm sm:text-base text-white leading-normal">
+                    <li className="flex items-center justify-center gap-2.5 py-1.5">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
+                      <span>100.000 Mil Cortes Virais</span>
+                    </li>
+                    <div className="w-[85%] border-t border-dotted border-neutral-700 mx-auto" />
+
+                    <li className="flex items-center justify-center gap-2.5 py-1.5">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
+                      <span>41 Nichos Diferentes</span>
+                    </li>
+                    <div className="w-[85%] border-t border-dotted border-neutral-700 mx-auto" />
+
+                    <li className="flex items-center justify-center gap-2.5 py-1.5">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
+                      <span>Acesso Vitalício</span>
+                    </li>
+                    <div className="w-[85%] border-t border-dotted border-neutral-700 mx-auto" />
+
+                    <li className="flex items-center justify-center gap-2.5 py-1.5">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
+                      <span>Garantia de 30 dias</span>
+                    </li>
+                    <div className="w-[85%] border-t border-dotted border-neutral-700 mx-auto" />
+
+                    <li className="flex items-center justify-center gap-2.5 py-1.5">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
+                      <span>Cortes Livres de Meta Dados</span>
+                    </li>
+                    <div className="w-[85%] border-t border-dotted border-neutral-700 mx-auto" />
+
+                    <li className="flex items-center justify-center gap-2.5 py-1.5">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
+                      <span>+3 Super Bônus</span>
+                    </li>
+                    <div className="w-[85%] border-t border-dotted border-neutral-700 mx-auto" />
+
+                    <li className="flex items-center justify-center gap-2.5 py-1.5">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
+                      <span>Pack de Memes</span>
+                    </li>
+                    <div className="w-[85%] border-t border-dotted border-neutral-700 mx-auto" />
+
+                    <li className="flex items-center justify-center gap-2.5 py-1.5">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
+                      <span>Efeitos Sonoros</span>
+                    </li>
+                    <div className="w-[85%] border-t border-dotted border-neutral-700 mx-auto" />
+
+                    <li className="flex items-center justify-center gap-2.5 py-1.5">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
+                      <span>Músicas sem Copyright</span>
+                    </li>
+                    <div className="w-[85%] border-t border-dotted border-neutral-700 mx-auto" />
+
+                    <li className="flex items-start justify-center gap-2.5 py-1.5 text-center font-normal">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black mt-0.5" />
+                      <span><b>Bônus Extra 1:</b> +50mil cortes virais (totalizando 150mil cortes virais)</span>
+                    </li>
+                    <div className="w-[85%] border-t border-dotted border-neutral-700 mx-auto" />
+
+                    <li className="flex items-start justify-center gap-2.5 py-1.5 text-center font-normal">
+                      <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black mt-0.5" />
+                      <span><b>Presente Surpresa:</b> Você Também Receberá um Presentinho Especial que Preparamos para Você Ainda Hoje…</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* WhatsApp notification badge */}
+                <div className="flex items-center justify-center gap-2.5 my-4 bg-green-500/10 border border-green-500/30 py-2 px-4 rounded-xl">
+                  <svg className="w-7 h-7 text-[#25D366] shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                  </svg>
+                  <span className="text-white font-[900] italic text-xs sm:text-sm tracking-wide">
+                    ACESSO IMEDIATO NO WHATSAPP
+                  </span>
+                </div>
               </div>
 
-              {/* Bundle Mockup Image (Pack Verso + Memes + Músicas + Efeitos) */}
-              <div className="w-full my-2 flex justify-center">
-                <img 
-                  src="/assets/kit-packviral-sem-fundo.png" 
-                  alt="Kit PackViral com quatro caixas" 
-                  className="w-56 sm:w-64 max-w-full object-contain drop-shadow-[0_10px_25px_rgba(255,222,26,0.15)]"
-                />
+              <div>
+                {/* Button */}
+                <a 
+                  href={getCheckoutUrl('https://pay.wiapy.com/2w3O7s9uCmeZ')}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => trackInitiateCheckout('Pack Verso Premium', 29.90)}
+                  className="w-full py-4.5 px-6 rounded-full font-[900] text-lg sm:text-xl text-white bg-[#00E635] border border-[#00B328] shadow-[0_0_25px_8px_rgba(0,230,53,0.65)] hover:bg-[#00c92e] hover:scale-105 active:scale-95 transition-all block uppercase tracking-wider my-3 text-center cursor-pointer"
+                >
+                  LIBERAR SUPER PACK
+                </a>
+
+                {/* Social proof */}
+                <p className="mt-2 text-xs sm:text-sm gradient-blue-text font-bold italic flex items-center justify-center gap-1.5">
+                  <span>👑 +1.387 pessoas escolheram essa oferta</span>
+                </p>
               </div>
-
-              <p className="text-sm sm:text-base italic text-white mb-0.5">
-                De <span className="line-through text-red-600 font-bold">R$97,00</span>
-              </p>
-              <p className="text-sm sm:text-base italic text-white mb-2">
-                por apenas:
-              </p>
-
-              {/* Price */}
-              <div className="flex items-start justify-center font-[900] text-[#00ff88] my-1 leading-none drop-shadow-[0_0_20px_rgba(0,255,136,0.4)]">
-                <span className="text-2xl sm:text-3xl font-extrabold mr-1 mt-2">R$</span>
-                <span className="text-6xl sm:text-7xl tracking-tighter">19</span>
-                <span className="text-3xl sm:text-4xl font-extrabold mt-1 tracking-tight">,90</span>
-              </div>
-
-              {/* Features list with dotted separators */}
-              <div className="my-4">
-                <ul className="space-y-0 text-center font-bold italic text-xs sm:text-sm text-white">
-                  <li className="flex items-center justify-center gap-2 py-1">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>100.000 Mil Cortes Virais</span>
-                  </li>
-                  <div className="w-[80%] border-t border-dotted border-neutral-600 mx-auto my-1" />
-
-                  <li className="flex items-center justify-center gap-2 py-1">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>41 Nichos Diferentes</span>
-                  </li>
-                  <div className="w-[80%] border-t border-dotted border-neutral-600 mx-auto my-1" />
-
-                  <li className="flex items-center justify-center gap-2 py-1">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>Acesso Vitalício</span>
-                  </li>
-                  <div className="w-[80%] border-t border-dotted border-neutral-600 mx-auto my-1" />
-
-                  <li className="flex items-center justify-center gap-2 py-1">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>Garantia de 30 dias</span>
-                  </li>
-                  <div className="w-[80%] border-t border-dotted border-neutral-600 mx-auto my-1" />
-
-                  <li className="flex items-center justify-center gap-2 py-1">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>Cortes Livres de Meta Dados</span>
-                  </li>
-                  <div className="w-[80%] border-t border-dotted border-neutral-600 mx-auto my-1" />
-
-                  <li className="flex items-center justify-center gap-2 py-1">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>+3 Super Bônus</span>
-                  </li>
-                  <div className="w-[80%] border-t border-dotted border-neutral-600 mx-auto my-1" />
-
-                  <li className="flex items-center justify-center gap-2 py-1">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>Pack de Memes</span>
-                  </li>
-                  <div className="w-[80%] border-t border-dotted border-neutral-600 mx-auto my-1" />
-
-                  <li className="flex items-center justify-center gap-2 py-1">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>Efeitos Sonoros</span>
-                  </li>
-                  <div className="w-[80%] border-t border-dotted border-neutral-600 mx-auto my-1" />
-
-                  <li className="flex items-center justify-center gap-2 py-1">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>Músicas sem Copyright</span>
-                  </li>
-                  <div className="w-[80%] border-t border-dotted border-neutral-600 mx-auto my-1" />
-
-                  <li className="flex items-start justify-center gap-2 py-1 text-center font-normal">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black mt-0.5" />
-                    <span><b>Bônus Extra 1:</b> +50mil cortes virais (totalizando 150mil cortes virais)</span>
-                  </li>
-                  <div className="w-[80%] border-t border-dotted border-neutral-600 mx-auto my-1" />
-
-                  <li className="flex items-start justify-center gap-2 py-1 text-center font-normal">
-                    <CheckCircle className="w-4 h-4 text-[#4EE949] shrink-0 fill-[#4EE949] text-black mt-0.5" />
-                    <span><b>Presente Surpresa:</b> Você Também Receberá um Presentinho Especial que Preparamos para Você Ainda Hoje…</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* WhatsApp notification badge */}
-              <div className="flex items-center justify-center gap-2.5 my-3">
-                <svg className="w-7 h-7 sm:w-8 sm:h-8 text-[#25D366] shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                </svg>
-                <span className="text-white font-[800] italic text-xs sm:text-sm tracking-wide">
-                  ACESSO IMEDIATO NO WHATSAPP
-                </span>
-              </div>
-
-              {/* Button */}
-              <a 
-                href={getCheckoutUrl('https://pay.wiapy.com/j3wwzlE9xobB')}
-                target="_blank" 
-                rel="noopener noreferrer"
-                onClick={() => trackInitiateCheckout('Pack Verso Premium', 19.90)}
-                className="w-full py-4 px-6 rounded-full font-[900] text-lg sm:text-xl text-white bg-[#08D825] border border-[#2EA81F] shadow-[0_0_20px_6px_rgba(8,216,37,0.7)] hover:shadow-[0_0_30px_10px_rgba(8,216,37,0.9)] hover:scale-105 active:scale-95 transition-all block uppercase tracking-wider my-2 text-center cursor-pointer"
-              >
-                LIBERAR SUPER PACK
-              </a>
-
-              {/* Social proof */}
-              <p className="mt-2 text-xs sm:text-sm text-white font-bold italic flex items-center justify-center gap-1.5">
-                <span>👑 +1387 pessoas escolheram essa oferta</span>
-              </p>
 
             </div>
 
@@ -868,45 +746,44 @@ export default function App() {
       </section>
 
       {/* GUARANTEE & FAQ SECTION */}
-      <section className="py-16 px-4 bg-black border-t border-neutral-900">
+      <section className="py-8 sm:py-12 px-4 bg-[#040406] border-t border-white/10">
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           
           {/* Guarantee Badge */}
-          <div className="flex flex-col items-center text-center mb-10">
+          <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
             <div className="relative group cursor-pointer transition-transform duration-300 hover:scale-105">
-              <div className="absolute inset-0 bg-[#FFDE1A]/20 blur-2xl rounded-full opacity-60 group-hover:opacity-90 transition-opacity" />
               <img 
                 src="/assets/selo-garantia-7-dias.png" 
                 alt="Selo de Garantia de 7 Dias" 
-                className="relative w-44 sm:w-56 md:w-64 mx-auto object-contain drop-shadow-[0_10px_25px_rgba(255,222,26,0.25)]"
+                className="relative w-44 sm:w-56 md:w-64 mx-auto object-contain drop-shadow-xl"
               />
             </div>
           </div>
 
           {/* FAQ Title */}
-          <h2 className="text-3xl sm:text-5xl font-[900] text-[#FFDE1A] tracking-tight mb-8">
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-4xl font-[800] gradient-blue-text tracking-[-0.02em] mb-5 sm:mb-6">
             FAQ
           </h2>
 
           {/* FAQ Accordion */}
-          <div className="w-full max-w-3xl space-y-4">
+          <div className="w-full max-w-3xl space-y-3 sm:space-y-4">
             {faqItems.map((faq, idx) => (
               <div 
                 key={idx}
-                className="bg-gradient-to-b from-[#ecc80026] to-[#ecc8000d] border border-[#ECCA0059] rounded-2xl p-6 backdrop-blur-md shadow-[0_0_25px_rgba(236,202,0,0.15)] transition-all hover:-translate-y-1 hover:border-[#ECCA00] cursor-pointer"
+                className="bg-[#08090C] border border-white/10 rounded-2xl p-5 sm:p-6 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:border-[#58D4F2] cursor-pointer"
                 onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
               >
                 <div className="flex items-center justify-between gap-4">
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-[#ECCA00] leading-tight">
+                  <h3 className="font-['Plus_Jakarta_Sans',sans-serif] text-lg sm:text-2xl font-bold text-white leading-tight">
                     {faq.question}
                   </h3>
                   <ChevronDown 
-                    className={`w-6 h-6 text-[#ECCA00] shrink-0 transition-transform duration-300 ${
+                    className={`w-6 h-6 gradient-blue-text shrink-0 transition-transform duration-300 ${
                       openFaq === idx ? 'rotate-180' : ''
                     }`} 
                   />
                 </div>
-                <div className={`mt-3 text-base sm:text-lg text-gray-100 font-normal leading-relaxed ${
+                <div className={`mt-3 text-base sm:text-lg text-neutral-300 font-normal leading-relaxed ${
                   openFaq === idx ? 'block' : 'block sm:block'
                 }`}>
                   <p>{faq.answer}</p>
@@ -919,17 +796,17 @@ export default function App() {
       </section>
 
       {/* FINAL CTA SECTION */}
-      <section className="pt-16 pb-6 px-4 bg-black text-center">
+      <section className="py-8 sm:py-10 px-4 bg-black border-t border-white/10 text-center">
         <div className="max-w-3xl mx-auto flex flex-col items-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-[900] italic uppercase text-[#FFDE1A] tracking-tight mb-2 drop-shadow-[0_2px_10px_rgba(255,222,26,0.3)]">
-            COMECE HOJE MESMO
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-3xl sm:text-4xl md:text-5xl font-[800] italic uppercase text-white tracking-[-0.02em] mb-2">
+            COMECE <span className="gradient-blue-text">HOJE MESMO</span>
           </h2>
-          <p className="text-base sm:text-lg italic font-medium text-[#FCFCFC] mb-7 max-w-xl">
+          <p className="text-base sm:text-lg italic font-medium text-neutral-300 mb-5 max-w-xl">
             Tenha acesso aos 50.000 cortes e comece a postar agora.
           </p>
           <button 
             onClick={scrollToOffers}
-            className="py-3.5 px-10 sm:px-14 rounded-2xl font-[800] text-base sm:text-lg text-white bg-[#05D321] shadow-[0_0_20px_8px_rgba(5,211,33,0.55),0_0_35px_14px_rgba(5,211,33,0.3)] hover:shadow-[0_0_25px_12px_rgba(5,211,33,0.75)] hover:scale-105 active:scale-95 transition-all uppercase tracking-wider"
+            className="py-3.5 px-10 sm:px-14 rounded-2xl font-[800] text-base sm:text-lg text-white bg-[#05D321] shadow-[0_0_20px_8px_rgba(5,211,33,0.55),0_0_35px_14px_rgba(5,211,33,0.3)] hover:shadow-[0_0_25px_12px_rgba(5,211,33,0.75)] hover:scale-105 active:scale-95 transition-all uppercase tracking-wider cursor-pointer"
           >
             QUERO MEU ACESSO
           </button>
@@ -937,7 +814,7 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="pt-6 pb-12 px-4 bg-black text-center">
+      <footer className="pt-8 pb-12 px-4 bg-black text-center">
         <div className="max-w-3xl mx-auto flex flex-col items-center">
           
           {/* Pack Verso Circular Logo */}
@@ -945,37 +822,37 @@ export default function App() {
             <img 
               src="/assets/packverso-logo.jpg" 
               alt="Pack Verso" 
-              className="w-16 h-16 sm:w-20 sm:h-20 rounded-full mx-auto object-cover border border-[#FFDE1A]/30 shadow-[0_0_15px_rgba(255,222,26,0.25)]" 
+              className="w-16 h-16 sm:w-20 sm:h-20 rounded-full mx-auto object-cover border border-[#58D4F2] shadow-md" 
             />
           </div>
 
           {/* Links */}
-          <div className="flex items-center justify-center gap-2 text-sm sm:text-base font-medium text-white mb-3">
+          <div className="flex items-center justify-center gap-2 text-sm sm:text-base font-medium text-neutral-200 mb-3">
             <button 
               onClick={() => setPolicyModal('privacy')}
-              className="text-white hover:text-[#FFDE1A] transition-colors"
+              className="text-neutral-200 hover:gradient-blue-text transition-colors"
             >
               Política de Privacidade
             </button>
-            <span className="text-white"> | </span>
+            <span className="text-neutral-600"> | </span>
             <button 
               onClick={() => setPolicyModal('terms')}
-              className="text-white hover:text-[#FFDE1A] transition-colors"
+              className="text-neutral-200 hover:gradient-blue-text transition-colors"
             >
               Termos de Uso
             </button>
           </div>
 
-          {/* Dotted separator */}
-          <div className="w-full max-w-2xl border-t border-dotted border-[#575656] my-2" />
+          {/* Subtle separator */}
+          <div className="w-full max-w-2xl border-t border-white/10 my-3" />
 
           {/* Support */}
-          <p className="text-sm text-[#D6E6EC] mb-1 font-normal">
-            Suporte: <a href="mailto:contato@packverso.shop" className="hover:text-[#FFDE1A] transition-colors">contato@packverso.shop</a>
+          <p className="text-sm text-neutral-300 mb-1 font-normal">
+            Suporte: <a href="mailto:contato@packverso.shop" className="hover:gradient-blue-text transition-colors">contato@packverso.shop</a>
           </p>
 
           {/* Legal Disclaimer */}
-          <p className="text-[11px] sm:text-xs italic text-[#D6E6EC] max-w-2xl mt-1 leading-relaxed opacity-90">
+          <p className="text-[11px] sm:text-xs italic text-neutral-400 max-w-2xl mt-1 leading-relaxed">
             Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.
           </p>
         </div>
@@ -984,18 +861,18 @@ export default function App() {
       {/* MODAL FOR POLICIES */}
       {policyModal && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#111111] border border-neutral-700 max-w-2xl w-full max-h-[80vh] rounded-3xl p-6 sm:p-8 overflow-y-auto relative text-left">
+          <div className="bg-[#07080A] border border-[#58D4F2] max-w-2xl w-full max-h-[80vh] rounded-3xl p-6 sm:p-8 overflow-y-auto relative text-left">
             <button 
               onClick={() => setPolicyModal(null)}
-              className="absolute top-5 right-5 text-gray-400 hover:text-white p-1"
+              className="absolute top-5 right-5 text-neutral-400 hover:text-white p-1"
             >
               <X className="w-6 h-6" />
             </button>
 
             {policyModal === 'privacy' ? (
               <div>
-                <h3 className="text-2xl font-bold text-[#FFDE1A] mb-4">Política de Privacidade</h3>
-                <div className="space-y-3 text-sm text-gray-300 leading-relaxed">
+                <h3 className="text-2xl font-bold gradient-blue-text mb-4">Política de Privacidade</h3>
+                <div className="space-y-3 text-sm text-neutral-300 leading-relaxed">
                   <p>
                     A sua privacidade é de extrema importância para nós. Esta política explica como coletamos, usamos e protegemos as informações fornecidas ao acessar e utilizar os serviços do Pack Verso.
                   </p>
@@ -1015,8 +892,8 @@ export default function App() {
               </div>
             ) : (
               <div>
-                <h3 className="text-2xl font-bold text-[#FFDE1A] mb-4">Termos de Uso</h3>
-                <div className="space-y-3 text-sm text-gray-300 leading-relaxed">
+                <h3 className="text-2xl font-bold gradient-blue-text mb-4">Termos de Uso</h3>
+                <div className="space-y-3 text-sm text-neutral-300 leading-relaxed">
                   <p>
                     Ao adquirir o Pack Verso, você concorda com os termos e condições descritos abaixo.
                   </p>
@@ -1038,7 +915,7 @@ export default function App() {
 
             <button 
               onClick={() => setPolicyModal(null)}
-              className="mt-6 w-full py-3 bg-neutral-800 hover:bg-neutral-700 text-white font-bold rounded-xl transition-colors"
+              className="mt-6 w-full py-3 bg-[#10131A] hover:bg-[#162844] text-white font-bold rounded-xl transition-colors"
             >
               Fechar
             </button>

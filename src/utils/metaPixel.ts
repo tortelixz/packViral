@@ -139,7 +139,7 @@ export function trackPageView() {
 export function trackViewContent(contentName: string, value?: number) {
   trackMetaEvent('ViewContent', {
     content_name: contentName,
-    value: value || 19.90,
+    value: value || 19.00,
     currency: 'BRL'
   });
 }
@@ -156,7 +156,7 @@ export function trackInitiateCheckout(contentName: string, value: number) {
 export function trackLead(contentName: string, value?: number) {
   trackMetaEvent('Lead', {
     content_name: contentName,
-    value: value || 10.00,
+    value: value || 19.00,
     currency: 'BRL'
   });
 }
