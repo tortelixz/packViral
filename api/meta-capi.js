@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-  // CORS configuration
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -29,8 +28,8 @@ export default async function handler(req, res) {
     const clientIp = rawIp.split(',')[0].trim();
     const userAgent = req.headers['user-agent'] || '';
 
-    const pixelId = process.env.META_PIXEL_ID || '1449033993266566';
-    const accessToken = process.env.META_CAPI_TOKEN || 'EAAd9XrlRU6MBS7fUFZB5oNvpAX0gDyspyiyvB1ZACYaTr3fTqpRlRKKdjvb6Vu8hZAwIkSyZCIeHx6SiaoyKpAHURxwGbePomZCT1x3ML2xsn96Yeuv0KUKaeJyD3e3TyBmdImiaL0ZAVfCXZAf31Y8bTrUvn9hMHw7MWCZC76BjD5iG7WPyn1pZAvSYiT7GcfwZDZD';
+    const pixelId = '1449033993266566';
+    const accessToken = 'EAAd9XrlRU6MBS8i4ZCJVqbpFywE3iXrYj8anteMwpHVZCputtHzkWdKs7HBzn61tyAYUYuiN2m7Aenue38z9eBFZCuzZB2ZBUpj0n6SwLvIbrHy3YIgqkdJqPqvICOfsjkXInwpmZBG7R281pXLBmdRzn9lYe9mJNgXdFerCo49c2aSvcwqZCt2G0oXTHvMwwZDZD';
 
     const eventPayload = {
       event_name: event_name || 'PageView',

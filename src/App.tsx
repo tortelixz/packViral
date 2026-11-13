@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, lazy, Suspense, memo } from 'react';
 import VSLPlayer from './components/VSLPlayer';
+import WhatsAppButton from './components/WhatsAppButton';
 import { 
   trackPageView, 
   trackViewContent, 
@@ -207,39 +208,7 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
-  // Auto-scroll sideways every 7s for "Resultado do primeiro mês usando esse Pack" on mobile
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const container = firstMonthScrollRef.current;
-      if (!container) return;
-      if (container.scrollWidth <= container.clientWidth + 4) return;
-      const cards = Array.from(container.children) as HTMLElement[];
-      if (!cards.length) return;
 
-      const viewportCenter = container.scrollLeft + container.clientWidth / 2;
-      let currentIdx = 0;
-      let minDist = Infinity;
-      cards.forEach((card, idx) => {
-        const cardCenter = card.offsetLeft + card.clientWidth / 2;
-        const dist = Math.abs(cardCenter - viewportCenter);
-        if (dist < minDist) {
-          minDist = dist;
-          currentIdx = idx;
-        }
-      });
-
-      const nextIdx = (currentIdx + 1) % cards.length;
-      const targetCard = cards[nextIdx];
-      const targetLeft =
-        targetCard.offsetLeft - (container.clientWidth - targetCard.clientWidth) / 2;
-      container.scrollTo({
-        left: Math.max(0, targetLeft),
-        behavior: 'smooth'
-      });
-    }, 7000);
-
-    return () => clearInterval(interval);
-  }, []);
 
 
   const scrollToOffers = () => {
@@ -261,6 +230,7 @@ export default function App() {
     return (
       <Suspense fallback={<div className="min-h-screen bg-black" />}>
         <UpPage />
+        <WhatsAppButton />
       </Suspense>
     );
   }
@@ -1070,6 +1040,7 @@ export default function App() {
 
       {/* End Policy Modal */}
 
+      <WhatsAppButton />
     </div>
   );
 }

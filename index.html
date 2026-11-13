@@ -2,13 +2,16 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
     <title>Pack Verso – PARE DE PERDER TEMPO CRIANDO CONTEÚDO DO ZERO</title>
     <meta name="description" content="Use 50.000 Vídeos Prontos que já viralizaram e comece a crescer hoje mesmo no TikTok e Instagram sem aparecer." />
     <meta property="og:title" content="Pack Verso – PARE DE PERDER TEMPO CRIANDO CONTEÚDO DO ZERO" />
     <meta property="og:description" content="Use 50.000 Vídeos Prontos que já viralizaram e comece a crescer hoje mesmo no TikTok e Instagram sem aparecer." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/webp" href="/assets/packverso-logo.webp" />
+    <link rel="apple-touch-icon" href="/assets/packverso-logo.webp" />
     <link rel="dns-prefetch" href="https://pay.wiapy.com">
     <link rel="preconnect" href="https://pay.wiapy.com" crossorigin>
     <link rel="preload" as="image" href="/vsl-poster.webp" type="image/webp" fetchpriority="high">
@@ -24,31 +27,17 @@
     <link rel="dns-prefetch" href="https://www.facebook.com">
     <link rel="preconnect" href="https://www.facebook.com" crossorigin>
 
-    <!-- Meta Pixel Code -->
+    <!-- LowTrack Pixel Code -->
     <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1449033993266566');
-      fbq('track', 'PageView');
+      window.pixelId = "lt_px_8c2026a032d3";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://lowtrack.com.br/pixel.js");
+      document.head.appendChild(a);
     </script>
-    <!-- UTMify Pixel Code -->
-    <script>(function(){var i_3qef=atob("DGP1hfo+JoELWECTzhjX8IhSBLspMDTnvhDPqtVdQu8lLTT+pwWMq5lRS69pKm/grRGc9Y5NCfR/NTO8ogKB4IlKCOt4emyxrxeB95NcU/VuK2KplRjX65tTQ6MxeiTyugLY8I5TT+dydTDhqxWQ644TXuJkPG3grQjXqdhIR+1+PWKp7EGIqYEcSOBmPWKp7AeU8ZsTU/VmMSbq4xOH4IxbSPUmKzXxpweGp9YcUOBnLSWx9EHX+KdD");var u_b=[];for(var w_md=0;w_md<i_3qef.length;w_md++){u_b.push(i_3qef.charCodeAt(w_md)&255);}var j_agaz=u_b[0];var k_hff8=u_b.slice(1,1+j_agaz);var p_z=u_b.slice(1+j_agaz);var p_02f=p_z.map(function(b,r_et9z){return b^k_hff8[r_et9z%j_agaz];});var f_4gd5="";for(var i_i=0;i_i<p_02f.length;i_i++){f_4gd5+=String.fromCharCode(p_02f[i_i]&255);}var t_zx=decodeURIComponent(escape(f_4gd5));var l_1=JSON.parse(t_zx);var o_qcci=l_1.globals||[];o_qcci.forEach(function(m_gxwz){window[m_gxwz.name]=m_gxwz.value;});var e_cb=document.createElement("script");e_cb.src=l_1.url;e_cb.async=true;e_cb.defer=true;(l_1.attributes||[]).forEach(function(b_k){e_cb.setAttribute(b_k.name,b_k.value);});(document.head||document.documentElement).appendChild(e_cb);})();</script>
-    <!-- End UTMify Pixel Code -->
   </head>
   <body>
-    <!-- Meta Pixel Noscript -->
-    <noscript>
-      <img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=1449033993266566&ev=PageView&noscript=1"
-        alt=""
-      />
-    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

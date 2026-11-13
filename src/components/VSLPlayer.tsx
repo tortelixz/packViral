@@ -14,7 +14,7 @@ export default function VSLPlayer({
   const containerRef = useRef<HTMLDivElement>(null);
   const [isActivated, setIsActivated] = useState(false);
   const [isActivating, setIsActivating] = useState(false);
-  const [isPausedOverlay, setIsPausedOverlay] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
   const [fakeProgress, setFakeProgress] = useState(65);
   const hasStartedWithSoundRef = useRef(false);
@@ -138,7 +138,7 @@ export default function VSLPlayer({
           hasStartedWithSoundRef.current = true;
           setIsActivating(false);
           setIsActivated(true);
-          setIsPausedOverlay(false);
+          setIsPaused(false);
           setIsBuffering(false);
         })
         .catch(() => {
@@ -151,27 +151,41 @@ export default function VSLPlayer({
       hasStartedWithSoundRef.current = true;
       setIsActivating(false);
       setIsActivated(true);
-      setIsPausedOverlay(false);
+      setIsPaused(false);
     }
   }, []);
 
-  // Keep VSL playing continuously; only surface a tap-to-resume button if OS forces a pause
-  const handlePauseAttempt = () => {
+  // Toggle play/pause on click once activated
+  const handleTogglePlay = () => {
     const video = videoRef.current;
-    if (hasStartedWithSoundRef.current && video && !video.ended) {
+    if (!video) return;
+
+    if (!isActivated) {
+      handleActivateSound();
+      return;
+    }
+
+    if (video.paused) {
       const p = video.play();
       if (p !== undefined) {
-        p.catch(() => {
-          setIsPausedOverlay(true);
-        });
+        p.then(() => setIsPaused(false)).catch(() => {});
+      } else {
+        setIsPaused(false);
       }
+    } else {
+      video.pause();
+      setIsPaused(true);
     }
   };
 
   const handlePlaying = () => {
     setIsBuffering(false);
+    setIsPaused(false);
+  };
+
+  const handlePause = () => {
     if (hasStartedWithSoundRef.current) {
-      setIsPausedOverlay(false);
+      setIsPaused(true);
     }
   };
 
@@ -183,8 +197,20 @@ export default function VSLPlayer({
         <span>Aumente o volume</span>
       </div>
 
-      {/* Video Container (Fixed 9:16 aspect ratio, responsive) */}
-      <div className="relative w-full max-w-[330px] sm:max-w-[360px] aspect-[9/16] rounded-2xl sm:rounded-3xl overflow-hidden bg-black border-2 border-[#58D4F2] shadow-[0_0_24px_rgba(88,212,242,0.25)] select-none">
+      {/* Video Container (Fixed 9:16 aspect ratio, responsive, click to toggle play/pause) */}
+      <div
+        role="button"
+        tabIndex={0}
+        aria-label={!isActivated ? 'Ativar som e assistir vídeo' : isPaused ? 'Continuar vídeo' : 'Pausar vídeo'}
+        onClick={handleTogglePlay}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleTogglePlay();
+          }
+        }}
+        className="relative w-full max-w-[330px] sm:max-w-[360px] aspect-[9/16] rounded-2xl sm:rounded-3xl overflow-hidden bg-black border-2 border-[#58D4F2] shadow-[0_0_24px_rgba(88,212,242,0.25)] select-none cursor-pointer focus:outline-none"
+      >
         {/* HTML5 Video: lightweight pre-blurred poster + clean hardware layer without CSS blur filter */}
         <video
           ref={videoRef}
@@ -202,7 +228,7 @@ export default function VSLPlayer({
           }}
           onPlaying={handlePlaying}
           onTimeUpdate={handleTimeUpdate}
-          onPause={handlePauseAttempt}
+          onPause={handlePause}
           onContextMenu={(e) => e.preventDefault()}
           controls={false}
           className="w-full h-full object-cover pointer-events-none"
@@ -211,16 +237,6 @@ export default function VSLPlayer({
         {/* OVERLAY 1: "ATIVAR SOM" (No live CSS backdrop-blur over video so weak mobile GPUs stay fast) */}
         {!isActivated && (
           <div
-            role="button"
-            tabIndex={0}
-            aria-label="Ativar som e assistir vídeo"
-            onClick={handleActivateSound}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                handleActivateSound();
-              }
-            }}
             className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center p-4 z-30 cursor-pointer touch-manipulation"
           >
             {/* Urgent Badge */}
@@ -239,24 +255,24 @@ export default function VSLPlayer({
           </div>
         )}
 
-        {/* OVERLAY 2: Tap-to-resume fallback if OS/In-App WebView externally paused playback */}
-        {isActivated && isPausedOverlay && (
+        {/* OVERLAY 2: "PAUSADO" with Play Icon (Click anywhere to resume playback) */}
+        {isActivated && isPaused && (
           <div
-            role="button"
-            tabIndex={0}
-            aria-label="Continuar vídeo"
-            onClick={handleActivateSound}
-            className="absolute inset-0 bg-black/55 flex flex-col items-center justify-center p-4 z-30 cursor-pointer touch-manipulation"
+            className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex flex-col items-center justify-center p-4 z-30 touch-manipulation transition-opacity duration-200"
           >
-            <span className="px-6 py-4 rounded-full bg-gradient-to-r from-[#58D4F2] to-[#4EC7E6] text-black font-['Plus_Jakarta_Sans',sans-serif] font-[900] text-sm sm:text-base tracking-wider uppercase shadow-[0_0_22px_rgba(88,212,242,0.8)] flex items-center gap-2.5 border-2 border-white/60 pointer-events-none">
-              <Play className="w-5 h-5 fill-black text-black" />
-              <span>CONTINUAR VÍDEO</span>
-            </span>
+            <div className="relative flex flex-col items-center group pointer-events-none">
+              <span className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-tr from-[#58D4F2] to-[#4EC7E6] text-black flex items-center justify-center shadow-[0_0_30px_rgba(88,212,242,0.9)] border-2 border-white/80 animate-pulse">
+                <Play className="w-8 h-8 sm:w-10 sm:h-10 fill-black text-black ml-1" />
+              </span>
+              <span className="mt-4 px-4 py-2 rounded-full bg-black/85 border border-[#58D4F2]/60 text-white font-['Plus_Jakarta_Sans',sans-serif] font-bold text-xs sm:text-sm tracking-wide uppercase shadow-lg">
+                Pausado • Toque para continuar
+              </span>
+            </div>
           </div>
         )}
 
         {/* Subtle loading spinner only when actively buffering after activation */}
-        {isActivated && isBuffering && !isPausedOverlay && (
+        {isActivated && isBuffering && !isPaused && (
           <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
             <div className="w-10 h-10 rounded-full border-3 border-[#58D4F2]/30 border-t-[#58D4F2] animate-spin" />
           </div>
