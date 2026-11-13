@@ -11,14 +11,12 @@
   }
 }
 
-/* Custom glow animations and classes */
+/* Custom glow animations and classes (compositor-only transforms to avoid repaints on weak mobile GPUs) */
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 15px 4px rgba(10, 224, 40, 0.4), 0 0 30px 8px rgba(10, 224, 40, 0.2);
     transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 25px 8px rgba(10, 224, 40, 0.65), 0 0 45px 14px rgba(10, 224, 40, 0.35);
     transform: scale(1.02);
   }
 }
@@ -28,7 +26,7 @@
     transform: translateY(0) rotate(-3deg);
   }
   50% {
-    transform: translateY(-8px) rotate(3deg);
+    transform: translateY(-6px) rotate(3deg);
   }
 }
 
@@ -37,40 +35,38 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
 }
 
 .animate-arrow-bounce {
   animation: arrowBounce 1.2s ease-in-out infinite;
+  will-change: transform;
 }
 
 .animate-rocket-float {
   animation: rocketFloat 2.2s ease-in-out infinite;
+  will-change: transform;
 }
 
 .animate-pulse-glow {
-  animation: pulseGlow 2.5s ease-in-out infinite;
+  animation: pulseGlow 2.4s ease-in-out infinite;
+  will-change: transform;
 }
 
-/* Card border */
-.gold-glow-border {
-  border: 1px solid rgba(38, 67, 107, 0.45);
-}
-
-.gold-glow-border-intense {
-  border: 1px solid rgba(58, 96, 145, 0.65);
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 420px;
 }
 
 .green-glow-button {
   background-color: #05A81E;
-  box-shadow: 0 0 20px rgba(5, 168, 30, 0.5);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 22px rgba(5, 168, 30, 0.55);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease;
 }
 
 .green-glow-button:hover {
   background-color: #048c18;
-  box-shadow: 0 0 32px rgba(5, 168, 30, 0.75);
   transform: scale(1.03);
 }
 

@@ -100,7 +100,7 @@ export default function UpPage() {
 
         {/* Inner Box with Neon Green Border and Inset Glow */}
         <div 
-          className="rounded-[32px] p-5 sm:p-9 flex flex-col items-center text-center relative overflow-hidden backdrop-blur-xl"
+          className="rounded-[32px] p-5 sm:p-9 flex flex-col items-center text-center relative overflow-hidden"
           style={{
             backgroundColor: '#021666',
             border: '3px solid #00FF0C',
@@ -116,8 +116,13 @@ export default function UpPage() {
           {/* Kit image */}
           <div className="my-3 flex justify-center w-full group">
             <img 
-              src="/assets/packviral-kit-sem-fundo.png" 
+              src="/assets/packviral-kit-sem-fundo.webp" 
               alt="Kit PackViral Definitivo de Conteúdo Viral"
+              width={680}
+              height={680}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="w-[78%] sm:w-[42%] max-w-[340px] h-auto object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.8)] group-hover:scale-105 transition-transform duration-300"
             />
           </div>
