@@ -33,13 +33,16 @@ export default function UpPage() {
   const featureItems = [
     { text: '100.000 Mil Cortes Virais', isBold: true },
     { text: '41 Nichos Diferentes', isBold: true },
+    { text: '100% Sem Copyright (Livre de Direitos Autorais)', isBold: true },
+    { text: 'Todos os Vídeos Sem Marca d\'Água', isBold: true },
     { text: 'Acesso Vitalício', isBold: true },
     { text: 'Garantia de 7 dias', isBold: true },
-    { text: 'Cortes Livres de Meta Dados', isBold: true },
+    { text: 'Cortes Livres de Metadados', isBold: true },
     { text: '+3 Super Bônus', isBold: true },
     { text: 'Pack de Memes', isBold: true },
     { text: 'Efeitos Sonoros', isBold: true },
     { text: 'Músicas sem Copyright', isBold: true },
+    { text: 'Suporte 24h Ensinando a Viralizar + Número de Quem Já Viralizou', isBold: true },
     { 
       custom: (
         <span>
