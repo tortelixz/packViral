@@ -209,13 +209,7 @@ export default function App() {
     return () => window.clearTimeout(timer);
   }, []);
 
-  const navigateToUp = () => {
-    trackInitiateCheckout('Pack Verso Básico - Redirecionamento Up', 19.00);
-    const search = typeof window !== 'undefined' ? window.location.search : '';
-    window.history.pushState({}, '', '/up' + search);
-    setCurrentPath('/up');
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  };
+
 
 
 
@@ -313,22 +307,14 @@ export default function App() {
             </div>
 
             <div>
-              <button 
-                type="button"
-                onClick={navigateToUp}
-                className="w-full max-w-[270px] mx-auto py-3.5 px-6 rounded-full font-[900] text-base bg-[#001455] text-[#9507C9] border-2 border-[#9B04BE] shadow-[0_0_15px_rgba(155,4,190,0.5)] hover:bg-[#A204E7] hover:text-white hover:scale-105 transition-all uppercase tracking-wide block my-3 cursor-pointer"
-              >
-                QUERO O BÁSICO
-              </button>
-
               <a 
                 href={getCheckoutUrl('https://pay.wiapy.com/j3wwzlE9xobB')}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackInitiateCheckout('Pack Verso Básico Direto', 19.00)}
-                className="text-xs text-neutral-400 hover:text-[#00FF20] underline transition-colors block mb-3 cursor-pointer font-medium"
+                onClick={() => trackInitiateCheckout('Pack Verso Básico', 19.00)}
+                className="w-full max-w-[270px] mx-auto py-3.5 px-6 rounded-full font-[900] text-base bg-[#001455] text-[#9507C9] border-2 border-[#9B04BE] shadow-[0_0_15px_rgba(155,4,190,0.5)] hover:bg-[#A204E7] hover:text-white hover:scale-105 transition-all uppercase tracking-wide block my-3 cursor-pointer text-center"
               >
-                (ou ir direto para o básico de R$19)
+                QUERO O BÁSICO
               </a>
 
               <p className="mt-4 text-xs sm:text-sm italic font-bold text-neutral-300 text-center leading-relaxed">
