@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, lazy, Suspense, memo } from 'react';
-import VSLPlayer from './components/VSLPlayer';
 import WhatsAppButton from './components/WhatsAppButton';
+import InfiniteArsenalSection from './components/InfiniteArsenalSection';
 import { 
   trackPageView, 
   trackViewContent, 
@@ -15,7 +15,15 @@ import {
   X,
   ArrowDown,
   ArrowRight,
-  Headphones
+  Headphones,
+  Layers,
+  CloudDownload,
+  CheckCircle2,
+  VideoOff,
+  SquarePen,
+  Award,
+  Check,
+  Flame
 } from 'lucide-react';
 
 const UpPage = lazy(() => import('./UpPage'));
@@ -47,14 +55,14 @@ const SalesToast = memo(function SalesToast() {
   if (!message) return null;
 
   return (
-    <div className="fixed bottom-3 left-3 z-50 w-[152px] sm:w-[176px] bg-[#08090C] border border-[#58D4F2] text-white p-2.5 rounded-xl shadow-2xl flex items-start gap-2 text-[11px] sm:text-xs leading-snug pointer-events-none">
+    <div className="fixed bottom-3 left-3 z-50 w-[152px] sm:w-[176px] bg-[#080E1A]/95 backdrop-blur-sm border border-[#58D4F2] text-white p-2.5 rounded-xl shadow-2xl flex items-start gap-2 text-[11px] sm:text-xs leading-snug pointer-events-none">
       <div className="w-2 h-2 rounded-full bg-[#0AE028] shrink-0 mt-1" />
       <span className="font-medium">{message}</span>
     </div>
   );
 });
 
-// Grid of content categories
+// Grid of content categories (original assets & copy)
 const categories = [
   {
     image: '/assets/aistudio/Design-sem-nome-3-1-1_5dd80040.webp',
@@ -231,7 +239,7 @@ export default function App() {
 
   if (currentPath === '/up' || currentPath === '/up/' || currentPath.startsWith('/up')) {
     return (
-      <Suspense fallback={<div className="min-h-screen bg-black" />}>
+      <Suspense fallback={<div className="min-h-screen bg-[#050912]" />}>
         <UpPage />
         <WhatsAppButton />
       </Suspense>
@@ -239,19 +247,23 @@ export default function App() {
   }
 
   const renderOffersSection = (sectionId?: string) => (
-    <section className="py-8 sm:py-12 px-4 bg-black border-t border-white/10" id={sectionId}>
-      <div className="max-w-5xl mx-auto">
+    <section className="py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative" id={sectionId}>
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_52%,rgba(14,165,233,0.12)_0%,transparent_74%)]" />
+      </div>
+      <div className="max-w-5xl mx-auto relative z-10">
         
-        <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[40px] font-[800] text-center text-white tracking-[-0.02em] leading-[1.12] mb-6 sm:mb-8 uppercase">
+        <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[42px] font-[800] text-center text-white tracking-[-0.02em] leading-[1.12] mb-5 sm:mb-8 uppercase px-1">
           PREPARAMOS A <span className="gradient-blue-text">MELHOR OFERTA</span> PARA VOCÊ
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch max-w-4xl mx-auto">
           
           {/* OFERTA BÁSICA */}
-          <div className="bg-[#18181B] border border-neutral-700 rounded-2xl p-6 sm:p-9 flex flex-col justify-between text-center relative shadow-2xl hover:border-neutral-500 transition-colors">
+          <div className="bg-[#121722] border border-slate-700/80 rounded-2xl p-5 sm:p-9 flex flex-col justify-between text-center relative shadow-2xl hover:border-slate-500 transition-colors">
             <div>
-              <div className="inline-block bg-neutral-800 text-white font-[900] italic text-lg sm:text-xl py-2 px-8 rounded-2xl mb-4 uppercase tracking-wide">
+              <div className="inline-block bg-neutral-800 text-white font-[900] italic text-lg sm:text-xl py-2 px-8 rounded-2xl mb-3.5 uppercase tracking-wide">
                 OFERTA BÁSICA
               </div>
 
@@ -266,37 +278,37 @@ export default function App() {
                 19
               </div>
 
-              <div className="my-6">
-                <ul className="space-y-0 text-center font-bold italic text-sm sm:text-base text-white">
+              <div className="my-5">
+                <ul className="space-y-0 text-center font-bold italic text-[15px] sm:text-base text-white">
                   <li className="flex items-center justify-center gap-2 py-2">
                     <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
                     <span>50.000 Cortes Virais</span>
                   </li>
-                  <div className="w-[65%] border-t border-dotted border-neutral-700 mx-auto my-1.5" />
+                  <div className="w-[75%] border-t border-dotted border-neutral-700 mx-auto my-1" />
                   
                   <li className="flex items-center justify-center gap-2 py-2">
                     <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
                     <span>100% Sem Copyright</span>
                   </li>
-                  <div className="w-[65%] border-t border-dotted border-neutral-700 mx-auto my-1.5" />
+                  <div className="w-[75%] border-t border-dotted border-neutral-700 mx-auto my-1" />
 
                   <li className="flex items-center justify-center gap-2 py-2">
                     <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
                     <span>Todos Sem Marca d'Água</span>
                   </li>
-                  <div className="w-[65%] border-t border-dotted border-neutral-700 mx-auto my-1.5" />
+                  <div className="w-[75%] border-t border-dotted border-neutral-700 mx-auto my-1" />
 
                   <li className="flex items-center justify-center gap-2 py-2">
                     <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
                     <span>Acesso Imediato</span>
                   </li>
-                  <div className="w-[65%] border-t border-dotted border-neutral-700 mx-auto my-1.5" />
+                  <div className="w-[75%] border-t border-dotted border-neutral-700 mx-auto my-1" />
 
                   <li className="flex items-center justify-center gap-2 py-2">
                     <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
                     <span>Suporte 24h Ensinando a Viralizar + Contato de Quem Já Viralizou</span>
                   </li>
-                  <div className="w-[65%] border-t border-dotted border-neutral-700 mx-auto my-1.5" />
+                  <div className="w-[75%] border-t border-dotted border-neutral-700 mx-auto my-1" />
 
                   <li className="flex items-center justify-center gap-2 py-2">
                     <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
@@ -312,19 +324,19 @@ export default function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackInitiateCheckout('Pack Verso Básico', 19.00)}
-                className="w-full max-w-[270px] mx-auto py-3.5 px-6 rounded-full font-[900] text-base bg-[#001455] text-[#9507C9] border-2 border-[#9B04BE] shadow-[0_0_15px_rgba(155,4,190,0.5)] hover:bg-[#A204E7] hover:text-white hover:scale-105 transition-all uppercase tracking-wide block my-3 cursor-pointer text-center"
+                className="w-full max-w-[300px] mx-auto py-3.5 px-6 rounded-full font-[900] text-base sm:text-lg bg-[#001455] text-[#9507C9] border-2 border-[#9B04BE] shadow-[0_0_15px_rgba(155,4,190,0.5)] hover:bg-[#A204E7] hover:text-white hover:scale-105 transition-all uppercase tracking-wide block my-3 cursor-pointer text-center"
               >
                 QUERO O BÁSICO
               </a>
 
-              <p className="mt-4 text-xs sm:text-sm italic font-bold text-neutral-300 text-center leading-relaxed">
+              <p className="mt-3 text-[13px] sm:text-sm italic font-bold text-neutral-200 text-center leading-relaxed">
                 ATENÇÃO: Logo abaixo temos uma oferta ainda mais VANTAJOSA para você! Veja 👇👇👇
               </p>
             </div>
           </div>
 
           {/* OFERTA PREMIUM (FEATURED LUXURY CARD) */}
-          <div className="bg-[radial-gradient(ellipse_at_center,#040A16_0%,#091832_52%,#143466_100%)] border-2 border-[#58D4F2] shadow-2xl rounded-2xl p-6 sm:p-9 flex flex-col justify-between text-center relative mt-6 md:mt-0 overflow-visible">
+          <div className="bg-[radial-gradient(ellipse_at_center,#040A16_0%,#091832_52%,#143466_100%)] border-2 border-[#58D4F2] shadow-2xl rounded-2xl p-5 sm:p-9 flex flex-col justify-between text-center relative mt-5 md:mt-0 overflow-visible">
             <div className="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-[#58D4F2]/70 to-transparent pointer-events-none" />
             
             {/* Badge Mais Vendido */}
@@ -333,12 +345,12 @@ export default function App() {
             </div>
 
             <div>
-              <div className="mt-2 mb-4 inline-block bg-[#30FF00] text-black font-[900] italic text-xl sm:text-2xl py-2 px-8 rounded-2xl shadow-lg uppercase tracking-wide">
+              <div className="mt-2 mb-3 inline-block bg-[#30FF00] text-black font-[900] italic text-xl sm:text-2xl py-2 px-8 rounded-2xl shadow-lg uppercase tracking-wide">
                 OFERTA PREMIUM
               </div>
 
               {/* Bundle Mockup Image (Pack Verso + Memes + Músicas + Efeitos) */}
-              <div className="w-full my-3 flex justify-center">
+              <div className="w-full my-2 flex justify-center">
                 <img 
                   src="/assets/packviral-kit-sem-fundo.webp" 
                   alt="Kit PackViral Definitivo de Conteúdo Viral" 
@@ -346,7 +358,7 @@ export default function App() {
                   height={680}
                   loading="eager"
                   decoding="async"
-                  className="w-60 sm:w-68 h-auto max-w-full object-contain drop-shadow-xl"
+                  className="w-72 sm:w-76 h-auto max-w-full object-contain drop-shadow-xl"
                 />
               </div>
 
@@ -366,7 +378,7 @@ export default function App() {
 
               {/* Features list with dotted separators */}
               <div className="my-3">
-                <ul className="space-y-0 text-center font-bold italic text-sm sm:text-base text-white leading-normal">
+                <ul className="space-y-0 text-center font-bold italic text-[15px] sm:text-base text-white leading-snug">
                   <li className="flex items-center justify-center gap-2.5 py-1.5">
                     <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
                     <span>100.000 Mil Cortes Virais</span>
@@ -490,24 +502,28 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-black text-white font-['Montserrat'] selection:bg-[#58D4F2] selection:text-white">
+    <div className="min-h-screen bg-[linear-gradient(180deg,#080D18_0%,#050912_18%,#070D19_42%,#040811_65%,#080D18_85%,#050912_100%)] text-white font-['Montserrat'] selection:bg-[#58D4F2] selection:text-white">
       
       {/* Isolated Toast Notification */}
       <SalesToast />
 
       {/* HEADER / HERO SECTION */}
-      <section className="relative pt-6 pb-8 sm:pt-10 sm:pb-12 px-0 bg-black overflow-hidden border-b border-white/10">
+      <section className="relative pt-4 pb-6 sm:pt-8 sm:pb-10 px-0 bg-transparent overflow-hidden">
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_60%_at_50%_42%,rgba(14,165,233,0.13)_0%,rgba(8,24,48,0.28)_45%,transparent_75%)]"
+          aria-hidden="true"
+        />
         <div className="w-full max-w-none mx-auto text-center flex flex-col items-center relative z-10 px-0">
           
           {/* Top Status Pill / Urgency Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DC2626] border border-[#EF4444]/50 text-white text-[11px] sm:text-xs font-extrabold tracking-[0.14em] uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DC2626] border border-[#EF4444]/50 text-white text-[11px] sm:text-xs font-extrabold tracking-[0.14em] uppercase mb-3">
             <span>🔥EM ALTA NO BRASIL!</span>
           </div>
 
           {/* Main Hook Headline */}
-          <h1 className="font-['Plus_Jakarta_Sans',sans-serif] font-[800] tracking-[-0.04em] text-white leading-[1.08] sm:leading-[1.05] mb-2 sm:mb-3 w-full max-w-none px-[6px] sm:px-6 text-center">
+          <h1 className="font-['Plus_Jakarta_Sans',sans-serif] font-[800] tracking-[-0.04em] text-white leading-[1.06] sm:leading-[1.05] mb-2.5 sm:mb-3 w-full max-w-none px-2 sm:px-6 text-center">
             {/* Mobile: 3 symmetrical balanced lines */}
-            <span className="flex flex-col items-center w-full sm:hidden text-[clamp(1.75rem,10.5vw,3.25rem)]">
+            <span className="flex flex-col items-center w-full sm:hidden text-[clamp(1.9rem,10.8vw,3.4rem)]">
               <span className="whitespace-nowrap">Pare de perder</span>
               <span className="whitespace-nowrap">
                 tempo <span className="gradient-blue-text">criando</span>
@@ -523,22 +539,34 @@ export default function App() {
           </h1>
 
           {/* Subhead */}
-          <p className="text-[14px] sm:text-lg md:text-xl font-normal sm:font-medium text-neutral-300 text-center max-w-2xl px-4 sm:px-6 mb-3 sm:mb-4 leading-[1.4] mx-auto">
-            Use <span className="text-white font-semibold sm:font-bold underline decoration-[#4A72A3] underline-offset-4">50.000 Vídeos Prontos</span> que já viralizaram e comece a crescer hoje mesmo, sem aparecer.
+          <p className="text-[15.5px] sm:text-xl font-medium text-neutral-200 text-center max-w-2xl px-2 sm:px-6 mb-2.5 sm:mb-3 leading-[1.35] mx-auto">
+            Use <span className="text-white font-bold underline decoration-[#4A72A3] underline-offset-4">50.000 Vídeos Prontos</span> que já viralizaram e comece a crescer hoje mesmo, sem aparecer.
           </p>
 
           {/* Explicit No-Copyright & No-Watermark Guarantee Line */}
-          <p className="text-xs sm:text-sm font-bold text-[#58D4F2] text-center px-4 mb-4 sm:mb-5 tracking-wide">
+          <p className="text-[13px] sm:text-base font-bold text-[#58D4F2] text-center px-2 mb-2.5 sm:mb-4 tracking-wide">
             ✓ 100% Sem Copyright (Livre para Monetizar) &nbsp;•&nbsp; ✓ Todos Sem Marca d'Água
           </p>
 
-          {/* VSL Video Player */}
-          <VSLPlayer videoSrc="/videoplayback.mp4" className="my-2 px-4 sm:px-6" />
+          {/* Exemplos do Pack Viral Showcase (no lugar da VSL) */}
+          <div className="w-full max-w-[540px] sm:max-w-[580px] mx-auto px-2 sm:px-4 my-1 sm:my-2">
+            <img
+              src="/assets/aistudio/Smartphone_PackViral_com__cones_Sociais_39017ad6.png"
+              alt="Smartphone Pack Viral com exemplos de vídeos no TikTok, Instagram Reels e YouTube Shorts"
+              width={1199}
+              height={1312}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="w-full h-auto block object-contain select-none drop-shadow-[0_16px_38px_rgba(14,165,233,0.22)]"
+              draggable={false}
+            />
+          </div>
 
           {/* Main CTA Button */}
           <button 
             onClick={scrollToOffers}
-            className="mt-5 sm:mt-6 w-[calc(100%-2rem)] sm:w-full max-w-md py-4 sm:py-5 px-8 rounded-full text-white font-[900] text-lg sm:text-xl tracking-wider uppercase flex items-center justify-center gap-3 green-glow-button animate-pulse-glow transition-all cursor-pointer relative overflow-hidden group shadow-[0_0_30px_rgba(10,224,40,0.6)]"
+            className="mt-4 sm:mt-6 w-[calc(100%-1rem)] sm:w-full max-w-md py-4 sm:py-5 px-6 sm:px-8 rounded-full text-white font-[900] text-[18px] sm:text-xl tracking-wider uppercase flex items-center justify-center gap-3 green-glow-button animate-pulse-glow transition-all cursor-pointer relative overflow-hidden group shadow-[0_0_30px_rgba(10,224,40,0.6)]"
           >
             <span className="relative z-10 flex items-center gap-2 drop-shadow-md">
               QUERO ACESSO IMEDIATO
@@ -548,68 +576,341 @@ export default function App() {
         </div>
       </section>
 
-      {/* TESTIMONIALS (PESSOAS COMUNS JÁ ESTÃO USANDO) */}
-      <section className="py-6 sm:py-8 px-4 bg-black">
-        <div className="max-w-[1060px] mx-auto">
-          
-          <div className="text-center mb-4 sm:mb-5">
-            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[40px] font-[800] tracking-[-0.02em] text-white uppercase leading-[1.12]">
-              PESSOAS COMUNS JÁ ESTÃO <span className="gradient-blue-text">USANDO</span>
-            </h2>
-          </div>
+      {/* ARSENAL DE CONTEÚDO INFINITO */}
+      <InfiniteArsenalSection />
 
-          <div className="flex sm:grid sm:grid-cols-3 gap-4 sm:gap-5 items-start overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-            {testimonials.map((test, idx) => (
-              <div 
-                key={idx} 
-                className="bg-[#07080A] border border-white/10 hover:border-[#58D4F2] rounded-2xl overflow-hidden shadow-2xl transition-all duration-200 w-[82%] sm:w-full shrink-0 sm:shrink snap-center"
-              >
-                <img 
-                  src={test.image} 
-                  alt={test.name}
-                  width={test.width}
-                  height={test.height}
-                  loading="eager"
-                  decoding="async"
-                  className="w-full h-auto block object-contain select-none"
-                  draggable={false}
-                />
+      {/* QUEM CRESCE HOJE - VERTICAL 4 STEPS TIMELINE */}
+      <section className="py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+        <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_60%_at_50%_55%,rgba(14,165,233,0.10)_0%,transparent_72%)]" aria-hidden="true" />
+        <div className="max-w-4xl mx-auto relative z-10">
+          {/* Heading */}
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[26px] sm:text-[38px] md:text-[44px] font-[800] text-center tracking-[-0.02em] leading-[1.13] text-white px-1">
+            Quem Cresce Hoje Não Cria do Zero. Eles
+            <span className="block gradient-blue-text mt-0.5">
+              Reaproveitam Vídeos Que Já Viralizaram.
+            </span>
+          </h2>
+
+          {/* Subheading */}
+          <p className="mt-2.5 sm:mt-3.5 text-[17px] sm:text-xl md:text-[22px] font-semibold text-neutral-100 text-center">
+            O jogo é volume, não perfeição.
+          </p>
+
+          {/* Vertical Connected Steps */}
+          <div className="mt-6 sm:mt-8 max-w-[480px] sm:max-w-[560px] mx-auto flex flex-col px-1 sm:px-0">
+            {[
+              {
+                number: '1',
+                whiteLine: 'Escolha um',
+                cyanLines: ['video pronto'],
+                icon: (
+                  <svg viewBox="5 3 38 40" fill="none" className="w-[58px] h-[58px] sm:w-[74px] sm:h-[74px] text-[#58D4F2] drop-shadow-[0_0_12px_rgba(88,212,242,0.75)]" aria-hidden="true">
+                    <path d="M9 17.5L38 11.5L36.2 6.8C35.8 5.6 34.5 4.9 33.3 5.2L9.8 10.1C8.5 10.4 7.7 11.6 8 12.9L9 17.5Z" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" />
+                    <path d="M15 9.1L17.5 15.5M23 7.4L25.5 13.8M31 5.7L33.2 12.1" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" />
+                    <rect x="9" y="18" width="30" height="22" rx="3.5" fill="currentColor" fillOpacity="0.16" stroke="currentColor" strokeWidth="2.4" />
+                    <path d="M21 24.2L29.5 29L21 33.8V24.2Z" fill="currentColor" />
+                  </svg>
+                )
+              },
+              {
+                number: '2',
+                whiteLine: 'Poste no',
+                cyanLines: ['TikTok ou', 'Instagram'],
+                icon: (
+                  <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-[#58D4F2] drop-shadow-[0_0_12px_rgba(88,212,242,0.75)]">
+                    <svg viewBox="4.5 2 16.5 19" fill="none" className="w-[34px] h-[38px] sm:w-[44px] sm:h-[48px]" aria-hidden="true">
+                      <path d="M14.5 3.5V14.8C14.5 17.1 12.6 19 10.3 19C8 19 6.1 17.1 6.1 14.8C6.1 12.6 7.8 10.8 10 10.6V13.4C9.2 13.6 8.7 14.1 8.7 14.8C8.7 15.7 9.4 16.4 10.3 16.4C11.2 16.4 11.9 15.7 11.9 14.8V3.5H14.5ZM14.5 3.5C15.1 5.8 16.9 7.6 19.2 8V10.7C17.4 10.6 15.8 9.9 14.5 8.8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <svg viewBox="2 2 20 20" fill="none" className="w-[36px] h-[36px] sm:w-[46px] sm:h-[46px]" aria-hidden="true">
+                      <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="2.1" />
+                      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2.1" />
+                      <circle cx="17.2" cy="6.8" r="1.15" fill="currentColor" />
+                    </svg>
+                  </div>
+                )
+              },
+              {
+                number: '3',
+                whiteLine: 'Repita esse',
+                cyanLines: ['processo todos', 'os dias'],
+                icon: (
+                  <svg viewBox="8 8 32 32" fill="none" className="w-[56px] h-[56px] sm:w-[70px] sm:h-[70px] text-[#58D4F2] drop-shadow-[0_0_12px_rgba(88,212,242,0.75)]" aria-hidden="true">
+                    <path d="M12.5 22.5C13.2 16.1 18.6 11.2 25.2 11.2C29.8 11.2 33.9 13.6 36.1 17.3" stroke="currentColor" strokeWidth="3.6" strokeLinecap="round" />
+                    <path d="M37.4 11.8L37.4 18.8L30.4 18.8" stroke="currentColor" strokeWidth="3.6" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M35.5 25.5C34.8 31.9 29.4 36.8 22.8 36.8C18.2 36.8 14.1 34.4 11.9 30.7" stroke="currentColor" strokeWidth="3.6" strokeLinecap="round" />
+                    <path d="M10.6 36.2L10.6 29.2L17.6 29.2" stroke="currentColor" strokeWidth="3.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )
+              },
+              {
+                number: '4',
+                whiteLine: 'Veja seu',
+                cyanLines: ['perfil crescer!'],
+                icon: (
+                  <svg viewBox="6 6 36 35" fill="none" className="w-[56px] h-[56px] sm:w-[70px] sm:h-[70px] text-[#58D4F2] drop-shadow-[0_0_12px_rgba(88,212,242,0.75)]" aria-hidden="true">
+                    <rect x="9" y="29" width="6.5" height="9" rx="1.5" fill="currentColor" fillOpacity="0.9" />
+                    <rect x="20.5" y="24" width="6.5" height="14" rx="1.5" fill="currentColor" fillOpacity="0.95" />
+                    <rect x="32" y="18.5" width="6.5" height="19.5" rx="1.5" fill="currentColor" />
+                    <path d="M10 22.5C18.5 20.8 26.5 16.8 34.5 9.5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                    <path d="M29 8.8H35.5V15.3" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )
+              }
+            ].map((step, idx, arr) => (
+              <div key={step.number} className="relative">
+                {/* Vertical connector line to next step */}
+                {idx < arr.length - 1 && (
+                  <div
+                    className="absolute left-[50px] sm:left-[63px] -translate-x-1/2 top-[100px] sm:top-[126px] bottom-[-22px] sm:bottom-[-26px] w-[4px] bg-gradient-to-b from-[#58D4F2] via-[#0EA5E9] to-[#58D4F2] shadow-[0_0_14px_rgba(88,212,242,0.85)] z-10 pointer-events-none"
+                    aria-hidden="true"
+                  />
+                )}
+
+                <div className={`flex items-center ${idx < arr.length - 1 ? 'mb-[22px] sm:mb-[26px]' : ''}`}>
+                  {/* Glowing Circle Icon Badge */}
+                  <div className="relative z-20 shrink-0 w-[100px] h-[100px] sm:w-[126px] sm:h-[126px] rounded-full bg-[radial-gradient(circle_at_center,rgba(88,212,242,0.22)_0%,#030710_72%)] border-2 border-[#58D4F2] shadow-[0_0_24px_rgba(88,212,242,0.55),inset_0_0_16px_rgba(88,212,242,0.25)] flex items-center justify-center">
+                    {step.icon}
+                    {/* Bottom glowing node dot */}
+                    <span
+                      className="absolute -bottom-[6px] left-1/2 -translate-x-1/2 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-white border-2 border-[#58D4F2] shadow-[0_0_12px_3px_rgba(88,212,242,0.95)]"
+                      aria-hidden="true"
+                    />
+                  </div>
+
+                  {/* Attached Horizontal Step Bar */}
+                  <div className="flex-1 -ml-8 sm:-ml-10 pl-11 sm:pl-14 pr-4 sm:pr-7 min-h-[86px] sm:min-h-[104px] py-3 rounded-r-full border border-l-0 border-[#58D4F2]/50 bg-gradient-to-r from-[#091E32] via-[#060E1C] to-[#050A14] shadow-[0_0_20px_rgba(88,212,242,0.16)] flex items-center">
+                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[40px] sm:text-[52px] font-[800] leading-none text-[#58D4F2] drop-shadow-[0_0_12px_rgba(88,212,242,0.45)] w-7 sm:w-10 text-center shrink-0">
+                      {step.number}
+                    </span>
+
+                    <div className="w-[1px] h-12 sm:h-14 bg-[#58D4F2]/40 mx-3.5 sm:mx-5 shrink-0" aria-hidden="true" />
+
+                    <div className="text-left leading-[1.2] text-[16px] sm:text-[19px]">
+                      <div className="font-bold text-white">{step.whiteLine}</div>
+                      <div className="font-semibold text-[#58D4F2]">
+                        {step.cyanLines.map((line, lIdx) => (
+                          <React.Fragment key={lIdx}>
+                            {line}
+                            {lIdx < step.cyanLines.length - 1 && <br />}
+                          </React.Fragment>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-4 sm:mt-5 max-w-2xl mx-auto bg-[#07080A] border border-[#58D4F2]/50 rounded-2xl px-4 py-3.5 sm:px-6 sm:py-4 text-center shadow-lg">
-            <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed">
-              <span className="text-[#58D4F2] font-extrabold uppercase tracking-wide">Suporte para te ajudar a viralizar:</span>{' '}
-              ao adquirir, você recebe acesso ao nosso <span className="text-white font-bold">suporte 24h ensinando a viralizar</span> e o{' '}
-              <span className="text-white font-bold">número direto das melhores pessoas que já viralizaram</span> com esse pack.
-            </p>
+      {/* 50.000 CORTES PRONTOS PARA POSTAR - CATEGORIES GRID (3 COLUNAS) */}
+      <section className="py-6 sm:py-10 px-[4px] sm:px-4 bg-transparent relative overflow-hidden">
+        <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/18 to-transparent" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_42%,rgba(14,165,233,0.10)_0%,transparent_75%)]" aria-hidden="true" />
+        <div className="max-w-6xl mx-auto relative z-10">
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[27px] sm:text-[42px] font-[800] text-center tracking-[-0.02em] leading-[1.12] mb-4 sm:mb-7 text-white px-1">
+            <span className="gradient-blue-text">50.000 CORTES PRONTOS </span>PARA POSTAR
+          </h2>
+
+          <div className="grid grid-cols-3 gap-[5px] sm:gap-4 md:gap-5 items-stretch">
+            {categories.map((cat, idx) => (
+              <div
+                key={idx}
+                className={`relative bg-[linear-gradient(180deg,rgba(8,18,36,0.92)_0%,rgba(5,10,20,0.88)_100%)] border border-[#58D4F2]/65 border-b-[#58D4F2]/25 hover:border-[#58D4F2] rounded-xl sm:rounded-2xl overflow-hidden flex flex-col text-center shadow-[0_0_16px_rgba(88,212,242,0.14)] hover:shadow-[0_0_24px_rgba(88,212,242,0.28)] transition-all duration-200 group ${
+                  idx === 12 ? 'col-start-2' : ''
+                }`}
+              >
+                <div className="pointer-events-none absolute top-0 inset-x-3 h-[1px] bg-gradient-to-r from-transparent via-[#58D4F2]/80 to-transparent z-10" aria-hidden="true" />
+
+                <div className="w-full aspect-[400/218] overflow-hidden bg-[#060B16] border-b border-[#58D4F2]/25">
+                  <img
+                    src={cat.image}
+                    alt={cat.description}
+                    width={400}
+                    height={218}
+                    loading="eager"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  />
+                </div>
+
+                <div className="p-[5px] sm:p-3.5 md:p-4 flex-1 flex items-center justify-center text-center">
+                  <p className="text-[9.5px] min-[390px]:text-[10px] sm:text-xs md:text-[14px] font-medium text-neutral-100 leading-[1.24] sm:leading-snug">
+                    {cat.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* O ACESSO É SIMPLES + BENEFÍCIOS + BÔNUS EXCLUSIVOS */}
+      <section className="py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+        <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_40%_at_50%_20%,rgba(14,165,233,0.08)_0%,transparent_72%)]" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_42%_at_50%_78%,rgba(14,165,233,0.11)_0%,transparent_72%)]" aria-hidden="true" />
+        <div className="max-w-5xl mx-auto relative z-10">
+          {/* Título Principal */}
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[29px] sm:text-[42px] font-[800] text-center tracking-[-0.02em] leading-[1.12] mb-5 sm:mb-7 text-white">
+            O Acesso é <span className="gradient-blue-text">Simples:</span>
+          </h2>
+
+          {/* Três textos explicativos abaixo do título */}
+          <div className="max-w-2xl mx-auto space-y-4 sm:space-y-5 mb-6 sm:mb-9 px-1">
+            <div className="flex items-start gap-3.5 sm:gap-4 text-left">
+              <div className="mt-1 shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)]">
+                <Layers className="w-7 h-7 sm:w-8 sm:h-8" />
+              </div>
+              <p className="text-[15.5px] sm:text-[17px] text-neutral-100 leading-relaxed">
+                Você terá acesso ao pacote Premium com <strong className="text-white font-bold">+100mil cortes virais</strong> através de um área de membros premium, <strong className="text-white font-bold">organizado por nicho</strong>. O link de acesso é enviado imediatamente no <strong className="text-white font-bold">e-mail cadastrado na compra e também no seu WhatsApp.</strong>
+              </p>
+            </div>
+
+            <div className="flex items-start gap-3.5 sm:gap-4 text-left">
+              <div className="mt-1 shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)]">
+                <CloudDownload className="w-7 h-7 sm:w-8 sm:h-8" />
+              </div>
+              <p className="text-[15.5px] sm:text-[17px] text-neutral-100 leading-relaxed">
+                Você terá acesso a um pacote com os melhores cortes do momento, prontos para utilizar nas principais plataformas, como: <strong className="text-white font-bold">TikTok, Instagram, Youtube, Kwai,</strong> etc. Basta baixar e postar!
+              </p>
+            </div>
+
+            <div className="flex items-start gap-3.5 sm:gap-4 text-left">
+              <div className="mt-1 shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)]">
+                <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8" />
+              </div>
+              <p className="text-[15.5px] sm:text-[17px] text-neutral-100 leading-relaxed">
+                São vídeos de alta conversão, <strong className="text-white font-bold">testados e aprovados!</strong>
+              </p>
+            </div>
           </div>
 
+          {/* Cinco cartões de benefícios lado a lado */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-4 mb-8 sm:mb-11">
+            {[
+              { icon: VideoOff, label: 'Não precisa aparecer' },
+              { icon: SquarePen, label: 'Não precisa editar' },
+              { icon: Award, label: 'Não precisa ter experiência' },
+              { icon: Check, label: 'Conteúdo validado' },
+              { icon: Flame, label: 'Alta chance de viralização' }
+            ].map((benefit, idx) => {
+              const IconComponent = benefit.icon;
+              return (
+                <div
+                  key={idx}
+                  className={`bg-[#070D19]/90 border border-[#58D4F2]/75 rounded-2xl px-3 py-5 sm:py-6 flex flex-col items-center justify-center text-center shadow-[0_0_18px_rgba(88,212,242,0.16)] hover:border-[#58D4F2] hover:shadow-[0_0_26px_rgba(88,212,242,0.32)] transition-all duration-200 ${
+                    idx === 4 ? 'col-span-2 sm:col-span-1' : ''
+                  }`}
+                >
+                  <div className="mb-3 text-[#58D4F2] drop-shadow-[0_0_10px_rgba(88,212,242,0.75)]">
+                    <IconComponent className="w-9 h-9 sm:w-10 sm:h-10" strokeWidth={2.2} />
+                  </div>
+                  <p className="text-[14px] sm:text-[15px] font-extrabold text-white leading-snug">
+                    {benefit.label}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Título dos bônus centralizado */}
+          <h3 className="font-['Plus_Jakarta_Sans',sans-serif] text-[25px] sm:text-[36px] font-[800] text-center tracking-[-0.02em] leading-[1.18] mb-7 sm:mb-10 text-white max-w-2xl mx-auto px-1">
+            Receba <span className="gradient-blue-text">BÔNUS EXCLUSIVOS</span> adquirindo o{' '}
+            <span className="underline decoration-[#58D4F2] underline-offset-4">Plano Premium</span>:
+          </h3>
+
+          {/* Três cartões de bônus com selo, capas destacadas, descrições e botões */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-5 items-stretch">
+            {[
+              {
+                image: '/assets/bonus-1-musicas.webp',
+                alt: 'Bônus 1: Pacote com músicas virais sem copyright',
+                prefix: 'BÔNUS 1:',
+                description: 'Pacote com músicas virais sem copyright'
+              },
+              {
+                image: '/assets/bonus-2-storys.webp',
+                alt: 'Bônus 2: Pacote de storys prontos para usar',
+                prefix: 'BÔNUS 2:',
+                description: 'Pacote de storys prontos para usar'
+              },
+              {
+                image: '/assets/bonus-3-efeitos.webp',
+                alt: 'Bônus 3: Super pacote de efeitos sonoros',
+                prefix: 'BÔNUS 3:',
+                description: 'Super pacote de efeitos sonoros'
+              }
+            ].map((bonus, idx) => (
+              <div
+                key={idx}
+                className="relative bg-[#070D19]/95 border border-[#58D4F2]/75 rounded-2xl pt-8 pb-6 px-4 sm:px-6 flex flex-col items-center justify-between text-center shadow-[0_0_24px_rgba(88,212,242,0.16)] hover:border-[#58D4F2] hover:shadow-[0_0_32px_rgba(88,212,242,0.3)] transition-all duration-200"
+              >
+                {/* Selo superior */}
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#0EA5E9] to-[#58D4F2] text-black font-[900] text-[12px] sm:text-xs px-4 py-1.5 rounded-full shadow-[0_0_16px_rgba(88,212,242,0.65)] whitespace-nowrap inline-flex items-center gap-1.5">
+                  <span>Incluso no Pacote Premium</span>
+                  <Flame className="w-3.5 h-3.5 fill-black text-black shrink-0" />
+                </div>
+
+                {/* Capa valorizada */}
+                <div className="w-full flex items-center justify-center mt-1 mb-3">
+                  <img
+                    src={bonus.image}
+                    alt={bonus.alt}
+                    width={520}
+                    height={520}
+                    loading="eager"
+                    decoding="async"
+                    className="w-44 sm:w-44 md:w-48 h-auto object-contain drop-shadow-[0_12px_24px_rgba(88,212,242,0.24)]"
+                  />
+                </div>
+
+                {/* Descrição destacada + Botão GRÁTIS */}
+                <div className="w-full flex-1 flex flex-col items-center justify-between gap-4">
+                  <p className="text-[18px] sm:text-[19px] font-bold text-white leading-snug max-w-[300px]">
+                    <strong className="text-[#58D4F2] font-[900]">{bonus.prefix}</strong>{' '}
+                    <span>{bonus.description}</span>
+                  </p>
+
+                  <button
+                    type="button"
+                    onClick={scrollToOffers}
+                    className="w-full max-w-[220px] px-8 py-3 rounded-full bg-gradient-to-r from-[#0EA5E9] to-[#58D4F2] text-black font-['Plus_Jakarta_Sans',sans-serif] font-[900] text-sm sm:text-base uppercase tracking-wider shadow-[0_0_18px_rgba(88,212,242,0.6)] hover:scale-105 active:scale-95 transition-transform cursor-pointer"
+                  >
+                    GRÁTIS
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* FIRST MONTH RESULTS */}
-      <section className="py-6 sm:py-8 px-4 bg-black border-t border-white/10 overflow-hidden">
-        <div className="w-full mx-auto text-center flex flex-col items-center">
+      <section className="py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+        <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_55%,rgba(14,165,233,0.08)_0%,transparent_72%)]" aria-hidden="true" />
+        <div className="w-full mx-auto text-center flex flex-col items-center relative z-10">
           {/* First Month Results */}
           <div className="w-full max-w-4xl px-0 sm:px-2">
-            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[40px] font-[800] text-white tracking-[-0.02em] leading-[1.12] mb-1.5 flex items-center justify-center gap-2 sm:gap-3">
+            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[26px] sm:text-[40px] font-[800] text-white tracking-[-0.02em] leading-[1.12] mb-1.5 flex items-center justify-center gap-2 sm:gap-3 px-1">
               <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 gradient-blue-text shrink-0 animate-arrow-bounce" />
               <span>Resultado do primeiro mês usando esse Pack</span>
               <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 gradient-blue-text shrink-0 animate-arrow-bounce" />
             </h2>
-            <p className="text-xs sm:text-sm font-medium text-neutral-300 mb-1.5">
+            <p className="text-sm sm:text-base font-medium text-neutral-200 mb-1">
               Três dos nossos alunos
             </p>
-            <p className="text-xs sm:text-sm font-medium text-white mb-4 flex items-center justify-center gap-1.5">
+            <p className="text-sm sm:text-base font-semibold text-white mb-4 flex items-center justify-center gap-1.5">
               <span>Arraste para o lado</span>
-              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0" />
+              <ArrowRight className="w-4 h-4 text-[#58D4F2] shrink-0" />
             </p>
 
             <div
               ref={firstMonthScrollRef}
-              className="relative flex sm:grid sm:grid-cols-3 gap-4 sm:gap-5 items-center sm:items-stretch overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-2 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              className="relative flex sm:grid sm:grid-cols-3 gap-3 sm:gap-5 items-center sm:items-stretch overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-2 sm:pb-0 -mx-2 px-2 sm:mx-0 sm:px-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
             >
               {[
                 { src: '/assets/aistudio/result-tiktok-1.webp', alt: 'Perfil @falecomdeus_ com 1,8 milhão de seguidores e 14,8 milhões de curtidas', width: 900, height: 502 },
@@ -618,7 +919,7 @@ export default function App() {
               ].map((item, idx) => (
                 <div
                   key={idx}
-                  className="bg-[#07080A] border border-white/10 hover:border-[#58D4F2] rounded-2xl overflow-hidden shadow-2xl transition-all duration-200 w-[82%] sm:w-full shrink-0 sm:shrink snap-center"
+                  className="bg-[#080E1A] border border-white/15 hover:border-[#58D4F2] rounded-2xl overflow-hidden shadow-2xl transition-all duration-200 w-[90%] sm:w-full shrink-0 sm:shrink snap-center"
                 >
                   <img
                     src={item.src}
@@ -637,91 +938,17 @@ export default function App() {
         </div>
       </section>
 
-      {/* POR QUE ESSE PACK FUNCIONA? */}
-      <section className="py-6 sm:py-8 px-4 bg-[#040406] border-t border-white/10">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[40px] font-[800] text-center tracking-[-0.02em] leading-[1.12] mb-4 sm:mb-6 text-white">
-            POR QUE ESSE <span className="gradient-blue-text">PACK FUNCIONA?</span>
-          </h2>
-
-          <div className="space-y-2.5 sm:space-y-3 max-w-2xl mx-auto">
-            {[
-              'Não precisa aparecer',
-              'Não precisa editar',
-              'Não precisa ter experiência',
-              '100% sem copyright (livre para postar e monetizar)',
-              'Todos os vídeos sem marca d\'água',
-              'Conteúdo validado',
-              'Suporte ensinando a viralizar + número direto das melhores pessoas que já viralizaram',
-              'Alta chance de viralização'
-            ].map((text, idx) => (
-              <div 
-                key={idx}
-                className="w-full min-h-[52px] sm:min-h-[58px] flex items-center gap-3.5 sm:gap-4 px-4 sm:px-6 py-3 sm:py-3.5 bg-[#08090C] border border-white/10 hover:border-[#58D4F2] rounded-xl text-white font-semibold text-sm sm:text-base transition-all duration-200 hover:translate-x-1.5 hover:bg-[#0C0E13]"
-              >
-                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#112238] border border-[#58D4F2] flex items-center justify-center shrink-0">
-                  <span className="text-[#7AA0CC] font-extrabold text-xs sm:text-sm leading-none">✓</span>
-                </div>
-                <span>{text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* BÔNUS SECTION */}
-      <section className="py-6 sm:py-8 px-4 bg-black border-t border-white/10">
-        <div className="max-w-[1060px] mx-auto text-center flex flex-col items-center">
-          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[40px] font-[800] tracking-[-0.02em] leading-[1.12] mb-4 sm:mb-6 flex items-center justify-center gap-2.5 sm:gap-3 uppercase">
-            <img src="/assets/aistudio/1f381_05a65621.svg" alt="🎁" width={36} height={36} loading="eager" decoding="async" className="w-7 h-7 sm:w-9 sm:h-9 inline-block shrink-0" />
-            <span className="text-white">VOCÊ AINDA <span className="gradient-blue-text">RECEBE BÔNUS</span></span>
-          </h2>
-
-          <div 
-            className="w-full max-w-[1040px] bg-[#07080A] border border-[#58D4F2] rounded-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 shadow-xl relative overflow-hidden"
-          >
-            <div className="absolute top-0 left-10 right-10 h-[1px] bg-gradient-to-r from-transparent via-[#58D4F2]/60 to-transparent pointer-events-none" />
-            <div className="flex items-center justify-center gap-3 px-5 py-4 sm:py-5 text-sm sm:text-base font-bold text-white border-b border-white/10 lg:border-b-0 sm:border-r lg:border-r">
-              <svg className="w-5 h-5 text-[#30FF00] shrink-0 fill-current" viewBox="0 0 24 24">
-                <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
-                <path d="M19 3C19 5 17.5 6.5 15.5 6.5C17.5 6.5 19 8 19 10C19 8 20.5 6.5 22.5 6.5C20.5 6.5 19 5 19 3Z" />
-              </svg>
-              <span>Banco de Memes Virais</span>
-            </div>
-            <div className="flex items-center justify-center gap-3 px-5 py-4 sm:py-5 text-sm sm:text-base font-bold text-white border-b border-white/10 lg:border-b-0 lg:border-r">
-              <svg className="w-5 h-5 text-[#30FF00] shrink-0 fill-current" viewBox="0 0 24 24">
-                <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
-                <path d="M19 3C19 5 17.5 6.5 15.5 6.5C17.5 6.5 19 8 19 10C19 8 20.5 6.5 22.5 6.5C20.5 6.5 19 5 19 3Z" />
-              </svg>
-              <span>Stories Prontos</span>
-            </div>
-            <div className="flex items-center justify-center gap-3 px-5 py-4 sm:py-5 text-sm sm:text-base font-bold text-white border-b border-white/10 sm:border-b-0 sm:border-r lg:border-r">
-              <svg className="w-5 h-5 text-[#30FF00] shrink-0 fill-current" viewBox="0 0 24 24">
-                <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
-                <path d="M19 3C19 5 17.5 6.5 15.5 6.5C17.5 6.5 19 8 19 10C19 8 20.5 6.5 22.5 6.5C20.5 6.5 19 5 19 3Z" />
-              </svg>
-              <span>Musicas Virais em Alta</span>
-            </div>
-            <div className="flex items-center justify-center gap-3 px-5 py-4 sm:py-5 text-sm sm:text-base font-bold text-white">
-              <svg className="w-5 h-5 text-[#30FF00] shrink-0 fill-current" viewBox="0 0 24 24">
-                <path d="M12 2C12 7.5 7.5 12 2 12C7.5 12 12 16.5 12 22C12 16.5 16.5 12 22 12C16.5 12 12 7.5 12 2Z" />
-                <path d="M19 3C19 5 17.5 6.5 15.5 6.5C17.5 6.5 19 8 19 10C19 8 20.5 6.5 22.5 6.5C20.5 6.5 19 5 19 3Z" />
-              </svg>
-              <span>Curso ensinando a postar e viralizar</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* QUEM ADQUIRIU, GOSTOU ❤️ - Manual carousel with controls */}
-      <section className="py-6 sm:py-8 px-4 bg-[#040406] border-t border-white/10">
-        <div className="w-full max-w-md mx-auto text-center">
+      <section className="py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+        <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_52%,rgba(14,165,233,0.09)_0%,transparent_72%)]" aria-hidden="true" />
+        <div className="w-full max-w-md mx-auto text-center relative z-10">
           <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[40px] font-[800] text-white tracking-[-0.02em] leading-[1.12] mb-4">
             Quem adquiriu, <span className="gradient-blue-text">gostou</span> ❤️
           </h2>
 
-          <div className="relative w-full max-w-[310px] sm:max-w-[380px] mx-auto">
-            <div className="overflow-hidden rounded-2xl bg-[#07080A] border-2 border-[#58D4F2] shadow-[0_0_25px_rgba(88,212,242,0.2)]">
+          <div className="relative w-full sm:max-w-[420px] mx-auto px-3 sm:px-0">
+            <div className="overflow-hidden rounded-2xl bg-[#080E1A] border-2 border-[#58D4F2] shadow-[0_0_25px_rgba(88,212,242,0.2)]">
               <div
                 className="flex transition-transform duration-500 ease-out"
                 style={{ transform: `translateX(-${photoSlide * 100}%)` }}
@@ -747,18 +974,18 @@ export default function App() {
               type="button"
               onClick={prevPhotoSlide}
               aria-label="Depoimento anterior"
-              className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-20 bg-black/90 hover:bg-[#112238] text-white p-2 sm:p-2.5 rounded-full border border-[#58D4F2]/70 hover:border-[#58D4F2] transition-all cursor-pointer shadow-xl active:scale-95 touch-manipulation"
+              className="absolute left-0 sm:-left-5 top-1/2 -translate-y-1/2 z-20 bg-black/90 hover:bg-[#112238] text-white p-2 sm:p-2.5 rounded-full border border-[#58D4F2]/70 hover:border-[#58D4F2] transition-all cursor-pointer shadow-xl active:scale-95 touch-manipulation"
             >
-              <ChevronLeft className="w-5 h-5 text-[#58D4F2]" />
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-[#58D4F2]" />
             </button>
 
             <button
               type="button"
               onClick={nextPhotoSlide}
               aria-label="Próximo depoimento"
-              className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-20 bg-black/90 hover:bg-[#112238] text-white p-2 sm:p-2.5 rounded-full border border-[#58D4F2]/70 hover:border-[#58D4F2] transition-all cursor-pointer shadow-xl active:scale-95 touch-manipulation"
+              className="absolute right-0 sm:-right-5 top-1/2 -translate-y-1/2 z-20 bg-black/90 hover:bg-[#112238] text-white p-2 sm:p-2.5 rounded-full border border-[#58D4F2]/70 hover:border-[#58D4F2] transition-all cursor-pointer shadow-xl active:scale-95 touch-manipulation"
             >
-              <ChevronRight className="w-5 h-5 text-[#58D4F2]" />
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#58D4F2]" />
             </button>
           </div>
 
@@ -769,15 +996,15 @@ export default function App() {
                 type="button"
                 onClick={() => setPhotoSlide(idx)}
                 aria-label={`Ver depoimento ${idx + 1}`}
-                className={`h-2 rounded-full transition-all cursor-pointer touch-manipulation ${
-                  photoSlide === idx ? 'w-7 bg-[#58D4F2]' : 'w-2 bg-neutral-700 hover:bg-neutral-500'
+                className={`h-2.5 rounded-full transition-all cursor-pointer touch-manipulation ${
+                  photoSlide === idx ? 'w-7 bg-[#58D4F2]' : 'w-2.5 bg-neutral-700 hover:bg-neutral-500'
                 }`}
               />
             ))}
           </div>
 
-          <div className="mt-4 sm:mt-5 bg-[#07080A] border border-[#58D4F2]/50 rounded-2xl px-4 py-3.5 sm:px-5 sm:py-4 text-center shadow-lg">
-            <p className="text-xs sm:text-sm text-neutral-200 leading-relaxed">
+          <div className="mt-4 sm:mt-5 bg-[#080E1A]/90 border border-[#58D4F2]/55 rounded-2xl px-4 py-4 sm:px-5 sm:py-4 text-center shadow-lg">
+            <p className="text-[14px] sm:text-[15px] text-neutral-100 leading-relaxed">
               <span className="text-[#58D4F2] font-extrabold uppercase tracking-wide">Você também tem suporte para ajudar:</span>{' '}
               após a compra, você conta com <span className="text-white font-bold">suporte ensinando a viralizar</span> e recebe o{' '}
               <span className="text-white font-bold">contato das melhores pessoas que já viralizaram</span> para tirar dúvidas e acelerar seus resultados.
@@ -790,8 +1017,9 @@ export default function App() {
       {renderOffersSection('escolha')}
 
       {/* GUARANTEE BADGE (7 DIAS) */}
-      <section className="py-5 sm:py-7 px-4 bg-black">
-        <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
+      <section className="py-4 sm:py-7 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.10)_0%,transparent_62%)]" aria-hidden="true" />
+        <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
           <div className="relative group cursor-pointer transition-transform duration-300 hover:scale-105">
             <img 
               src="/assets/selo-garantia-7-dias.webp" 
@@ -800,27 +1028,28 @@ export default function App() {
               height={520}
               loading="eager"
               decoding="async"
-              className="relative w-44 sm:w-56 md:w-64 h-auto mx-auto object-contain drop-shadow-xl"
+              className="relative w-52 sm:w-64 h-auto mx-auto object-contain drop-shadow-xl"
             />
           </div>
         </div>
       </section>
 
       {/* SUPORTE 24 HORAS (ANTES E DEPOIS DA COMPRA) */}
-      <section className="py-6 sm:py-8 px-4 bg-black border-t border-white/10">
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-[#07080A] border border-[#58D4F2]/70 rounded-2xl p-5 sm:p-8 text-center shadow-[0_0_25px_rgba(88,212,242,0.12)] relative overflow-hidden">
+      <section className="py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+        <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
+        <div className="max-w-3xl mx-auto relative z-10">
+          <div className="bg-[#080E1A]/90 border border-[#58D4F2]/70 rounded-2xl p-5 sm:p-8 text-center shadow-[0_0_25px_rgba(88,212,242,0.12)] relative overflow-hidden">
             <div className="absolute top-0 left-10 right-10 h-[1px] bg-gradient-to-r from-transparent via-[#58D4F2]/60 to-transparent pointer-events-none" />
             
-            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#112238] border border-[#58D4F2] flex items-center justify-center mx-auto mb-3.5 shadow-lg">
-              <Headphones className="w-6 h-6 sm:w-7 sm:h-7 text-[#58D4F2]" />
+            <div className="w-14 h-14 rounded-2xl bg-[#112238] border border-[#58D4F2] flex items-center justify-center mx-auto mb-3.5 shadow-lg">
+              <Headphones className="w-7 h-7 text-[#58D4F2]" />
             </div>
 
-            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[22px] sm:text-[32px] font-[800] text-white tracking-[-0.02em] leading-[1.15] mb-2 uppercase">
+            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[26px] sm:text-[34px] font-[800] text-white tracking-[-0.02em] leading-[1.12] mb-2.5 uppercase">
               SUPORTE <span className="gradient-blue-text">24 HORAS</span>
             </h2>
 
-            <p className="text-sm sm:text-base text-neutral-300 max-w-xl mx-auto leading-relaxed mb-5">
+            <p className="text-[15px] sm:text-base text-neutral-200 max-w-xl mx-auto leading-relaxed mb-5">
               Quando você compra, você recebe <span className="text-white font-semibold">suporte 24 horas ensinando passo a passo a viralizar</span> e também ganha o{' '}
               <span className="text-white font-semibold">número direto das melhores pessoas que já viralizaram</span> com o pack. E se tiver qualquer dúvida antes de adquirir, é só chamar no WhatsApp agora mesmo:
             </p>
@@ -829,7 +1058,7 @@ export default function App() {
               href="https://wa.me/5515991035895?text=oi%2C%20eu%20quero%20adquirir%20o%20pack%20viral%20de%20voc%C3%AAs%2C%20mas%20antes%20preciso%20tirar%20algumas%20duvidas."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#25D366] hover:bg-[#1fb858] text-black font-[900] text-xs sm:text-sm uppercase tracking-wider shadow-[0_0_20px_rgba(37,211,102,0.45)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
+              className="inline-flex items-center justify-center gap-2.5 px-7 sm:px-8 py-3.5 rounded-full bg-[#25D366] hover:bg-[#1fb858] text-black font-[900] text-sm sm:text-base uppercase tracking-wider shadow-[0_0_20px_rgba(37,211,102,0.45)] hover:scale-105 active:scale-95 transition-all cursor-pointer"
             >
               <svg className="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -841,11 +1070,12 @@ export default function App() {
       </section>
 
       {/* FAQ SECTION */}
-      <section className="py-8 sm:py-12 px-4 bg-[#040406] border-t border-white/10">
-        <div className="max-w-4xl mx-auto flex flex-col items-center">
+      <section className="py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+        <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
+        <div className="max-w-4xl mx-auto flex flex-col items-center relative z-10">
           
           {/* FAQ Title */}
-          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[40px] font-[800] gradient-blue-text tracking-[-0.02em] leading-[1.12] mb-5 sm:mb-6">
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[29px] sm:text-[42px] font-[800] gradient-blue-text tracking-[-0.02em] leading-[1.12] mb-4 sm:mb-6">
             FAQ
           </h2>
 
@@ -854,11 +1084,11 @@ export default function App() {
             {faqItems.map((faq, idx) => (
               <div 
                 key={idx}
-                className="bg-[#08090C] border border-white/10 rounded-2xl p-5 sm:p-6 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:border-[#58D4F2] cursor-pointer"
+                className="bg-[#080E1A]/90 border border-white/15 rounded-2xl p-4 sm:p-6 shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:border-[#58D4F2] cursor-pointer"
                 onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
               >
                 <div className="flex items-center justify-between gap-4">
-                  <h3 className="font-['Plus_Jakarta_Sans',sans-serif] text-lg sm:text-2xl font-bold text-white leading-tight">
+                  <h3 className="font-['Plus_Jakarta_Sans',sans-serif] text-[17px] sm:text-2xl font-bold text-white leading-tight">
                     {faq.question}
                   </h3>
                   <ChevronDown 
@@ -867,7 +1097,7 @@ export default function App() {
                     }`} 
                   />
                 </div>
-                <div className={`mt-3 text-base sm:text-lg text-neutral-300 font-normal leading-relaxed ${
+                <div className={`mt-2.5 text-[15px] sm:text-lg text-neutral-200 font-normal leading-relaxed ${
                   openFaq === idx ? 'block' : 'block sm:block'
                 }`}>
                   <p>{faq.answer}</p>
@@ -879,134 +1109,20 @@ export default function App() {
         </div>
       </section>
 
-
-      {/* MINDSET HIGHLIGHT BOX */}
-      <section className="py-4 sm:py-6 px-4 bg-black border-t border-white/10">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-[#07080A] border border-[#58D4F2] rounded-2xl p-4 sm:p-7 text-center shadow-xl space-y-1 relative overflow-hidden">
-            <div className="absolute top-0 left-10 right-10 h-[1px] bg-gradient-to-r from-transparent via-[#58D4F2]/60 to-transparent pointer-events-none" />
-            <h3 className="font-['Plus_Jakarta_Sans',sans-serif] text-xl sm:text-2xl font-bold text-white relative z-10 leading-snug">
-              É assim que os perfis de cortes <span className="gradient-blue-text font-extrabold underline decoration-[#3A6091] decoration-2 underline-offset-4">crescem hoje.</span>
-            </h3>
-            <p className="text-sm sm:text-lg font-normal text-neutral-300 relative z-10">
-              Eles reaproveitam vídeos que já viralizaram.
-            </p>
-            <h4 className="font-['Plus_Jakarta_Sans',sans-serif] text-xl sm:text-3xl font-[800] gradient-blue-text pt-1 tracking-tight leading-tight relative z-10">
-              O jogo é colocar mais vídeos no ar todos os dias.
-            </h4>
-          </div>
-        </div>
-      </section>
-
-      {/* "É SIMPLES ASSIM" - 4 STEPS */}
-      <section className="py-7 sm:py-10 px-3 sm:px-4 bg-[#040406] border-t border-white/10">
-        <div className="max-w-5xl mx-auto text-center">
-          
-          {/* Animated Arrow */}
-          <div className="gradient-blue-text text-2xl sm:text-3xl font-black mb-1 animate-arrow-bounce">
-            ↓
-          </div>
-
-          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[40px] font-[800] text-white tracking-[-0.02em] leading-[1.12] mb-5 sm:mb-7 uppercase">
-            É SIMPLES ASSIM
-          </h2>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
-            
-            {/* Step 1 */}
-            <div className="bg-[#08090C] border border-white/10 hover:border-[#58D4F2] rounded-xl sm:rounded-2xl p-3 sm:p-5 flex flex-col items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-xl group min-h-[130px] sm:min-h-[180px] relative overflow-hidden">
-              <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#112238] border border-[#58D4F2] text-[#D8E5F3] font-['Plus_Jakarta_Sans',sans-serif] font-[800] text-sm sm:text-lg flex items-center justify-center mb-2.5 sm:mb-3.5 shadow-md group-hover:scale-105 transition-transform">
-                1
-              </div>
-              <h3 className="text-xs sm:text-base font-bold text-white leading-tight">
-                Escolha um vídeo<br />pronto
-              </h3>
-            </div>
-
-            {/* Step 2 */}
-            <div className="bg-[#08090C] border border-white/10 hover:border-[#58D4F2] rounded-xl sm:rounded-2xl p-3 sm:p-5 flex flex-col items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-xl group min-h-[130px] sm:min-h-[180px] relative overflow-hidden">
-              <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#112238] border border-[#58D4F2] text-[#D8E5F3] font-['Plus_Jakarta_Sans',sans-serif] font-[800] text-sm sm:text-lg flex items-center justify-center mb-2.5 sm:mb-3.5 shadow-md group-hover:scale-105 transition-transform">
-                2
-              </div>
-              <h3 className="text-xs sm:text-base font-bold text-white leading-tight">
-                Poste no TikTok ou<br />Instagram
-              </h3>
-            </div>
-
-            {/* Step 3 */}
-            <div className="bg-[#08090C] border border-white/10 hover:border-[#58D4F2] rounded-xl sm:rounded-2xl p-3 sm:p-5 flex flex-col items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-xl group min-h-[130px] sm:min-h-[180px] relative overflow-hidden">
-              <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-[#112238] border border-[#58D4F2] text-[#D8E5F3] font-['Plus_Jakarta_Sans',sans-serif] font-[800] text-sm sm:text-lg flex items-center justify-center mb-2.5 sm:mb-3.5 shadow-md group-hover:scale-105 transition-transform">
-                3
-              </div>
-              <h3 className="text-xs sm:text-base font-bold text-white leading-tight">
-                Repita todos<br />os dias
-              </h3>
-            </div>
-
-            {/* Step 4 - Rocket */}
-            <div className="bg-[#07090D] border border-[#58D4F2] hover:border-[#3A6091] rounded-xl sm:rounded-2xl p-3 sm:p-5 flex flex-col items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-xl group min-h-[130px] sm:min-h-[180px] relative overflow-hidden">
-              <div className="absolute top-0 left-6 right-6 h-[1px] bg-gradient-to-r from-transparent via-[#58D4F2]/60 to-transparent pointer-events-none" />
-              <div className="w-8 h-8 sm:w-10 sm:h-10 mb-2.5 sm:mb-3.5 flex items-center justify-center animate-rocket-float">
-                <img src="/assets/aistudio/1f680_3892ef66.svg" alt="🚀" width={36} height={36} loading="eager" decoding="async" className="w-7 h-7 sm:w-9 sm:h-9" />
-              </div>
-              <h3 className="text-xs sm:text-base font-bold text-[#7AA0CC] leading-tight">
-                Comece a crescer
-              </h3>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 50.000 CORTES PRONTOS PARA POSTAR - CATEGORIES GRID */}
-      <section className="py-6 sm:py-8 px-4 bg-black border-t border-white/10">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[40px] font-[800] text-center tracking-[-0.02em] leading-[1.12] mb-5 sm:mb-7 text-white">
-            <span className="gradient-blue-text">50.000 CORTES PRONTOS </span>PARA POSTAR
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
-            {categories.map((cat, idx) => (
-              <div 
-                key={idx} 
-                className="bg-[#07080A] border border-white/10 hover:border-[#58D4F2] hover:-translate-y-1 hover:shadow-xl rounded-2xl overflow-hidden transition-all duration-200 flex flex-col group cursor-pointer"
-              >
-                <div className="w-full aspect-[400/218] overflow-hidden bg-black">
-                  <img 
-                    src={cat.image} 
-                    alt={cat.description} 
-                    width={400}
-                    height={218}
-                    loading="eager"
-                    decoding="async"
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                  />
-                </div>
-
-                <div className="p-4 flex-1 flex items-center justify-center text-center border-t border-white/5">
-                  <p className="text-[13px] sm:text-[14px] font-[500] text-neutral-300 leading-snug">
-                    {cat.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
       {/* FINAL CTA SECTION */}
-      <section className="py-8 sm:py-10 px-4 bg-black border-t border-white/10 text-center">
-        <div className="max-w-3xl mx-auto flex flex-col items-center">
-          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[40px] font-[800] italic uppercase text-white tracking-[-0.02em] leading-[1.12] mb-2">
+      <section className="py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden text-center">
+        <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_65%_at_50%_55%,rgba(14,165,233,0.10)_0%,transparent_72%)]" aria-hidden="true" />
+        <div className="max-w-3xl mx-auto flex flex-col items-center relative z-10">
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[42px] font-[800] italic uppercase text-white tracking-[-0.02em] leading-[1.12] mb-2">
             COMECE <span className="gradient-blue-text">HOJE MESMO</span>
           </h2>
-          <p className="text-base sm:text-lg italic font-medium text-neutral-300 mb-5 max-w-xl">
+          <p className="text-[16px] sm:text-lg italic font-medium text-neutral-200 mb-5 max-w-xl">
             Tenha acesso aos 50.000 cortes e comece a postar agora.
           </p>
           <button 
             onClick={scrollToOffers}
-            className="py-3.5 px-10 sm:px-14 rounded-2xl font-[800] text-base sm:text-lg text-white bg-[#05D321] shadow-[0_0_24px_rgba(5,211,33,0.6)] hover:scale-105 active:scale-95 transition-transform uppercase tracking-wider cursor-pointer"
+            className="w-full max-w-sm py-4 px-10 sm:px-14 rounded-2xl font-[800] text-lg text-white bg-[#05D321] shadow-[0_0_24px_rgba(5,211,33,0.6)] hover:scale-105 active:scale-95 transition-transform uppercase tracking-wider cursor-pointer"
           >
             QUERO MEU ACESSO
           </button>
@@ -1014,8 +1130,9 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="pt-8 pb-12 px-4 bg-black text-center">
-        <div className="max-w-3xl mx-auto flex flex-col items-center">
+      <footer className="pt-8 pb-12 px-4 bg-transparent relative text-center">
+        <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" aria-hidden="true" />
+        <div className="max-w-3xl mx-auto flex flex-col items-center relative z-10">
           
           {/* PackViral Product Circular Logo */}
           <div className="mb-4">

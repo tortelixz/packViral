@@ -2,7 +2,7 @@
 
 @layer base {
   html, body {
-    background-color: #000000;
+    background-color: #050912;
     color: #FFFFFF;
     font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif;
     overflow-x: hidden;
@@ -90,11 +90,11 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #050912;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222222;
+  background: #172338;
   border-radius: 4px;
 }
 

@@ -192,7 +192,7 @@ export default function VSLPlayer({
   return (
     <div ref={containerRef} className={`relative flex flex-col items-center w-full ${className}`}>
       {/* "Aumente o volume" above VSL */}
-      <div className="mb-3.5 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#08090C] border border-[#58D4F2]/50 text-white font-bold text-sm sm:text-base tracking-wide shadow-lg">
+      <div className="mb-3 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#08090C] border border-[#58D4F2]/60 text-white font-bold text-sm sm:text-base tracking-wide shadow-[0_0_16px_rgba(88,212,242,0.18)]">
         <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#58D4F2] animate-pulse" />
         <span>Aumente o volume</span>
       </div>
@@ -209,7 +209,7 @@ export default function VSLPlayer({
             handleTogglePlay();
           }
         }}
-        className="relative w-full max-w-[330px] sm:max-w-[360px] aspect-[9/16] rounded-2xl sm:rounded-3xl overflow-hidden bg-black border-2 border-[#58D4F2] shadow-[0_0_24px_rgba(88,212,242,0.25)] select-none cursor-pointer focus:outline-none"
+        className="relative w-full max-w-[376px] sm:max-w-[400px] aspect-[9/16] rounded-2xl sm:rounded-3xl overflow-hidden bg-black border-2 border-[#58D4F2] shadow-[0_0_28px_rgba(88,212,242,0.28)] select-none cursor-pointer focus:outline-none"
       >
         {/* HTML5 Video: lightweight pre-blurred poster + clean hardware layer without CSS blur filter */}
         <video
