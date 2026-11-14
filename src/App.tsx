@@ -826,19 +826,19 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-5 items-stretch">
             {[
               {
-                image: '/assets/bonus-1-musicas.webp',
+                image: '/assets/caixa-neon-musicas.png',
                 alt: 'Bônus 1: Pacote com músicas virais sem copyright',
                 prefix: 'BÔNUS 1:',
                 description: 'Pacote com músicas virais sem copyright'
               },
               {
-                image: '/assets/bonus-2-storys.webp',
+                image: '/assets/pacote-stories.png',
                 alt: 'Bônus 2: Pacote de storys prontos para usar',
                 prefix: 'BÔNUS 2:',
                 description: 'Pacote de storys prontos para usar'
               },
               {
-                image: '/assets/bonus-3-efeitos.webp',
+                image: '/assets/super-efeitos.png',
                 alt: 'Bônus 3: Super pacote de efeitos sonoros',
                 prefix: 'BÔNUS 3:',
                 description: 'Super pacote de efeitos sonoros'
