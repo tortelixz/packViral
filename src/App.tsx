@@ -263,7 +263,7 @@ export default function App() {
               </p>
               
               <div className="text-7xl sm:text-8xl font-[900] text-[#00FF20] my-3 leading-none">
-                R$19
+                19
               </div>
 
               <div className="my-6">
