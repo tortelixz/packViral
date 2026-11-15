@@ -56,11 +56,6 @@
   will-change: transform;
 }
 
-.cv-auto {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 420px;
-}
-
 .green-glow-button {
   background-color: #05A81E;
   box-shadow: 0 0 22px rgba(5, 168, 30, 0.55);

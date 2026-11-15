@@ -29,7 +29,9 @@ import {
   Rocket,
   Zap,
   TrendingUp,
-  Calendar
+  Calendar,
+  Ban,
+  ShieldCheck
 } from 'lucide-react';
 
 const UpPage = lazy(() => import('./UpPage'));
@@ -120,29 +122,6 @@ const categories = [
   },
   {
     image: '/assets/aistudio/Design-sem-nome-13-1-1.webp',
-    description: 'Os melhores cortes de Pablo Marçal.'
-  }
-];
-
-// Testimonials
-const testimonials = [
-  {
-    image: '/assets/review-andre.webp',
-    name: 'André Martins',
-    width: 760,
-    height: 600
-  },
-  {
-    image: '/assets/review-lucas.webp',
-    name: 'Lucas Almeida',
-    width: 760,
-    height: 642
-  },
-  {
-    image: '/assets/review-juliana.webp',
-    name: 'Juliana Santos',
-    width: 760,
-    height: 719
   }
 ];
 
@@ -165,8 +144,8 @@ const faqItems = [
     answer: 'Sim. O pack foi feito exatamente para quem não tem experiência nenhuma com edição ou criação.'
   },
   {
-    question: 'Os vídeos têm copyright ou marca d\'água?',
-    answer: 'Não! Todos os vídeos e músicas do pack são 100% sem copyright (livres de direitos autorais) e todos vêm totalmente sem marca d\'água. Você pode postar e monetizar suas contas normalmente sem risco de bloqueio.'
+    question: 'Os vídeos têm copyright ou posso tomar bloqueio nas plataformas?',
+    answer: 'Não! Você NÃO vai mais tomar bloqueio das plataformas tentando postar. Todos os vídeos e músicas do pack são 100% LICENCIADOS, totalmente sem copyright (livres de direitos autorais) e sem marcas d\'água. Você pode postar no TikTok, Instagram, YouTube Shorts e Kwai e monetizar suas contas com total segurança jurídica.'
   },
   {
     question: 'E se eu tiver dúvida ou precisar de ajuda depois da compra?',
@@ -286,7 +265,7 @@ export default function App() {
                   alt="Kit PackViral Definitivo de Conteúdo Viral - 100.000 Cortes" 
                   width={640}
                   height={640}
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
                   className="w-72 sm:w-80 h-auto max-w-full object-contain"
                 />
@@ -335,7 +314,7 @@ export default function App() {
 
                   <li className="flex items-center justify-center gap-2.5 py-1.5">
                     <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>100% Sem Copyright (Vídeos e Músicas)</span>
+                    <span>Vídeos 100% Licenciados (Zero Bloqueios nas Plataformas)</span>
                   </li>
                   <div className="w-[85%] border-t border-dotted border-neutral-700 mx-auto" />
 
@@ -459,7 +438,7 @@ export default function App() {
               height={400}
               loading="eager"
               fetchPriority="high"
-              decoding="async"
+              decoding="sync"
               className="w-52 sm:w-64 md:w-72 h-auto object-contain select-none"
               draggable={false}
             />
@@ -502,10 +481,38 @@ export default function App() {
               height={788}
               loading="eager"
               fetchPriority="high"
-              decoding="async"
+              decoding="sync"
               className="w-full h-auto block object-contain select-none"
               draggable={false}
             />
+          </div>
+
+          {/* Copy Licenciamento e Sem Bloqueio abaixo da imagem */}
+          <div className="w-full max-w-[560px] mx-auto px-3 sm:px-4 mt-3 sm:mt-4 mb-1 sm:mb-2">
+            <div className="relative overflow-hidden rounded-2xl bg-[#070D19]/95 border border-white/12 text-left shadow-[0_18px_42px_rgba(0,0,0,0.65)]">
+              {/* Parte 1: A Dor / Bloqueio */}
+              <div className="flex items-start gap-3 sm:gap-3.5 px-4 py-3.5 sm:px-5 sm:py-4 bg-gradient-to-r from-[#FF4D4D]/[0.09] via-[#FF4D4D]/[0.04] to-transparent">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#FF4D4D]/15 border border-[#FF4D4D]/35 flex items-center justify-center shrink-0 mt-0.5 text-[#FF6B6B]">
+                  <Ban className="w-5 h-5" strokeWidth={2.3} />
+                </div>
+                <p className="font-['Plus_Jakarta_Sans',sans-serif] text-[15px] sm:text-[17px] font-[700] text-neutral-100 leading-[1.4]">
+                  Você está cansado de comprar Pack Virais ruins e{' '}
+                  <span className="text-[#FF6B6B] font-[800]">tomar bloqueio</span>{' '}
+                  toda vez que tenta subir seus vídeo?
+                </p>
+              </div>
+
+              {/* Parte 2: A Solução / Licenciado */}
+              <div className="relative flex items-start gap-3 sm:gap-3.5 px-4 py-4 sm:px-5 sm:py-4.5 bg-gradient-to-r from-[#0B1E38] via-[#09182D] to-[#071122] border-t border-[#58D4F2]/30">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#58D4F2]/15 border border-[#58D4F2]/45 flex items-center justify-center shrink-0 mt-0.5 text-[#58D4F2]">
+                  <ShieldCheck className="w-5 h-5" strokeWidth={2.3} />
+                </div>
+                <p className="text-[15px] sm:text-[17px] text-white font-medium leading-[1.45]">
+                  Pois com nosso <strong className="font-extrabold">Pack Viral</strong> é diferente, você tem em mãos uma variedade de vídeos{' '}
+                  <span className="text-[#58D4F2] font-extrabold">totalmente licenciados e sem bloqueio!</span>
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Main CTA Button */}
@@ -525,7 +532,7 @@ export default function App() {
       <InfiniteArsenalSection />
 
       {/* QUEM CRESCE HOJE - VERTICAL 4 STEPS TIMELINE */}
-      <section className="cv-auto py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_60%_at_50%_55%,rgba(14,165,233,0.10)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="max-w-4xl mx-auto relative z-10">
@@ -550,7 +557,7 @@ export default function App() {
                 whiteLine: 'Escolha um',
                 cyanLines: ['video pronto'],
                 icon: (
-                  <svg viewBox="5 3 38 40" fill="none" className="w-[58px] h-[58px] sm:w-[74px] sm:h-[74px] text-[#58D4F2] drop-shadow-[0_0_12px_rgba(88,212,242,0.75)]" aria-hidden="true">
+                  <svg viewBox="5 3 38 40" fill="none" className="w-[58px] h-[58px] sm:w-[74px] sm:h-[74px] text-[#58D4F2]" aria-hidden="true">
                     <path d="M9 17.5L38 11.5L36.2 6.8C35.8 5.6 34.5 4.9 33.3 5.2L9.8 10.1C8.5 10.4 7.7 11.6 8 12.9L9 17.5Z" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" />
                     <path d="M15 9.1L17.5 15.5M23 7.4L25.5 13.8M31 5.7L33.2 12.1" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" />
                     <rect x="9" y="18" width="30" height="22" rx="3.5" fill="currentColor" fillOpacity="0.16" stroke="currentColor" strokeWidth="2.4" />
@@ -563,7 +570,7 @@ export default function App() {
                 whiteLine: 'Poste no',
                 cyanLines: ['TikTok ou', 'Instagram'],
                 icon: (
-                  <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-[#58D4F2] drop-shadow-[0_0_12px_rgba(88,212,242,0.75)]">
+                  <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-[#58D4F2]">
                     <svg viewBox="4.5 2 16.5 19" fill="none" className="w-[34px] h-[38px] sm:w-[44px] sm:h-[48px]" aria-hidden="true">
                       <path d="M14.5 3.5V14.8C14.5 17.1 12.6 19 10.3 19C8 19 6.1 17.1 6.1 14.8C6.1 12.6 7.8 10.8 10 10.6V13.4C9.2 13.6 8.7 14.1 8.7 14.8C8.7 15.7 9.4 16.4 10.3 16.4C11.2 16.4 11.9 15.7 11.9 14.8V3.5H14.5ZM14.5 3.5C15.1 5.8 16.9 7.6 19.2 8V10.7C17.4 10.6 15.8 9.9 14.5 8.8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -580,7 +587,7 @@ export default function App() {
                 whiteLine: 'Repita esse',
                 cyanLines: ['processo todos', 'os dias'],
                 icon: (
-                  <svg viewBox="8 8 32 32" fill="none" className="w-[56px] h-[56px] sm:w-[70px] sm:h-[70px] text-[#58D4F2] drop-shadow-[0_0_12px_rgba(88,212,242,0.75)]" aria-hidden="true">
+                  <svg viewBox="8 8 32 32" fill="none" className="w-[56px] h-[56px] sm:w-[70px] sm:h-[70px] text-[#58D4F2]" aria-hidden="true">
                     <path d="M12.5 22.5C13.2 16.1 18.6 11.2 25.2 11.2C29.8 11.2 33.9 13.6 36.1 17.3" stroke="currentColor" strokeWidth="3.6" strokeLinecap="round" />
                     <path d="M37.4 11.8L37.4 18.8L30.4 18.8" stroke="currentColor" strokeWidth="3.6" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M35.5 25.5C34.8 31.9 29.4 36.8 22.8 36.8C18.2 36.8 14.1 34.4 11.9 30.7" stroke="currentColor" strokeWidth="3.6" strokeLinecap="round" />
@@ -593,7 +600,7 @@ export default function App() {
                 whiteLine: 'Veja seu',
                 cyanLines: ['perfil crescer!'],
                 icon: (
-                  <svg viewBox="6 6 36 35" fill="none" className="w-[56px] h-[56px] sm:w-[70px] sm:h-[70px] text-[#58D4F2] drop-shadow-[0_0_12px_rgba(88,212,242,0.75)]" aria-hidden="true">
+                  <svg viewBox="6 6 36 35" fill="none" className="w-[56px] h-[56px] sm:w-[70px] sm:h-[70px] text-[#58D4F2]" aria-hidden="true">
                     <rect x="9" y="29" width="6.5" height="9" rx="1.5" fill="currentColor" fillOpacity="0.9" />
                     <rect x="20.5" y="24" width="6.5" height="14" rx="1.5" fill="currentColor" fillOpacity="0.95" />
                     <rect x="32" y="18.5" width="6.5" height="19.5" rx="1.5" fill="currentColor" />
@@ -607,25 +614,25 @@ export default function App() {
                 {/* Vertical connector line to next step */}
                 {idx < arr.length - 1 && (
                   <div
-                    className="absolute left-[50px] sm:left-[63px] -translate-x-1/2 top-[100px] sm:top-[126px] bottom-[-22px] sm:bottom-[-26px] w-[4px] bg-gradient-to-b from-[#58D4F2] via-[#0EA5E9] to-[#58D4F2] shadow-[0_0_14px_rgba(88,212,242,0.85)] z-10 pointer-events-none"
+                    className="absolute left-[50px] sm:left-[63px] -translate-x-1/2 top-[100px] sm:top-[126px] bottom-[-22px] sm:bottom-[-26px] w-[4px] bg-gradient-to-b from-[#58D4F2] via-[#0EA5E9] to-[#58D4F2] z-10 pointer-events-none"
                     aria-hidden="true"
                   />
                 )}
 
                 <div className={`flex items-center ${idx < arr.length - 1 ? 'mb-[22px] sm:mb-[26px]' : ''}`}>
                   {/* Glowing Circle Icon Badge */}
-                  <div className="relative z-20 shrink-0 w-[100px] h-[100px] sm:w-[126px] sm:h-[126px] rounded-full bg-[radial-gradient(circle_at_center,rgba(88,212,242,0.22)_0%,#030710_72%)] border-2 border-[#58D4F2] shadow-[0_0_24px_rgba(88,212,242,0.55),inset_0_0_16px_rgba(88,212,242,0.25)] flex items-center justify-center">
+                  <div className="relative z-20 shrink-0 w-[100px] h-[100px] sm:w-[126px] sm:h-[126px] rounded-full bg-[radial-gradient(circle_at_center,rgba(88,212,242,0.22)_0%,#030710_72%)] border-2 border-[#58D4F2] flex items-center justify-center">
                     {step.icon}
                     {/* Bottom glowing node dot */}
                     <span
-                      className="absolute -bottom-[6px] left-1/2 -translate-x-1/2 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-white border-2 border-[#58D4F2] shadow-[0_0_12px_3px_rgba(88,212,242,0.95)]"
+                      className="absolute -bottom-[6px] left-1/2 -translate-x-1/2 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full bg-white border-2 border-[#58D4F2]"
                       aria-hidden="true"
                     />
                   </div>
 
                   {/* Attached Horizontal Step Bar */}
-                  <div className="flex-1 -ml-8 sm:-ml-10 pl-11 sm:pl-14 pr-4 sm:pr-7 min-h-[86px] sm:min-h-[104px] py-3 rounded-r-full border border-l-0 border-[#58D4F2]/50 bg-gradient-to-r from-[#091E32] via-[#060E1C] to-[#050A14] shadow-[0_0_20px_rgba(88,212,242,0.16)] flex items-center">
-                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[40px] sm:text-[52px] font-[800] leading-none text-[#58D4F2] drop-shadow-[0_0_12px_rgba(88,212,242,0.45)] w-7 sm:w-10 text-center shrink-0">
+                  <div className="flex-1 -ml-8 sm:-ml-10 pl-11 sm:pl-14 pr-4 sm:pr-7 min-h-[86px] sm:min-h-[104px] py-3 rounded-r-full border border-l-0 border-[#58D4F2]/50 bg-gradient-to-r from-[#091E32] via-[#060E1C] to-[#050A14] flex items-center">
+                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-[40px] sm:text-[52px] font-[800] leading-none text-[#58D4F2] w-7 sm:w-10 text-center shrink-0">
                       {step.number}
                     </span>
 
@@ -651,7 +658,7 @@ export default function App() {
       </section>
 
       {/* 50.000 CORTES PRONTOS PARA POSTAR - CATEGORIES GRID (3 COLUNAS) */}
-      <section className="cv-auto py-6 sm:py-10 px-[4px] sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="py-6 sm:py-10 px-[4px] sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/18 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_42%,rgba(14,165,233,0.10)_0%,transparent_75%)]" aria-hidden="true" />
         <div className="max-w-6xl mx-auto relative z-10">
@@ -675,7 +682,7 @@ export default function App() {
                     alt={cat.description}
                     width={400}
                     height={218}
-                    loading="lazy"
+                    loading="eager"
                     decoding="async"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                   />
@@ -693,7 +700,7 @@ export default function App() {
       </section>
 
       {/* SEÇÃO - PARA QUEM É O PACK VIRAL? */}
-      <section className="cv-auto py-8 sm:py-12 px-3 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="py-8 sm:py-12 px-3 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="max-w-3xl mx-auto relative z-10">
           {/* Header com Título e Logo do Personagem PackViral */}
           <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
@@ -706,7 +713,7 @@ export default function App() {
                 alt="Pack Viral"
                 width={384}
                 height={256}
-                loading="lazy"
+                loading="eager"
                 decoding="async"
                 className="w-56 min-[390px]:w-64 sm:w-72 md:w-80 max-w-full h-auto object-contain select-none"
                 draggable={false}
@@ -718,7 +725,7 @@ export default function App() {
           <div className="max-w-[640px] mx-auto flex flex-col gap-3.5 sm:gap-4 px-1 sm:px-0">
             {/* Card 1 */}
             <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D19]/95 border border-[#58D4F2]/30 hover:border-[#58D4F2]/75 transition-all duration-200 shadow-lg shadow-black/40">
-              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)] shadow-[0_0_12px_rgba(88,212,242,0.14)]">
+              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2]">
                 <Smartphone className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.2} />
               </div>
               <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-100 font-medium leading-[1.48] sm:leading-[1.5]">
@@ -728,7 +735,7 @@ export default function App() {
 
             {/* Card 2 */}
             <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D19]/95 border border-[#58D4F2]/30 hover:border-[#58D4F2]/75 transition-all duration-200 shadow-lg shadow-black/40">
-              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)] shadow-[0_0_12px_rgba(88,212,242,0.14)]">
+              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2]">
                 <Clock className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.2} />
               </div>
               <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-100 font-medium leading-[1.48] sm:leading-[1.5]">
@@ -738,7 +745,7 @@ export default function App() {
 
             {/* Card 3 */}
             <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D19]/95 border border-[#58D4F2]/30 hover:border-[#58D4F2]/75 transition-all duration-200 shadow-lg shadow-black/40">
-              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)] shadow-[0_0_12px_rgba(88,212,242,0.14)]">
+              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2]">
                 <Rocket className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.2} />
               </div>
               <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-100 font-medium leading-[1.48] sm:leading-[1.5]">
@@ -748,7 +755,7 @@ export default function App() {
 
             {/* Card 4 */}
             <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D19]/95 border border-[#58D4F2]/30 hover:border-[#58D4F2]/75 transition-all duration-200 shadow-lg shadow-black/40">
-              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)] shadow-[0_0_12px_rgba(88,212,242,0.14)]">
+              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2]">
                 <Zap className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.2} />
               </div>
               <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-100 font-medium leading-[1.48] sm:leading-[1.5]">
@@ -758,7 +765,7 @@ export default function App() {
 
             {/* Card 5 */}
             <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D19]/95 border border-[#58D4F2]/30 hover:border-[#58D4F2]/75 transition-all duration-200 shadow-lg shadow-black/40">
-              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)] shadow-[0_0_12px_rgba(88,212,242,0.14)]">
+              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2]">
                 <TrendingUp className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.2} />
               </div>
               <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-100 font-medium leading-[1.48] sm:leading-[1.5]">
@@ -768,7 +775,7 @@ export default function App() {
 
             {/* Card 6 */}
             <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D19]/95 border border-[#58D4F2]/30 hover:border-[#58D4F2]/75 transition-all duration-200 shadow-lg shadow-black/40">
-              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)] shadow-[0_0_12px_rgba(88,212,242,0.14)]">
+              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2]">
                 <Calendar className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.2} />
               </div>
               <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-100 font-medium leading-[1.48] sm:leading-[1.5]">
@@ -780,7 +787,7 @@ export default function App() {
       </section>
 
       {/* O ACESSO É SIMPLES + BENEFÍCIOS + BÔNUS EXCLUSIVOS */}
-      <section className="cv-auto py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_40%_at_50%_20%,rgba(14,165,233,0.08)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_42%_at_50%_78%,rgba(14,165,233,0.11)_0%,transparent_72%)]" aria-hidden="true" />
@@ -793,7 +800,7 @@ export default function App() {
           {/* Três textos explicativos abaixo do título */}
           <div className="max-w-2xl mx-auto space-y-4 sm:space-y-5 mb-6 sm:mb-9 px-1">
             <div className="flex items-start gap-3.5 sm:gap-4 text-left">
-              <div className="mt-1 shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)]">
+              <div className="mt-1 shrink-0 text-[#58D4F2]">
                 <Layers className="w-7 h-7 sm:w-8 sm:h-8" />
               </div>
               <p className="text-[15.5px] sm:text-[17px] text-neutral-100 leading-relaxed">
@@ -802,7 +809,7 @@ export default function App() {
             </div>
 
             <div className="flex items-start gap-3.5 sm:gap-4 text-left">
-              <div className="mt-1 shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)]">
+              <div className="mt-1 shrink-0 text-[#58D4F2]">
                 <CloudDownload className="w-7 h-7 sm:w-8 sm:h-8" />
               </div>
               <p className="text-[15.5px] sm:text-[17px] text-neutral-100 leading-relaxed">
@@ -811,7 +818,7 @@ export default function App() {
             </div>
 
             <div className="flex items-start gap-3.5 sm:gap-4 text-left">
-              <div className="mt-1 shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)]">
+              <div className="mt-1 shrink-0 text-[#58D4F2]">
                 <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8" />
               </div>
               <p className="text-[15.5px] sm:text-[17px] text-neutral-100 leading-relaxed">
@@ -837,7 +844,7 @@ export default function App() {
                     idx === 4 ? 'col-span-2 sm:col-span-1' : ''
                   }`}
                 >
-                  <div className="mb-3 text-[#58D4F2] drop-shadow-[0_0_10px_rgba(88,212,242,0.75)]">
+                  <div className="mb-3 text-[#58D4F2]">
                     <IconComponent className="w-9 h-9 sm:w-10 sm:h-10" strokeWidth={2.2} />
                   </div>
                   <p className="text-[14px] sm:text-[15px] font-extrabold text-white leading-snug">
@@ -881,9 +888,9 @@ export default function App() {
                 className="relative w-full max-w-[290px] sm:max-w-[310px] md:max-w-none mx-auto bg-[radial-gradient(ellipse_at_top,#1f0507_0%,#0e0407_55%,#050204_100%)] border-2 border-[#FF2B2B] rounded-2xl pt-6 pb-4 px-3.5 sm:px-4 flex flex-col items-center justify-between text-center shadow-[0_0_24px_rgba(255,43,43,0.25)] hover:border-[#FF5252] hover:shadow-[0_0_34px_rgba(255,60,60,0.45)] transition-all duration-200"
               >
                 {/* Selo superior em vermelho fogo premium */}
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FF0033] via-[#FF3300] to-[#FF7700] text-white font-[900] text-[10.5px] sm:text-[11px] px-3 py-1 rounded-full shadow-[0_0_16px_rgba(255,50,0,0.75)] border border-[#FFAA44]/50 whitespace-nowrap inline-flex items-center gap-1 tracking-wide uppercase">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FF0033] via-[#FF3300] to-[#FF7700] text-white font-[900] text-[10.5px] sm:text-[11px] px-3 py-1 rounded-full shadow-lg border border-[#FFAA44]/50 whitespace-nowrap inline-flex items-center gap-1 tracking-wide uppercase">
                   <span>Incluso no Pacote Premium</span>
-                  <Flame className="w-3 h-3 fill-yellow-300 text-yellow-300 shrink-0 animate-pulse" />
+                  <Flame className="w-3 h-3 fill-yellow-300 text-yellow-300 shrink-0" />
                 </div>
 
                 {/* Capa do bônus */}
@@ -893,7 +900,7 @@ export default function App() {
                     alt={bonus.alt}
                     width={380}
                     height={380}
-                    loading="lazy"
+                    loading="eager"
                     decoding="async"
                     className="w-32 sm:w-36 md:w-36 h-auto object-contain"
                   />
@@ -902,7 +909,7 @@ export default function App() {
                 {/* Descrição destacada + Chamada GRÁTIS */}
                 <div className="w-full flex-1 flex flex-col items-center justify-between gap-2.5">
                   <p className="text-[15px] sm:text-[16px] font-bold text-white leading-snug max-w-[240px]">
-                    <strong className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2B2B] via-[#FF5533] to-[#FFAA00] font-[900] drop-shadow-[0_0_10px_rgba(255,50,30,0.5)]">
+                    <strong className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2B2B] via-[#FF5533] to-[#FFAA00] font-[900]">
                       {bonus.prefix}
                     </strong>{' '}
                     <span>{bonus.description}</span>
@@ -910,11 +917,11 @@ export default function App() {
 
                   {/* Destaque GRÁTIS (sem botão, pura tipografia de impacto em vermelho fogo) */}
                   <div className="w-full pt-0.5 flex items-center justify-center gap-1.5">
-                    <Flame className="w-5 h-5 text-[#FF2B2B] fill-[#FF2B2B] shrink-0 animate-pulse drop-shadow-[0_0_8px_rgba(255,43,43,0.85)]" />
-                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-[28px] font-[900] italic tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#FF1E27] via-[#FF3B30] to-[#FFA000] drop-shadow-[0_0_18px_rgba(255,40,30,0.85)] uppercase">
+                    <Flame className="w-5 h-5 text-[#FF2B2B] fill-[#FF2B2B] shrink-0" />
+                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-[28px] font-[900] italic tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#FF1E27] via-[#FF3B30] to-[#FFA000] uppercase">
                       GRÁTIS
                     </span>
-                    <Flame className="w-5 h-5 text-[#FF8500] fill-[#FF8500] shrink-0 animate-pulse drop-shadow-[0_0_8px_rgba(255,133,0,0.85)]" />
+                    <Flame className="w-5 h-5 text-[#FF8500] fill-[#FF8500] shrink-0" />
                   </div>
                 </div>
               </div>
@@ -924,7 +931,7 @@ export default function App() {
       </section>
 
       {/* FIRST MONTH RESULTS */}
-      <section className="cv-auto py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_55%,rgba(14,165,233,0.08)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="w-full mx-auto text-center flex flex-col items-center relative z-10">
@@ -961,7 +968,7 @@ export default function App() {
                     alt={item.alt}
                     width={item.width}
                     height={item.height}
-                    loading="lazy"
+                    loading="eager"
                     decoding="async"
                     className="w-full h-auto block object-contain select-none"
                     draggable={false}
@@ -974,7 +981,7 @@ export default function App() {
       </section>
 
       {/* QUEM ADQUIRIU, GOSTOU ❤️ - Manual carousel with controls */}
-      <section className="cv-auto py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_52%,rgba(14,165,233,0.09)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="w-full max-w-md mx-auto text-center relative z-10">
@@ -995,7 +1002,7 @@ export default function App() {
                       alt={item.name}
                       width={item.width}
                       height={item.height}
-                      loading="lazy"
+                      loading="eager"
                       decoding="async"
                       className="w-full h-auto block object-contain select-none"
                       draggable={false}
@@ -1052,7 +1059,7 @@ export default function App() {
       {renderOffersSection('escolha')}
 
       {/* GUARANTEE BADGE (7 DIAS) */}
-      <section className="cv-auto py-4 sm:py-7 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="py-4 sm:py-7 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.10)_0%,transparent_62%)]" aria-hidden="true" />
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
           <div className="relative group cursor-pointer transition-transform duration-300 hover:scale-105">
@@ -1061,7 +1068,7 @@ export default function App() {
               alt="Selo de Garantia de 7 Dias" 
               width={520}
               height={520}
-              loading="lazy"
+              loading="eager"
               decoding="async"
               className="relative w-52 sm:w-64 h-auto mx-auto object-contain drop-shadow-xl"
             />
@@ -1070,7 +1077,7 @@ export default function App() {
       </section>
 
       {/* SUPORTE 24 HORAS (ANTES E DEPOIS DA COMPRA) */}
-      <section className="cv-auto py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="max-w-3xl mx-auto relative z-10">
           <div className="bg-[#080E1A]/90 border border-[#58D4F2]/70 rounded-2xl p-5 sm:p-8 text-center shadow-[0_0_25px_rgba(88,212,242,0.12)] relative overflow-hidden">
@@ -1105,7 +1112,7 @@ export default function App() {
       </section>
 
       {/* FAQ SECTION */}
-      <section className="cv-auto py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="max-w-4xl mx-auto flex flex-col items-center relative z-10">
           
@@ -1145,7 +1152,7 @@ export default function App() {
       </section>
 
       {/* FINAL CTA SECTION */}
-      <section className="cv-auto py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden text-center">
+      <section className="py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden text-center">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_65%_at_50%_55%,rgba(14,165,233,0.10)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="max-w-3xl mx-auto flex flex-col items-center relative z-10">
@@ -1165,7 +1172,7 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="cv-auto pt-8 pb-12 px-4 bg-transparent relative text-center">
+      <footer className="pt-8 pb-12 px-4 bg-transparent relative text-center">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" aria-hidden="true" />
         <div className="max-w-3xl mx-auto flex flex-col items-center relative z-10">
           
@@ -1176,7 +1183,7 @@ export default function App() {
               alt="PackViral" 
               width={320}
               height={320}
-              loading="lazy"
+              loading="eager"
               decoding="async"
               className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto object-cover border-2 border-[#58D4F2] shadow-[0_0_20px_rgba(88,212,242,0.35)]" 
             />
