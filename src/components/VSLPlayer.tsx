@@ -41,7 +41,7 @@ export default function VSLPlayer({
     }
   };
 
-  // Configure inline attributes and start muted preview loop right after first paint
+  // Configure inline attributes and defer video buffering until VSL is near viewport
   useEffect(() => {
     const video = videoRef.current;
     const container = containerRef.current;
@@ -54,37 +54,28 @@ export default function VSLPlayer({
     video.defaultMuted = true;
     video.volume = 1.0;
 
-    // Wait briefly after initial paint so hero text & CTA render at max speed before fetching video frames
-    const startPreviewTimer = window.setTimeout(() => {
-      if (!hasStartedWithSoundRef.current && video.paused) {
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            // Autoplay may be deferred on Low Power Mode or strict in-app WebViews until user tap
-          });
-        }
-      }
-    }, 150);
-
-    // Pause silent preview when scrolled offscreen on low-end devices (only before sound activation)
     let observer: IntersectionObserver | null = null;
     if (container && typeof IntersectionObserver !== 'undefined') {
       observer = new IntersectionObserver(
         ([entry]) => {
           if (hasStartedWithSoundRef.current) return;
           if (entry.isIntersecting) {
-            if (video.paused) video.play().catch(() => {});
+            if (video.preload === 'none') {
+              video.preload = 'metadata';
+            }
+            if (video.paused) {
+              video.play().catch(() => {});
+            }
           } else {
             if (!video.paused) video.pause();
           }
         },
-        { threshold: 0.05 }
+        { rootMargin: '180px 0px', threshold: 0.05 }
       );
       observer.observe(container);
     }
 
     return () => {
-      window.clearTimeout(startPreviewTimer);
       observer?.disconnect();
     };
   }, []);
@@ -219,7 +210,7 @@ export default function VSLPlayer({
           playsInline
           muted={!isActivated}
           loop={!isActivated}
-          preload="metadata"
+          preload="none"
           disablePictureInPicture
           controlsList="nodownload nofullscreen noremoteplayback"
           onCanPlay={handleCanPlay}

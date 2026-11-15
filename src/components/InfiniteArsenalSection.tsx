@@ -110,7 +110,7 @@ function ProfileCard({ profile, highlighted }: { profile: ProfileCardData; highl
                   alt={profile.handle}
                   width={120}
                   height={120}
-                  loading="eager"
+                  loading="lazy"
                   decoding="async"
                   className="w-full h-full rounded-full object-cover"
                 />
@@ -222,7 +222,7 @@ export default function InfiniteArsenalSection() {
   ];
 
   return (
-    <section className="py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+    <section className="cv-auto py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
       <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/18 to-transparent" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_46%,rgba(14,165,233,0.10)_0%,transparent_72%)]" />
       <div className="max-w-5xl mx-auto relative z-10 text-center">

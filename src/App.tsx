@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, lazy, Suspense, memo } from 'react';
 import WhatsAppButton from './components/WhatsAppButton';
 import InfiniteArsenalSection from './components/InfiniteArsenalSection';
+import VSLPlayer from './components/VSLPlayer';
 import { 
   trackPageView, 
   trackViewContent, 
@@ -55,7 +56,7 @@ const SalesToast = memo(function SalesToast() {
   if (!message) return null;
 
   return (
-    <div className="fixed bottom-3 left-3 z-50 w-[152px] sm:w-[176px] bg-[#080E1A]/95 backdrop-blur-sm border border-[#58D4F2] text-white p-2.5 rounded-xl shadow-2xl flex items-start gap-2 text-[11px] sm:text-xs leading-snug pointer-events-none">
+    <div className="fixed bottom-3 left-3 z-50 w-[152px] sm:w-[176px] bg-[#080E1A]/95 border border-[#58D4F2] text-white p-2.5 rounded-xl shadow-2xl flex items-start gap-2 text-[11px] sm:text-xs leading-snug pointer-events-none">
       <div className="w-2 h-2 rounded-full bg-[#0AE028] shrink-0 mt-1" />
       <span className="font-medium">{message}</span>
     </div>
@@ -270,13 +271,13 @@ export default function App() {
               {/* 50k Mockup Image */}
               <div className="w-full my-2 flex justify-center">
                 <img 
-                  src="/assets/packviral-50k-sem-fundo.png" 
+                  src="/assets/packviral-50k-sem-fundo.webp" 
                   alt="PackViral Definitivo - 50.000 Cortes Virais" 
-                  width={1254}
-                  height={1254}
+                  width={560}
+                  height={560}
                   loading="lazy"
                   decoding="async"
-                  className="w-56 sm:w-64 h-auto max-w-full object-contain drop-shadow-2xl"
+                  className="w-56 sm:w-64 h-auto max-w-full object-contain"
                 />
               </div>
 
@@ -365,13 +366,13 @@ export default function App() {
               {/* Bundle Mockup Image (Pack Definitivo + Memes + Músicas + Efeitos) */}
               <div className="w-full my-2 flex justify-center">
                 <img 
-                  src="/assets/packviral-100k-sem-fundo.png" 
+                  src="/assets/packviral-100k-sem-fundo.webp" 
                   alt="Kit PackViral Definitivo de Conteúdo Viral - 100.000 Cortes" 
-                  width={1254}
-                  height={1254}
-                  loading="eager"
+                  width={640}
+                  height={640}
+                  loading="lazy"
                   decoding="async"
-                  className="w-72 sm:w-80 h-auto max-w-full object-contain drop-shadow-2xl"
+                  className="w-72 sm:w-80 h-auto max-w-full object-contain"
                 />
               </div>
 
@@ -536,14 +537,14 @@ export default function App() {
           {/* Logo PackViral com Personagem Neon */}
           <div className="w-full flex justify-center items-center px-4 mb-2.5 sm:mb-4">
             <img
-              src="/assets/aistudio/Logo_PackViral_com_Personagem_Neon_22765020.png"
+              src="/assets/logo-packviral.webp"
               alt="PackViral Logo"
-              width={1536}
-              height={1024}
+              width={600}
+              height={400}
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="w-52 sm:w-64 md:w-72 h-auto object-contain select-none drop-shadow-[0_12px_28px_rgba(88,212,242,0.35)]"
+              className="w-52 sm:w-64 md:w-72 h-auto object-contain select-none"
               draggable={false}
             />
           </div>
@@ -576,19 +577,24 @@ export default function App() {
             ✓ 100% Sem Copyright (Livre para Monetizar) &nbsp;•&nbsp; ✓ Todos Sem Marca d'Água
           </p>
 
-          {/* Exemplos do Pack Viral Showcase (no lugar da VSL) */}
+          {/* Exemplos do Pack Viral Showcase */}
           <div className="w-full max-w-[540px] sm:max-w-[580px] mx-auto px-2 sm:px-4 my-1 sm:my-2">
             <img
-              src="/assets/aistudio/Smartphone_PackViral_com__cones_Sociais_39017ad6.png"
+              src="/assets/smartphone-packviral.webp"
               alt="Smartphone Pack Viral com exemplos de vídeos no TikTok, Instagram Reels e YouTube Shorts"
-              width={1199}
-              height={1312}
+              width={720}
+              height={788}
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="w-full h-auto block object-contain select-none drop-shadow-[0_16px_38px_rgba(14,165,233,0.22)]"
+              className="w-full h-auto block object-contain select-none"
               draggable={false}
             />
+          </div>
+
+          {/* VSL Player abaixo da foto na Hero Section */}
+          <div className="w-full max-w-[420px] mx-auto px-3 sm:px-4 mt-4 sm:mt-6 mb-1">
+            <VSLPlayer />
           </div>
 
           {/* Main CTA Button */}
@@ -608,7 +614,7 @@ export default function App() {
       <InfiniteArsenalSection />
 
       {/* QUEM CRESCE HOJE - VERTICAL 4 STEPS TIMELINE */}
-      <section className="py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="cv-auto py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_60%_at_50%_55%,rgba(14,165,233,0.10)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="max-w-4xl mx-auto relative z-10">
@@ -734,7 +740,7 @@ export default function App() {
       </section>
 
       {/* 50.000 CORTES PRONTOS PARA POSTAR - CATEGORIES GRID (3 COLUNAS) */}
-      <section className="py-6 sm:py-10 px-[4px] sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="cv-auto py-6 sm:py-10 px-[4px] sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/18 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_42%,rgba(14,165,233,0.10)_0%,transparent_75%)]" aria-hidden="true" />
         <div className="max-w-6xl mx-auto relative z-10">
@@ -758,7 +764,7 @@ export default function App() {
                     alt={cat.description}
                     width={400}
                     height={218}
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                   />
@@ -776,7 +782,7 @@ export default function App() {
       </section>
 
       {/* O ACESSO É SIMPLES + BENEFÍCIOS + BÔNUS EXCLUSIVOS */}
-      <section className="py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="cv-auto py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_40%_at_50%_20%,rgba(14,165,233,0.08)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_42%_at_50%_78%,rgba(14,165,233,0.11)_0%,transparent_72%)]" aria-hidden="true" />
@@ -854,19 +860,19 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-5 items-stretch">
             {[
               {
-                image: '/assets/caixa-neon-musicas.png',
+                image: '/assets/caixa-neon-musicas.webp',
                 alt: 'Bônus 1: Pacote com músicas virais sem copyright',
                 prefix: 'BÔNUS 1:',
                 description: 'Pacote com músicas virais sem copyright'
               },
               {
-                image: '/assets/pacote-stories.png',
+                image: '/assets/pacote-stories.webp',
                 alt: 'Bônus 2: Pacote de storys prontos para usar',
                 prefix: 'BÔNUS 2:',
                 description: 'Pacote de storys prontos para usar'
               },
               {
-                image: '/assets/super-efeitos.png',
+                image: '/assets/super-efeitos.webp',
                 alt: 'Bônus 3: Super pacote de efeitos sonoros',
                 prefix: 'BÔNUS 3:',
                 description: 'Super pacote de efeitos sonoros'
@@ -887,11 +893,11 @@ export default function App() {
                   <img
                     src={bonus.image}
                     alt={bonus.alt}
-                    width={520}
-                    height={520}
-                    loading="eager"
+                    width={420}
+                    height={420}
+                    loading="lazy"
                     decoding="async"
-                    className="w-44 sm:w-44 md:w-48 h-auto object-contain drop-shadow-[0_12px_28px_rgba(255,50,30,0.35)]"
+                    className="w-44 sm:w-44 md:w-48 h-auto object-contain"
                   />
                 </div>
 
@@ -920,7 +926,7 @@ export default function App() {
       </section>
 
       {/* FIRST MONTH RESULTS */}
-      <section className="py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="cv-auto py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_55%,rgba(14,165,233,0.08)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="w-full mx-auto text-center flex flex-col items-center relative z-10">
@@ -957,7 +963,7 @@ export default function App() {
                     alt={item.alt}
                     width={item.width}
                     height={item.height}
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                     className="w-full h-auto block object-contain select-none"
                     draggable={false}
@@ -970,7 +976,7 @@ export default function App() {
       </section>
 
       {/* QUEM ADQUIRIU, GOSTOU ❤️ - Manual carousel with controls */}
-      <section className="py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="cv-auto py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_52%,rgba(14,165,233,0.09)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="w-full max-w-md mx-auto text-center relative z-10">
@@ -991,7 +997,7 @@ export default function App() {
                       alt={item.name}
                       width={item.width}
                       height={item.height}
-                      loading="eager"
+                      loading="lazy"
                       decoding="async"
                       className="w-full h-auto block object-contain select-none"
                       draggable={false}
@@ -1048,7 +1054,7 @@ export default function App() {
       {renderOffersSection('escolha')}
 
       {/* GUARANTEE BADGE (7 DIAS) */}
-      <section className="py-4 sm:py-7 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="cv-auto py-4 sm:py-7 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,165,233,0.10)_0%,transparent_62%)]" aria-hidden="true" />
         <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
           <div className="relative group cursor-pointer transition-transform duration-300 hover:scale-105">
@@ -1057,7 +1063,7 @@ export default function App() {
               alt="Selo de Garantia de 7 Dias" 
               width={520}
               height={520}
-              loading="eager"
+              loading="lazy"
               decoding="async"
               className="relative w-52 sm:w-64 h-auto mx-auto object-contain drop-shadow-xl"
             />
@@ -1066,7 +1072,7 @@ export default function App() {
       </section>
 
       {/* SUPORTE 24 HORAS (ANTES E DEPOIS DA COMPRA) */}
-      <section className="py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="cv-auto py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="max-w-3xl mx-auto relative z-10">
           <div className="bg-[#080E1A]/90 border border-[#58D4F2]/70 rounded-2xl p-5 sm:p-8 text-center shadow-[0_0_25px_rgba(88,212,242,0.12)] relative overflow-hidden">
@@ -1101,7 +1107,7 @@ export default function App() {
       </section>
 
       {/* FAQ SECTION */}
-      <section className="py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
+      <section className="cv-auto py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="max-w-4xl mx-auto flex flex-col items-center relative z-10">
           
@@ -1141,7 +1147,7 @@ export default function App() {
       </section>
 
       {/* FINAL CTA SECTION */}
-      <section className="py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden text-center">
+      <section className="cv-auto py-6 sm:py-9 px-2 sm:px-4 bg-transparent relative overflow-hidden text-center">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_65%_at_50%_55%,rgba(14,165,233,0.10)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="max-w-3xl mx-auto flex flex-col items-center relative z-10">
@@ -1161,7 +1167,7 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="pt-8 pb-12 px-4 bg-transparent relative text-center">
+      <footer className="cv-auto pt-8 pb-12 px-4 bg-transparent relative text-center">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" aria-hidden="true" />
         <div className="max-w-3xl mx-auto flex flex-col items-center relative z-10">
           
@@ -1172,7 +1178,7 @@ export default function App() {
               alt="PackViral" 
               width={320}
               height={320}
-              loading="eager"
+              loading="lazy"
               decoding="async"
               className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto object-cover border-2 border-[#58D4F2] shadow-[0_0_20px_rgba(88,212,242,0.35)]" 
             />
