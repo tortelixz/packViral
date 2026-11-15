@@ -227,7 +227,7 @@ export default function InfiniteArsenalSection() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_46%,rgba(14,165,233,0.10)_0%,transparent_72%)]" />
       <div className="max-w-5xl mx-auto relative z-10 text-center">
         {/* Título */}
-        <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[26px] sm:text-[38px] md:text-[44px] font-[800] text-center tracking-[-0.02em] leading-[1.13] text-white max-w-4xl mx-auto mb-5 sm:mb-8 px-1">
+        <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] min-[390px]:text-[33px] sm:text-[38px] md:text-[44px] font-[800] text-center tracking-[-0.03em] leading-[1.08] text-white max-w-4xl mx-auto mb-5 sm:mb-8 px-1">
           Você Não Precisa Criar Conteúdo do Zero,{' '}
           <span className="gradient-blue-text">
             Tenha Um Arsenal de Conteúdo Infinito

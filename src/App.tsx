@@ -254,7 +254,7 @@ export default function App() {
       </div>
       <div className="max-w-5xl mx-auto relative z-10">
         
-        <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[42px] font-[800] text-center text-white tracking-[-0.02em] leading-[1.12] mb-5 sm:mb-8 uppercase px-1">
+        <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[30px] min-[390px]:text-[36px] sm:text-[42px] font-[800] text-center text-white tracking-[-0.02em] leading-[1.08] mb-5 sm:mb-8 uppercase px-1">
           PREPARAMOS A <span className="gradient-blue-text">MELHOR OFERTA</span> PARA VOCÊ
         </h2>
 
@@ -516,14 +516,29 @@ export default function App() {
         <div className="w-full max-w-none mx-auto text-center flex flex-col items-center relative z-10 px-0">
           
           {/* Top Status Pill / Urgency Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DC2626] border border-[#EF4444]/50 text-white text-[11px] sm:text-xs font-extrabold tracking-[0.14em] uppercase mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DC2626] border border-[#EF4444]/50 text-white text-[11px] sm:text-xs font-extrabold tracking-[0.14em] uppercase mb-2">
             <span>🔥EM ALTA NO BRASIL!</span>
           </div>
 
+          {/* Logo PackViral com Personagem Neon */}
+          <div className="w-full flex justify-center items-center px-4 mb-2.5 sm:mb-4">
+            <img
+              src="/assets/aistudio/Logo_PackViral_com_Personagem_Neon_22765020.png"
+              alt="PackViral Logo"
+              width={1536}
+              height={1024}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="w-52 sm:w-64 md:w-72 h-auto object-contain select-none drop-shadow-[0_12px_28px_rgba(88,212,242,0.35)]"
+              draggable={false}
+            />
+          </div>
+
           {/* Main Hook Headline */}
-          <h1 className="font-['Plus_Jakarta_Sans',sans-serif] font-[800] tracking-[-0.04em] text-white leading-[1.06] sm:leading-[1.05] mb-2.5 sm:mb-3 w-full max-w-none px-2 sm:px-6 text-center">
-            {/* Mobile: 3 symmetrical balanced lines */}
-            <span className="flex flex-col items-center w-full sm:hidden text-[clamp(1.9rem,10.8vw,3.4rem)]">
+          <h1 className="font-['Plus_Jakarta_Sans',sans-serif] font-[800] tracking-[-0.04em] text-white leading-[1.04] sm:leading-[1.05] mb-2.5 sm:mb-3 w-full max-w-none px-2 sm:px-6 text-center">
+            {/* Mobile: 3 symmetrical balanced lines that fill the screen */}
+            <span className="flex flex-col items-center w-full sm:hidden text-[clamp(2.3rem,11.8vw,3.6rem)]">
               <span className="whitespace-nowrap">Pare de perder</span>
               <span className="whitespace-nowrap">
                 tempo <span className="gradient-blue-text">criando</span>
@@ -585,7 +600,7 @@ export default function App() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_60%_at_50%_55%,rgba(14,165,233,0.10)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="max-w-4xl mx-auto relative z-10">
           {/* Heading */}
-          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[26px] sm:text-[38px] md:text-[44px] font-[800] text-center tracking-[-0.02em] leading-[1.13] text-white px-1">
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] min-[390px]:text-[34px] sm:text-[38px] md:text-[44px] font-[800] text-center tracking-[-0.02em] leading-[1.08] text-white px-1">
             Quem Cresce Hoje Não Cria do Zero. Eles
             <span className="block gradient-blue-text mt-0.5">
               Reaproveitam Vídeos Que Já Viralizaram.
@@ -710,7 +725,7 @@ export default function App() {
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/18 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_42%,rgba(14,165,233,0.10)_0%,transparent_75%)]" aria-hidden="true" />
         <div className="max-w-6xl mx-auto relative z-10">
-          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[27px] sm:text-[42px] font-[800] text-center tracking-[-0.02em] leading-[1.12] mb-4 sm:mb-7 text-white px-1">
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[30px] min-[390px]:text-[36px] sm:text-[42px] font-[800] text-center tracking-[-0.02em] leading-[1.08] mb-4 sm:mb-7 text-white px-1">
             <span className="gradient-blue-text">50.000 CORTES PRONTOS </span>PARA POSTAR
           </h2>
 
@@ -754,7 +769,7 @@ export default function App() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_42%_at_50%_78%,rgba(14,165,233,0.11)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="max-w-5xl mx-auto relative z-10">
           {/* Título Principal */}
-          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[29px] sm:text-[42px] font-[800] text-center tracking-[-0.02em] leading-[1.12] mb-5 sm:mb-7 text-white">
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[32px] min-[390px]:text-[38px] sm:text-[42px] font-[800] text-center tracking-[-0.02em] leading-[1.08] mb-5 sm:mb-7 text-white">
             O Acesso é <span className="gradient-blue-text">Simples:</span>
           </h2>
 
@@ -817,7 +832,7 @@ export default function App() {
           </div>
 
           {/* Título dos bônus centralizado */}
-          <h3 className="font-['Plus_Jakarta_Sans',sans-serif] text-[25px] sm:text-[36px] font-[800] text-center tracking-[-0.02em] leading-[1.18] mb-7 sm:mb-10 text-white max-w-2xl mx-auto px-1">
+          <h3 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] min-[390px]:text-[33px] sm:text-[36px] font-[800] text-center tracking-[-0.02em] leading-[1.12] mb-7 sm:mb-10 text-white max-w-2xl mx-auto px-1">
             Receba <span className="gradient-blue-text">BÔNUS EXCLUSIVOS</span> adquirindo o{' '}
             <span className="underline decoration-[#58D4F2] underline-offset-4">Plano Premium</span>:
           </h3>
@@ -895,7 +910,7 @@ export default function App() {
         <div className="w-full mx-auto text-center flex flex-col items-center relative z-10">
           {/* First Month Results */}
           <div className="w-full max-w-4xl px-0 sm:px-2">
-            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[26px] sm:text-[40px] font-[800] text-white tracking-[-0.02em] leading-[1.12] mb-1.5 flex items-center justify-center gap-2 sm:gap-3 px-1">
+            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[27px] min-[390px]:text-[32px] sm:text-[40px] font-[800] text-white tracking-[-0.02em] leading-[1.1] mb-1.5 flex items-center justify-center gap-1.5 sm:gap-3 px-1">
               <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 gradient-blue-text shrink-0 animate-arrow-bounce" />
               <span>Resultado do primeiro mês usando esse Pack</span>
               <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 gradient-blue-text shrink-0 animate-arrow-bounce" />
@@ -943,7 +958,7 @@ export default function App() {
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_52%,rgba(14,165,233,0.09)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="w-full max-w-md mx-auto text-center relative z-10">
-          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[40px] font-[800] text-white tracking-[-0.02em] leading-[1.12] mb-4">
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[30px] min-[390px]:text-[36px] sm:text-[40px] font-[800] text-white tracking-[-0.02em] leading-[1.1] mb-4">
             Quem adquiriu, <span className="gradient-blue-text">gostou</span> ❤️
           </h2>
 
@@ -1045,7 +1060,7 @@ export default function App() {
               <Headphones className="w-7 h-7 text-[#58D4F2]" />
             </div>
 
-            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[26px] sm:text-[34px] font-[800] text-white tracking-[-0.02em] leading-[1.12] mb-2.5 uppercase">
+            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] min-[390px]:text-[34px] sm:text-[34px] font-[800] text-white tracking-[-0.02em] leading-[1.1] mb-2.5 uppercase">
               SUPORTE <span className="gradient-blue-text">24 HORAS</span>
             </h2>
 
@@ -1075,7 +1090,7 @@ export default function App() {
         <div className="max-w-4xl mx-auto flex flex-col items-center relative z-10">
           
           {/* FAQ Title */}
-          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[29px] sm:text-[42px] font-[800] gradient-blue-text tracking-[-0.02em] leading-[1.12] mb-4 sm:mb-6">
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[34px] min-[390px]:text-[42px] sm:text-[42px] font-[800] gradient-blue-text tracking-[-0.02em] leading-[1.1] mb-4 sm:mb-6">
             FAQ
           </h2>
 
@@ -1114,7 +1129,7 @@ export default function App() {
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/16 to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_65%_at_50%_55%,rgba(14,165,233,0.10)_0%,transparent_72%)]" aria-hidden="true" />
         <div className="max-w-3xl mx-auto flex flex-col items-center relative z-10">
-          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] sm:text-[42px] font-[800] italic uppercase text-white tracking-[-0.02em] leading-[1.12] mb-2">
+          <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[30px] min-[390px]:text-[36px] sm:text-[42px] font-[800] italic uppercase text-white tracking-[-0.02em] leading-[1.08] mb-2">
             COMECE <span className="gradient-blue-text">HOJE MESMO</span>
           </h2>
           <p className="text-[16px] sm:text-lg italic font-medium text-neutral-200 mb-5 max-w-xl">
