@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, lazy, Suspense, memo } from 'react';
 import WhatsAppButton from './components/WhatsAppButton';
 import InfiniteArsenalSection from './components/InfiniteArsenalSection';
-import VSLPlayer from './components/VSLPlayer';
 import { 
   trackPageView, 
   trackViewContent, 
@@ -480,7 +479,7 @@ export default function App() {
 
           {/* Subhead */}
           <p className="text-[15.5px] sm:text-xl font-medium text-neutral-200 text-center max-w-2xl px-2 sm:px-6 mb-2.5 sm:mb-3 leading-[1.35] mx-auto">
-            Use <span className="text-white font-bold underline decoration-[#4A72A3] underline-offset-4">50.000 Vídeos Prontos</span> que já viralizaram e comece a crescer hoje mesmo, sem aparecer.
+            Use <span className="text-white font-bold underline decoration-[#4A72A3] underline-offset-4">100.000 Vídeos Prontos</span> que já viralizaram e comece a crescer hoje mesmo, sem aparecer.
           </p>
 
           {/* Explicit No-Copyright & No-Watermark Guarantee Line */}
@@ -501,11 +500,6 @@ export default function App() {
               className="w-full h-auto block object-contain select-none"
               draggable={false}
             />
-          </div>
-
-          {/* VSL Player abaixo da foto na Hero Section */}
-          <div className="w-full max-w-[420px] mx-auto px-3 sm:px-4 mt-4 sm:mt-6 mb-1">
-            <VSLPlayer />
           </div>
 
           {/* Main CTA Button */}
@@ -656,7 +650,7 @@ export default function App() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_42%,rgba(14,165,233,0.10)_0%,transparent_75%)]" aria-hidden="true" />
         <div className="max-w-6xl mx-auto relative z-10">
           <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[30px] min-[390px]:text-[36px] sm:text-[42px] font-[800] text-center tracking-[-0.02em] leading-[1.08] mb-4 sm:mb-7 text-white px-1">
-            <span className="gradient-blue-text">50.000 CORTES PRONTOS </span>PARA POSTAR
+            <span className="gradient-blue-text">100.000 CORTES PRONTOS </span>PARA POSTAR
           </h2>
 
           <div className="grid grid-cols-3 gap-[5px] sm:gap-4 md:gap-5 items-stretch">
@@ -688,6 +682,93 @@ export default function App() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SEÇÃO - PARA QUEM É O PACK VIRAL? */}
+      <section className="cv-auto py-8 sm:py-12 px-3 sm:px-4 bg-transparent relative overflow-hidden">
+        <div className="max-w-3xl mx-auto relative z-10">
+          {/* Header com Título e Logo do Personagem PackViral */}
+          <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
+            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[22px] min-[390px]:text-[26px] sm:text-[32px] md:text-[36px] font-[800] text-white tracking-wide uppercase leading-tight">
+              PARA QUEM É O
+            </h2>
+            <div className="mt-2 sm:mt-2.5 flex items-center justify-center">
+              <img
+                src="/assets/logo-packviral-personagem.webp"
+                alt="Pack Viral"
+                width={384}
+                height={256}
+                loading="lazy"
+                decoding="async"
+                className="w-56 min-[390px]:w-64 sm:w-72 md:w-80 max-w-full h-auto object-contain select-none"
+                draggable={false}
+              />
+            </div>
+          </div>
+
+          {/* 6 Benefit Cards Stacked Vertically */}
+          <div className="max-w-[640px] mx-auto flex flex-col gap-3.5 sm:gap-4 px-1 sm:px-0">
+            {/* Card 1 */}
+            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#0A101D] border border-white/10 hover:border-sky-500/30 transition-all duration-200 shadow-lg shadow-black/40">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0">
+                <span className="text-3xl sm:text-4xl leading-none select-none" role="img" aria-label="Celular">📱</span>
+              </div>
+              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-200 font-medium leading-[1.48] sm:leading-[1.5]">
+                Para quem quer apenas postar vídeos nas redes sociais e <span className="text-sky-400 font-bold">ganhar dinheiro</span> através das suas postagens, sem precisar aparecer ou criar conteúdos do zero.
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#0A101D] border border-white/10 hover:border-sky-500/30 transition-all duration-200 shadow-lg shadow-black/40">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0">
+                <span className="text-3xl sm:text-4xl leading-none select-none" role="img" aria-label="Relógio">⏰</span>
+              </div>
+              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-200 font-medium leading-[1.48] sm:leading-[1.5]">
+                Para quem está cansado de <span className="text-sky-400 font-bold">perder horas</span> procurando, criando e editando vídeos e quer <span className="text-sky-400 font-bold">economizar tempo</span> com conteúdos prontos para publicar.
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#0A101D] border border-white/10 hover:border-sky-500/30 transition-all duration-200 shadow-lg shadow-black/40">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0">
+                <span className="text-3xl sm:text-4xl leading-none select-none" role="img" aria-label="Foguete">🚀</span>
+              </div>
+              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-200 font-medium leading-[1.48] sm:leading-[1.5]">
+                Para quem deseja <span className="text-sky-400 font-bold">começar do zero</span>, mesmo sem seguidores, sem saber editar e usando apenas o celular.
+              </p>
+            </div>
+
+            {/* Card 4 */}
+            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#0A101D] border border-white/10 hover:border-sky-500/30 transition-all duration-200 shadow-lg shadow-black/40">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0">
+                <span className="text-3xl sm:text-4xl leading-none select-none" role="img" aria-label="Raio">⚡</span>
+              </div>
+              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-200 font-medium leading-[1.48] sm:leading-[1.5]">
+                Para quem busca <span className="text-sky-400 font-bold">facilidade e praticidade</span>, sem precisar gravar vídeos, aparecer ou aprender ferramentas complicadas.
+              </p>
+            </div>
+
+            {/* Card 5 */}
+            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#0A101D] border border-white/10 hover:border-sky-500/30 transition-all duration-200 shadow-lg shadow-black/40">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0">
+                <span className="text-3xl sm:text-4xl leading-none select-none" role="img" aria-label="Gráfico de crescimento">📈</span>
+              </div>
+              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-200 font-medium leading-[1.48] sm:leading-[1.5]">
+                Para quem quer <span className="text-sky-400 font-bold">mudar de vida</span>, conquistar mais <span className="text-sky-400 font-bold">liberdade financeira</span> e construir novas oportunidades através das redes sociais.
+              </p>
+            </div>
+
+            {/* Card 6 */}
+            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#0A101D] border border-white/10 hover:border-sky-500/30 transition-all duration-200 shadow-lg shadow-black/40">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0">
+                <span className="text-3xl sm:text-4xl leading-none select-none" role="img" aria-label="Calendário">🗓️</span>
+              </div>
+              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-200 font-medium leading-[1.48] sm:leading-[1.5]">
+                Para quem trabalha ou estuda e quer aproveitar o <span className="text-sky-400 font-bold">tempo livre</span> para começar um projeto digital sem complicações.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -767,23 +848,23 @@ export default function App() {
             <span className="underline decoration-[#58D4F2] underline-offset-4">Plano Premium</span>:
           </h3>
 
-          {/* Três cartões de bônus com selo, capas destacadas, descrições e botões */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-5 items-stretch">
+          {/* Três cartões de bônus com selo, capas destacadas e destaque GRÁTIS */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-4 max-w-4xl mx-auto items-stretch">
             {[
               {
-                image: '/assets/caixa-neon-musicas.webp',
+                image: '/assets/bonus-musicas-virais.webp',
                 alt: 'Bônus 1: Pacote com músicas virais sem copyright',
                 prefix: 'BÔNUS 1:',
                 description: 'Pacote com músicas virais sem copyright'
               },
               {
-                image: '/assets/pacote-stories.webp',
+                image: '/assets/bonus-stories.webp',
                 alt: 'Bônus 2: Pacote de storys prontos para usar',
                 prefix: 'BÔNUS 2:',
                 description: 'Pacote de storys prontos para usar'
               },
               {
-                image: '/assets/super-efeitos.webp',
+                image: '/assets/bonus-efeitos-sonoros.webp',
                 alt: 'Bônus 3: Super pacote de efeitos sonoros',
                 prefix: 'BÔNUS 3:',
                 description: 'Super pacote de efeitos sonoros'
@@ -791,43 +872,43 @@ export default function App() {
             ].map((bonus, idx) => (
               <div
                 key={idx}
-                className="relative bg-[radial-gradient(ellipse_at_top,#1f0507_0%,#0e0407_55%,#050204_100%)] border-2 border-[#FF2B2B] rounded-2xl pt-8 pb-6 px-4 sm:px-6 flex flex-col items-center justify-between text-center shadow-[0_0_30px_rgba(255,43,43,0.28)] hover:border-[#FF5252] hover:shadow-[0_0_42px_rgba(255,60,60,0.5)] transition-all duration-200"
+                className="relative w-full max-w-[290px] sm:max-w-[310px] md:max-w-none mx-auto bg-[radial-gradient(ellipse_at_top,#1f0507_0%,#0e0407_55%,#050204_100%)] border-2 border-[#FF2B2B] rounded-2xl pt-6 pb-4 px-3.5 sm:px-4 flex flex-col items-center justify-between text-center shadow-[0_0_24px_rgba(255,43,43,0.25)] hover:border-[#FF5252] hover:shadow-[0_0_34px_rgba(255,60,60,0.45)] transition-all duration-200"
               >
                 {/* Selo superior em vermelho fogo premium */}
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FF0033] via-[#FF3300] to-[#FF7700] text-white font-[900] text-[12px] sm:text-xs px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(255,50,0,0.8)] border border-[#FFAA44]/50 whitespace-nowrap inline-flex items-center gap-1.5 tracking-wide uppercase">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FF0033] via-[#FF3300] to-[#FF7700] text-white font-[900] text-[10.5px] sm:text-[11px] px-3 py-1 rounded-full shadow-[0_0_16px_rgba(255,50,0,0.75)] border border-[#FFAA44]/50 whitespace-nowrap inline-flex items-center gap-1 tracking-wide uppercase">
                   <span>Incluso no Pacote Premium</span>
-                  <Flame className="w-3.5 h-3.5 fill-yellow-300 text-yellow-300 shrink-0 animate-pulse" />
+                  <Flame className="w-3 h-3 fill-yellow-300 text-yellow-300 shrink-0 animate-pulse" />
                 </div>
 
-                {/* Capa valorizada com brilho quente */}
-                <div className="w-full flex items-center justify-center mt-1 mb-3">
+                {/* Capa do bônus */}
+                <div className="w-full flex items-center justify-center mt-1 mb-2">
                   <img
                     src={bonus.image}
                     alt={bonus.alt}
-                    width={420}
-                    height={420}
+                    width={380}
+                    height={380}
                     loading="lazy"
                     decoding="async"
-                    className="w-44 sm:w-44 md:w-48 h-auto object-contain"
+                    className="w-32 sm:w-36 md:w-36 h-auto object-contain"
                   />
                 </div>
 
                 {/* Descrição destacada + Chamada GRÁTIS */}
-                <div className="w-full flex-1 flex flex-col items-center justify-between gap-4">
-                  <p className="text-[18px] sm:text-[19px] font-bold text-white leading-snug max-w-[300px]">
-                    <strong className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2B2B] via-[#FF5533] to-[#FFAA00] font-[900] drop-shadow-[0_0_12px_rgba(255,50,30,0.5)]">
+                <div className="w-full flex-1 flex flex-col items-center justify-between gap-2.5">
+                  <p className="text-[15px] sm:text-[16px] font-bold text-white leading-snug max-w-[240px]">
+                    <strong className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2B2B] via-[#FF5533] to-[#FFAA00] font-[900] drop-shadow-[0_0_10px_rgba(255,50,30,0.5)]">
                       {bonus.prefix}
                     </strong>{' '}
                     <span>{bonus.description}</span>
                   </p>
 
                   {/* Destaque GRÁTIS (sem botão, pura tipografia de impacto em vermelho fogo) */}
-                  <div className="w-full pt-1 pb-1 flex items-center justify-center gap-2">
-                    <Flame className="w-6 h-6 text-[#FF2B2B] fill-[#FF2B2B] shrink-0 animate-pulse drop-shadow-[0_0_10px_rgba(255,43,43,0.9)]" />
-                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-3xl sm:text-4xl font-[900] italic tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#FF1E27] via-[#FF3B30] to-[#FFA000] drop-shadow-[0_0_24px_rgba(255,40,30,0.9)] uppercase">
+                  <div className="w-full pt-0.5 flex items-center justify-center gap-1.5">
+                    <Flame className="w-5 h-5 text-[#FF2B2B] fill-[#FF2B2B] shrink-0 animate-pulse drop-shadow-[0_0_8px_rgba(255,43,43,0.85)]" />
+                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-2xl sm:text-[28px] font-[900] italic tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#FF1E27] via-[#FF3B30] to-[#FFA000] drop-shadow-[0_0_18px_rgba(255,40,30,0.85)] uppercase">
                       GRÁTIS
                     </span>
-                    <Flame className="w-6 h-6 text-[#FF8500] fill-[#FF8500] shrink-0 animate-pulse drop-shadow-[0_0_10px_rgba(255,133,0,0.9)]" />
+                    <Flame className="w-5 h-5 text-[#FF8500] fill-[#FF8500] shrink-0 animate-pulse drop-shadow-[0_0_8px_rgba(255,133,0,0.85)]" />
                   </div>
                 </div>
               </div>
@@ -1066,7 +1147,7 @@ export default function App() {
             COMECE <span className="gradient-blue-text">HOJE MESMO</span>
           </h2>
           <p className="text-[16px] sm:text-lg italic font-medium text-neutral-200 mb-5 max-w-xl">
-            Tenha acesso aos 50.000 cortes e comece a postar agora.
+            Tenha acesso aos 100.000 cortes e comece a postar agora.
           </p>
           <button 
             onClick={scrollToOffers}
