@@ -23,7 +23,13 @@ import {
   SquarePen,
   Award,
   Check,
-  Flame
+  Flame,
+  Smartphone,
+  Clock,
+  Rocket,
+  Zap,
+  TrendingUp,
+  Calendar
 } from 'lucide-react';
 
 const UpPage = lazy(() => import('./UpPage'));
@@ -711,62 +717,62 @@ export default function App() {
           {/* 6 Benefit Cards Stacked Vertically */}
           <div className="max-w-[640px] mx-auto flex flex-col gap-3.5 sm:gap-4 px-1 sm:px-0">
             {/* Card 1 */}
-            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#0A101D] border border-white/10 hover:border-sky-500/30 transition-all duration-200 shadow-lg shadow-black/40">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0">
-                <span className="text-3xl sm:text-4xl leading-none select-none" role="img" aria-label="Celular">📱</span>
+            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D19]/95 border border-[#58D4F2]/30 hover:border-[#58D4F2]/75 transition-all duration-200 shadow-lg shadow-black/40">
+              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)] shadow-[0_0_12px_rgba(88,212,242,0.14)]">
+                <Smartphone className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.2} />
               </div>
-              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-200 font-medium leading-[1.48] sm:leading-[1.5]">
-                Para quem quer apenas postar vídeos nas redes sociais e <span className="text-sky-400 font-bold">ganhar dinheiro</span> através das suas postagens, sem precisar aparecer ou criar conteúdos do zero.
+              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-100 font-medium leading-[1.48] sm:leading-[1.5]">
+                Para quem quer apenas postar vídeos nas redes sociais e <span className="text-[#58D4F2] font-bold">ganhar dinheiro</span> através das suas postagens, sem precisar aparecer ou criar conteúdos do zero.
               </p>
             </div>
 
             {/* Card 2 */}
-            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#0A101D] border border-white/10 hover:border-sky-500/30 transition-all duration-200 shadow-lg shadow-black/40">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0">
-                <span className="text-3xl sm:text-4xl leading-none select-none" role="img" aria-label="Relógio">⏰</span>
+            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D19]/95 border border-[#58D4F2]/30 hover:border-[#58D4F2]/75 transition-all duration-200 shadow-lg shadow-black/40">
+              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)] shadow-[0_0_12px_rgba(88,212,242,0.14)]">
+                <Clock className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.2} />
               </div>
-              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-200 font-medium leading-[1.48] sm:leading-[1.5]">
-                Para quem está cansado de <span className="text-sky-400 font-bold">perder horas</span> procurando, criando e editando vídeos e quer <span className="text-sky-400 font-bold">economizar tempo</span> com conteúdos prontos para publicar.
+              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-100 font-medium leading-[1.48] sm:leading-[1.5]">
+                Para quem está cansado de <span className="text-[#58D4F2] font-bold">perder horas</span> procurando, criando e editando vídeos e quer <span className="text-[#58D4F2] font-bold">economizar tempo</span> com conteúdos prontos para publicar.
               </p>
             </div>
 
             {/* Card 3 */}
-            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#0A101D] border border-white/10 hover:border-sky-500/30 transition-all duration-200 shadow-lg shadow-black/40">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0">
-                <span className="text-3xl sm:text-4xl leading-none select-none" role="img" aria-label="Foguete">🚀</span>
+            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D19]/95 border border-[#58D4F2]/30 hover:border-[#58D4F2]/75 transition-all duration-200 shadow-lg shadow-black/40">
+              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)] shadow-[0_0_12px_rgba(88,212,242,0.14)]">
+                <Rocket className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.2} />
               </div>
-              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-200 font-medium leading-[1.48] sm:leading-[1.5]">
-                Para quem deseja <span className="text-sky-400 font-bold">começar do zero</span>, mesmo sem seguidores, sem saber editar e usando apenas o celular.
+              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-100 font-medium leading-[1.48] sm:leading-[1.5]">
+                Para quem deseja <span className="text-[#58D4F2] font-bold">começar do zero</span>, mesmo sem seguidores, sem saber editar e usando apenas o celular.
               </p>
             </div>
 
             {/* Card 4 */}
-            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#0A101D] border border-white/10 hover:border-sky-500/30 transition-all duration-200 shadow-lg shadow-black/40">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0">
-                <span className="text-3xl sm:text-4xl leading-none select-none" role="img" aria-label="Raio">⚡</span>
+            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D19]/95 border border-[#58D4F2]/30 hover:border-[#58D4F2]/75 transition-all duration-200 shadow-lg shadow-black/40">
+              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)] shadow-[0_0_12px_rgba(88,212,242,0.14)]">
+                <Zap className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.2} />
               </div>
-              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-200 font-medium leading-[1.48] sm:leading-[1.5]">
-                Para quem busca <span className="text-sky-400 font-bold">facilidade e praticidade</span>, sem precisar gravar vídeos, aparecer ou aprender ferramentas complicadas.
+              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-100 font-medium leading-[1.48] sm:leading-[1.5]">
+                Para quem busca <span className="text-[#58D4F2] font-bold">facilidade e praticidade</span>, sem precisar gravar vídeos, aparecer ou aprender ferramentas complicadas.
               </p>
             </div>
 
             {/* Card 5 */}
-            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#0A101D] border border-white/10 hover:border-sky-500/30 transition-all duration-200 shadow-lg shadow-black/40">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0">
-                <span className="text-3xl sm:text-4xl leading-none select-none" role="img" aria-label="Gráfico de crescimento">📈</span>
+            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D19]/95 border border-[#58D4F2]/30 hover:border-[#58D4F2]/75 transition-all duration-200 shadow-lg shadow-black/40">
+              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)] shadow-[0_0_12px_rgba(88,212,242,0.14)]">
+                <TrendingUp className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.2} />
               </div>
-              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-200 font-medium leading-[1.48] sm:leading-[1.5]">
-                Para quem quer <span className="text-sky-400 font-bold">mudar de vida</span>, conquistar mais <span className="text-sky-400 font-bold">liberdade financeira</span> e construir novas oportunidades através das redes sociais.
+              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-100 font-medium leading-[1.48] sm:leading-[1.5]">
+                Para quem quer <span className="text-[#58D4F2] font-bold">mudar de vida</span>, conquistar mais <span className="text-[#58D4F2] font-bold">liberdade financeira</span> e construir novas oportunidades através das redes sociais.
               </p>
             </div>
 
             {/* Card 6 */}
-            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#0A101D] border border-white/10 hover:border-sky-500/30 transition-all duration-200 shadow-lg shadow-black/40">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0">
-                <span className="text-3xl sm:text-4xl leading-none select-none" role="img" aria-label="Calendário">🗓️</span>
+            <div className="relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-[#070D19]/95 border border-[#58D4F2]/30 hover:border-[#58D4F2]/75 transition-all duration-200 shadow-lg shadow-black/40">
+              <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-2xl bg-[#080E1A] border border-[#58D4F2]/50 flex items-center justify-center shrink-0 text-[#58D4F2] drop-shadow-[0_0_8px_rgba(88,212,242,0.65)] shadow-[0_0_12px_rgba(88,212,242,0.14)]">
+                <Calendar className="w-7 h-7 sm:w-8 sm:h-8" strokeWidth={2.2} />
               </div>
-              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-200 font-medium leading-[1.48] sm:leading-[1.5]">
-                Para quem trabalha ou estuda e quer aproveitar o <span className="text-sky-400 font-bold">tempo livre</span> para começar um projeto digital sem complicações.
+              <p className="flex-1 text-[15px] min-[390px]:text-[16px] sm:text-[17px] md:text-[18px] text-neutral-100 font-medium leading-[1.48] sm:leading-[1.5]">
+                Para quem trabalha ou estuda e quer aproveitar o <span className="text-[#58D4F2] font-bold">tempo livre</span> para começar um projeto digital sem complicações.
               </p>
             </div>
           </div>
