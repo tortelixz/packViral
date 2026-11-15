@@ -5,7 +5,7 @@
     background-color: #050912;
     color: #FFFFFF;
     font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif;
-    overflow-x: hidden;
+    overflow-x: clip;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
     -webkit-font-smoothing: antialiased;
@@ -77,6 +77,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+  max-width: 100%;
 }
 
 /* Scroll smooth */

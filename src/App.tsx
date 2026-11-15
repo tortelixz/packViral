@@ -213,7 +213,7 @@ export default function App() {
   useEffect(() => {
     const timer = window.setTimeout(() => {
       trackPageView();
-      trackViewContent('Pack Verso - 50.000 Cortes Virais', 19.00);
+      trackViewContent('Pack Verso - 100.000 Cortes Virais', 19.90);
     }, 350);
     return () => window.clearTimeout(timer);
   }, []);
@@ -259,98 +259,9 @@ export default function App() {
           PREPARAMOS A <span className="gradient-blue-text">MELHOR OFERTA</span> PARA VOCÊ
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch max-w-4xl mx-auto">
-          
-          {/* OFERTA BÁSICA */}
-          <div className="bg-[#121722] border border-slate-700/80 rounded-2xl p-5 sm:p-9 flex flex-col justify-between text-center relative shadow-2xl hover:border-slate-500 transition-colors">
-            <div>
-              <div className="inline-block bg-neutral-800 text-white font-[900] italic text-lg sm:text-xl py-2 px-8 rounded-2xl mb-3.5 uppercase tracking-wide">
-                OFERTA BÁSICA
-              </div>
-
-              {/* 50k Mockup Image */}
-              <div className="w-full my-2 flex justify-center">
-                <img 
-                  src="/assets/packviral-50k-sem-fundo.webp" 
-                  alt="PackViral Definitivo - 50.000 Cortes Virais" 
-                  width={560}
-                  height={560}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-56 sm:w-64 h-auto max-w-full object-contain"
-                />
-              </div>
-
-              <p className="text-sm sm:text-base italic text-neutral-400 mb-0.5">
-                De <span className="line-through text-red-500 font-bold decoration-2">R$67,00</span>
-              </p>
-              <p className="text-sm sm:text-base italic text-neutral-300 mb-2">
-                por apenas:
-              </p>
-              
-              <div className="text-7xl sm:text-8xl font-[900] text-[#00FF20] my-3 leading-none">
-                19
-              </div>
-
-              <div className="my-5">
-                <ul className="space-y-0 text-center font-bold italic text-[15px] sm:text-base text-white">
-                  <li className="flex items-center justify-center gap-2 py-2">
-                    <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>50.000 Cortes Virais</span>
-                  </li>
-                  <div className="w-[75%] border-t border-dotted border-neutral-700 mx-auto my-1" />
-                  
-                  <li className="flex items-center justify-center gap-2 py-2">
-                    <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>100% Sem Copyright</span>
-                  </li>
-                  <div className="w-[75%] border-t border-dotted border-neutral-700 mx-auto my-1" />
-
-                  <li className="flex items-center justify-center gap-2 py-2">
-                    <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>Todos Sem Marca d'Água</span>
-                  </li>
-                  <div className="w-[75%] border-t border-dotted border-neutral-700 mx-auto my-1" />
-
-                  <li className="flex items-center justify-center gap-2 py-2">
-                    <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>Acesso Imediato</span>
-                  </li>
-                  <div className="w-[75%] border-t border-dotted border-neutral-700 mx-auto my-1" />
-
-                  <li className="flex items-center justify-center gap-2 py-2">
-                    <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>Suporte 24h Ensinando a Viralizar + Contato de Quem Já Viralizou</span>
-                  </li>
-                  <div className="w-[75%] border-t border-dotted border-neutral-700 mx-auto my-1" />
-
-                  <li className="flex items-center justify-center gap-2 py-2">
-                    <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                    <span>Garantia de 7 dias</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div>
-              <a 
-                href={getCheckoutUrl('https://pay.wiapy.com/j3wwzlE9xobB')}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackInitiateCheckout('Pack Verso Básico', 19.00)}
-                className="w-full max-w-[300px] mx-auto py-3.5 px-6 rounded-full font-[900] text-base sm:text-lg bg-[#001455] text-[#9507C9] border-2 border-[#9B04BE] shadow-[0_0_15px_rgba(155,4,190,0.5)] hover:bg-[#A204E7] hover:text-white hover:scale-105 transition-all uppercase tracking-wide block my-3 cursor-pointer text-center"
-              >
-                QUERO O BÁSICO
-              </a>
-
-              <p className="mt-3 text-[13px] sm:text-sm italic font-bold text-neutral-200 text-center leading-relaxed">
-                ATENÇÃO: Logo abaixo temos uma oferta ainda mais VANTAJOSA para você! Veja 👇👇👇
-              </p>
-            </div>
-          </div>
-
+        <div className="max-w-lg mx-auto mt-6">
           {/* OFERTA PREMIUM (FEATURED LUXURY CARD) */}
-          <div className="bg-[radial-gradient(ellipse_at_center,#040A16_0%,#091832_52%,#143466_100%)] border-2 border-[#58D4F2] shadow-2xl rounded-2xl p-5 sm:p-9 flex flex-col justify-between text-center relative mt-5 md:mt-0 overflow-visible">
+          <div className="bg-[radial-gradient(ellipse_at_center,#040A16_0%,#091832_52%,#143466_100%)] border-2 border-[#58D4F2] shadow-2xl rounded-2xl p-5 sm:p-9 flex flex-col justify-between text-center relative overflow-visible">
             <div className="absolute top-0 left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-[#58D4F2]/70 to-transparent pointer-events-none" />
             
             {/* Badge Mais Vendido */}
@@ -386,7 +297,7 @@ export default function App() {
               {/* Price */}
               <div className="flex items-start justify-center font-[900] text-[#00ff88] my-2 leading-none">
                 <span className="text-2xl sm:text-3xl font-extrabold mr-1 mt-2">R$</span>
-                <span className="text-6xl sm:text-8xl tracking-tighter">29</span>
+                <span className="text-6xl sm:text-8xl tracking-tighter">19</span>
                 <span className="text-3xl sm:text-4xl font-extrabold mt-1 tracking-tight">,90</span>
               </div>
 
@@ -495,7 +406,7 @@ export default function App() {
                 href={getCheckoutUrl('https://pay.wiapy.com/2w3O7s9uCmeZ')}
                 target="_blank" 
                 rel="noopener noreferrer"
-                onClick={() => trackInitiateCheckout('Pack Verso Premium', 29.90)}
+                onClick={() => trackInitiateCheckout('Pack Verso Premium', 19.90)}
                 className="w-full py-4.5 px-6 rounded-full font-[900] text-lg sm:text-xl text-white bg-[#00E635] border border-[#00B328] shadow-[0_0_25px_8px_rgba(0,230,53,0.65)] hover:bg-[#00c92e] hover:scale-105 active:scale-95 transition-all block uppercase tracking-wider my-3 text-center cursor-pointer"
               >
                 LIBERAR SUPER PACK
@@ -522,7 +433,7 @@ export default function App() {
       <SalesToast />
 
       {/* HEADER / HERO SECTION */}
-      <section className="relative pt-4 pb-6 sm:pt-8 sm:pb-10 px-0 bg-transparent overflow-hidden">
+      <section className="relative pt-4 pb-6 sm:pt-8 sm:pb-10 px-0 bg-transparent overflow-x-clip">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_60%_at_50%_42%,rgba(14,165,233,0.13)_0%,rgba(8,24,48,0.28)_45%,transparent_75%)]"
           aria-hidden="true"
@@ -550,20 +461,20 @@ export default function App() {
           </div>
 
           {/* Main Hook Headline */}
-          <h1 className="font-['Plus_Jakarta_Sans',sans-serif] font-[800] tracking-[-0.04em] text-white leading-[1.04] sm:leading-[1.05] mb-2.5 sm:mb-3 w-full max-w-none px-2 sm:px-6 text-center">
-            {/* Mobile: 3 symmetrical balanced lines that fill the screen */}
-            <span className="flex flex-col items-center w-full sm:hidden text-[clamp(2.3rem,11.8vw,3.6rem)]">
-              <span className="whitespace-nowrap">Pare de perder</span>
-              <span className="whitespace-nowrap">
+          <h1 className="font-['Plus_Jakarta_Sans',sans-serif] font-[800] tracking-[-0.03em] text-white leading-[1.06] sm:leading-[1.05] mb-2.5 sm:mb-3 w-full max-w-full px-3 sm:px-6 text-center">
+            {/* Mobile: 3 symmetrical balanced lines guaranteed to fit inside any mobile screen */}
+            <span className="flex flex-col items-center w-full max-w-full sm:hidden text-[clamp(1.6rem,8.8vw,3.1rem)]">
+              <span className="block max-w-full">Pare de perder</span>
+              <span className="block max-w-full">
                 tempo <span className="gradient-blue-text">criando</span>
               </span>
-              <span className="whitespace-nowrap gradient-blue-text">conteúdo do zero</span>
+              <span className="block max-w-full gradient-blue-text px-0.5">conteúdo do zero</span>
             </span>
 
             {/* Tablet / Desktop: 2 full-width lines */}
-            <span className="hidden sm:flex flex-col items-center w-full text-[clamp(2.5rem,6.4vw,5.25rem)]">
-              <span className="whitespace-nowrap">Pare de perder tempo</span>
-              <span className="whitespace-nowrap gradient-blue-text">criando conteúdo do zero</span>
+            <span className="hidden sm:flex flex-col items-center w-full max-w-full text-[clamp(2rem,5.4vw,4.75rem)]">
+              <span className="block max-w-full">Pare de perder tempo</span>
+              <span className="block max-w-full gradient-blue-text px-1">criando conteúdo do zero</span>
             </span>
           </h1>
 
@@ -932,9 +843,9 @@ export default function App() {
         <div className="w-full mx-auto text-center flex flex-col items-center relative z-10">
           {/* First Month Results */}
           <div className="w-full max-w-4xl px-0 sm:px-2">
-            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[27px] min-[390px]:text-[32px] sm:text-[40px] font-[800] text-white tracking-[-0.02em] leading-[1.1] mb-1.5 flex items-center justify-center gap-1.5 sm:gap-3 px-1">
+            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[26px] min-[390px]:text-[32px] sm:text-[40px] font-[800] text-white tracking-[-0.02em] leading-[1.1] mb-1.5 flex items-center justify-center gap-1.5 sm:gap-3 px-2">
               <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 gradient-blue-text shrink-0 animate-arrow-bounce" />
-              <span>Resultado do primeiro mês usando esse Pack</span>
+              <span className="min-w-0">Resultado do primeiro mês usando esse Pack</span>
               <ArrowDown className="w-5 h-5 sm:w-6 sm:h-6 gradient-blue-text shrink-0 animate-arrow-bounce" />
             </h2>
             <p className="text-sm sm:text-base font-medium text-neutral-200 mb-1">
