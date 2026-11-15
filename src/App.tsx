@@ -267,6 +267,19 @@ export default function App() {
                 OFERTA BÁSICA
               </div>
 
+              {/* 50k Mockup Image */}
+              <div className="w-full my-2 flex justify-center">
+                <img 
+                  src="/assets/packviral-50k-sem-fundo.png" 
+                  alt="PackViral Definitivo - 50.000 Cortes Virais" 
+                  width={1254}
+                  height={1254}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-56 sm:w-64 h-auto max-w-full object-contain drop-shadow-2xl"
+                />
+              </div>
+
               <p className="text-sm sm:text-base italic text-neutral-400 mb-0.5">
                 De <span className="line-through text-red-500 font-bold decoration-2">R$67,00</span>
               </p>
@@ -349,16 +362,16 @@ export default function App() {
                 OFERTA PREMIUM
               </div>
 
-              {/* Bundle Mockup Image (Pack Verso + Memes + Músicas + Efeitos) */}
+              {/* Bundle Mockup Image (Pack Definitivo + Memes + Músicas + Efeitos) */}
               <div className="w-full my-2 flex justify-center">
                 <img 
-                  src="/assets/packviral-kit-sem-fundo.webp" 
-                  alt="Kit PackViral Definitivo de Conteúdo Viral" 
-                  width={680}
-                  height={680}
+                  src="/assets/packviral-100k-sem-fundo.png" 
+                  alt="Kit PackViral Definitivo de Conteúdo Viral - 100.000 Cortes" 
+                  width={1254}
+                  height={1254}
                   loading="eager"
                   decoding="async"
-                  className="w-72 sm:w-76 h-auto max-w-full object-contain drop-shadow-xl"
+                  className="w-72 sm:w-80 h-auto max-w-full object-contain drop-shadow-2xl"
                 />
               </div>
 
@@ -861,15 +874,15 @@ export default function App() {
             ].map((bonus, idx) => (
               <div
                 key={idx}
-                className="relative bg-[#070D19]/95 border border-[#58D4F2]/75 rounded-2xl pt-8 pb-6 px-4 sm:px-6 flex flex-col items-center justify-between text-center shadow-[0_0_24px_rgba(88,212,242,0.16)] hover:border-[#58D4F2] hover:shadow-[0_0_32px_rgba(88,212,242,0.3)] transition-all duration-200"
+                className="relative bg-[radial-gradient(ellipse_at_top,#1f0507_0%,#0e0407_55%,#050204_100%)] border-2 border-[#FF2B2B] rounded-2xl pt-8 pb-6 px-4 sm:px-6 flex flex-col items-center justify-between text-center shadow-[0_0_30px_rgba(255,43,43,0.28)] hover:border-[#FF5252] hover:shadow-[0_0_42px_rgba(255,60,60,0.5)] transition-all duration-200"
               >
-                {/* Selo superior */}
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#0EA5E9] to-[#58D4F2] text-black font-[900] text-[12px] sm:text-xs px-4 py-1.5 rounded-full shadow-[0_0_16px_rgba(88,212,242,0.65)] whitespace-nowrap inline-flex items-center gap-1.5">
+                {/* Selo superior em vermelho fogo premium */}
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#FF0033] via-[#FF3300] to-[#FF7700] text-white font-[900] text-[12px] sm:text-xs px-4 py-1.5 rounded-full shadow-[0_0_20px_rgba(255,50,0,0.8)] border border-[#FFAA44]/50 whitespace-nowrap inline-flex items-center gap-1.5 tracking-wide uppercase">
                   <span>Incluso no Pacote Premium</span>
-                  <Flame className="w-3.5 h-3.5 fill-black text-black shrink-0" />
+                  <Flame className="w-3.5 h-3.5 fill-yellow-300 text-yellow-300 shrink-0 animate-pulse" />
                 </div>
 
-                {/* Capa valorizada */}
+                {/* Capa valorizada com brilho quente */}
                 <div className="w-full flex items-center justify-center mt-1 mb-3">
                   <img
                     src={bonus.image}
@@ -878,24 +891,27 @@ export default function App() {
                     height={520}
                     loading="eager"
                     decoding="async"
-                    className="w-44 sm:w-44 md:w-48 h-auto object-contain drop-shadow-[0_12px_24px_rgba(88,212,242,0.24)]"
+                    className="w-44 sm:w-44 md:w-48 h-auto object-contain drop-shadow-[0_12px_28px_rgba(255,50,30,0.35)]"
                   />
                 </div>
 
-                {/* Descrição destacada + Botão GRÁTIS */}
+                {/* Descrição destacada + Chamada GRÁTIS */}
                 <div className="w-full flex-1 flex flex-col items-center justify-between gap-4">
                   <p className="text-[18px] sm:text-[19px] font-bold text-white leading-snug max-w-[300px]">
-                    <strong className="text-[#58D4F2] font-[900]">{bonus.prefix}</strong>{' '}
+                    <strong className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF2B2B] via-[#FF5533] to-[#FFAA00] font-[900] drop-shadow-[0_0_12px_rgba(255,50,30,0.5)]">
+                      {bonus.prefix}
+                    </strong>{' '}
                     <span>{bonus.description}</span>
                   </p>
 
-                  <button
-                    type="button"
-                    onClick={scrollToOffers}
-                    className="w-full max-w-[220px] px-8 py-3 rounded-full bg-gradient-to-r from-[#0EA5E9] to-[#58D4F2] text-black font-['Plus_Jakarta_Sans',sans-serif] font-[900] text-sm sm:text-base uppercase tracking-wider shadow-[0_0_18px_rgba(88,212,242,0.6)] hover:scale-105 active:scale-95 transition-transform cursor-pointer"
-                  >
-                    GRÁTIS
-                  </button>
+                  {/* Destaque GRÁTIS (sem botão, pura tipografia de impacto em vermelho fogo) */}
+                  <div className="w-full pt-1 pb-1 flex items-center justify-center gap-2">
+                    <Flame className="w-6 h-6 text-[#FF2B2B] fill-[#FF2B2B] shrink-0 animate-pulse drop-shadow-[0_0_10px_rgba(255,43,43,0.9)]" />
+                    <span className="font-['Plus_Jakarta_Sans',sans-serif] text-3xl sm:text-4xl font-[900] italic tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-[#FF1E27] via-[#FF3B30] to-[#FFA000] drop-shadow-[0_0_24px_rgba(255,40,30,0.9)] uppercase">
+                      GRÁTIS
+                    </span>
+                    <Flame className="w-6 h-6 text-[#FF8500] fill-[#FF8500] shrink-0 animate-pulse drop-shadow-[0_0_10px_rgba(255,133,0,0.9)]" />
+                  </div>
                 </div>
               </div>
             ))}
