@@ -110,7 +110,7 @@ function ProfileCard({ profile, highlighted }: { profile: ProfileCardData; highl
                   alt={profile.handle}
                   width={120}
                   height={120}
-                  loading="eager"
+                  loading="lazy"
                   decoding="async"
                   className="w-full h-full rounded-full object-cover"
                 />

@@ -24,15 +24,7 @@ import {
   SquarePen,
   Award,
   Check,
-  Flame,
-  Smartphone,
-  Clock,
-  Rocket,
-  Zap,
-  TrendingUp,
-  Calendar,
-  Ban,
-  ShieldCheck
+  Flame
 } from 'lucide-react';
 
 const UpPage = lazy(() => import('./UpPage'));
@@ -238,13 +230,13 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Defer secondary CAPI tracking slightly past initial paint so hero & VSL load instantaneously
+  // Fire tracking immediately on first rendered frame so slow mobile visits don't bounce before PageView registers
   useEffect(() => {
-    const timer = window.setTimeout(() => {
+    const rafId = window.requestAnimationFrame(() => {
       trackPageView();
       trackViewContent('Pack Verso - 100.000 Cortes Virais', 19.90);
-    }, 350);
-    return () => window.clearTimeout(timer);
+    });
+    return () => window.cancelAnimationFrame(rafId);
   }, []);
 
 
@@ -307,9 +299,9 @@ export default function App() {
                   <img 
                     src="/assets/packviral-100k-sem-fundo.webp" 
                     alt="Kit PackViral Definitivo de Conteúdo Viral - 100.000 Cortes" 
-                    width={480}
-                    height={480}
-                    loading="eager"
+                    width={720}
+                    height={658}
+                    loading="lazy"
                     decoding="async"
                     className="w-72 sm:w-80 h-auto max-w-full object-contain"
                   />
@@ -482,11 +474,11 @@ export default function App() {
             <img
               src="/assets/packviral-gta6-bonus.webp"
               alt="Pack Viral com Bônus Exclusivo GTA 6"
-              width={600}
-              height={521}
+              width={720}
+              height={480}
               loading="eager"
               fetchPriority="high"
-              decoding="sync"
+              decoding="async"
               className="w-60 min-[390px]:w-64 sm:w-76 md:w-[330px] h-auto object-contain select-none drop-shadow-[0_14px_28px_rgba(0,0,0,0.75)]"
               draggable={false}
             />
@@ -529,7 +521,7 @@ export default function App() {
               height={744}
               loading="eager"
               fetchPriority="high"
-              decoding="sync"
+              decoding="async"
               className="w-full h-auto block object-contain select-none"
               draggable={false}
             />
@@ -739,7 +731,7 @@ export default function App() {
                       alt={cat.description}
                       width={400}
                       height={218}
-                      loading="eager"
+                      loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                     />
@@ -865,7 +857,7 @@ export default function App() {
                 alt="Pack Viral"
                 width={384}
                 height={256}
-                loading="eager"
+                loading="lazy"
                 decoding="async"
                 className="w-52 min-[390px]:w-60 sm:w-68 md:w-76 max-w-full h-auto object-contain select-none"
                 draggable={false}
@@ -945,7 +937,7 @@ export default function App() {
                     alt={item.alt}
                     width={item.width}
                     height={item.height}
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                     className="w-full h-auto block object-contain select-none"
                     draggable={false}
@@ -979,7 +971,7 @@ export default function App() {
                       alt={item.name}
                       width={item.width}
                       height={item.height}
-                      loading="eager"
+                      loading="lazy"
                       decoding="async"
                       className="w-full h-auto block object-contain select-none"
                       draggable={false}
@@ -1039,7 +1031,7 @@ export default function App() {
               alt="Selo de Garantia de 7 Dias" 
               width={520}
               height={520}
-              loading="eager"
+              loading="lazy"
               decoding="async"
               className="relative w-52 sm:w-64 h-auto mx-auto object-contain drop-shadow-xl"
             />
@@ -1154,7 +1146,7 @@ export default function App() {
               alt="PackViral" 
               width={320}
               height={320}
-              loading="eager"
+              loading="lazy"
               decoding="async"
               className="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto object-cover border-2 border-[#58D4F2] shadow-[0_0_22px_rgba(88,212,242,0.34),0_0_28px_rgba(168,85,247,0.20)]" 
             />

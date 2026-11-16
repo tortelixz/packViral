@@ -21,15 +21,26 @@ interface EventData {
 
 export async function trackMetaEvent(
   eventName: string,
-  data?: EventData
+  data?: EventData,
+  attempt = 0
 ) {
+  if (typeof window === 'undefined') return;
+
   // Fire Browser Pixel if fbq is available on window
-  if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+  if (typeof window.fbq === 'function') {
     try {
       window.fbq('track', eventName, data || {});
     } catch (e) {
       console.warn('Meta Pixel track warning:', e);
     }
+    return;
+  }
+
+  // Wait briefly for async pixel script initialization on slower connections
+  if (attempt < 20) {
+    window.setTimeout(() => {
+      trackMetaEvent(eventName, data, attempt + 1);
+    }, 200);
   }
 }
 

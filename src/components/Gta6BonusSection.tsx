@@ -67,9 +67,9 @@ export default function Gta6BonusSection({ onScrollToOffers }: Gta6BonusSectionP
                 <img
                   src="/assets/packviral-gta6-bonus.webp"
                   alt="Personagem Pack Viral segurando arte do GTA 6 com faixa Bônus Exclusivo"
-                  width={600}
-                  height={521}
-                  loading="eager"
+                  width={720}
+                  height={480}
+                  loading="lazy"
                   decoding="async"
                   className="relative z-10 w-[80%] max-w-[280px] sm:max-w-[340px] lg:max-w-full h-auto object-contain select-none drop-shadow-[0_12px_24px_rgba(0,0,0,0.75)]"
                   draggable={false}
