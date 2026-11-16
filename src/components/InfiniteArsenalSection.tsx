@@ -78,8 +78,8 @@ function ProfileCard({ profile, highlighted }: { profile: ProfileCardData; highl
     <div
       className={`bg-[#0B0F14] rounded-2xl border transition-all duration-300 p-4 sm:p-5 text-left text-white flex flex-col justify-between ${
         highlighted
-          ? 'border-[#58D4F2] shadow-[0_0_28px_rgba(88,212,242,0.28)] md:-translate-y-1.5'
-          : 'border-[#58D4F2]/45 shadow-[0_0_16px_rgba(88,212,242,0.12)] opacity-95'
+          ? 'border-[#58D4F2] shadow-[0_0_28px_rgba(88,212,242,0.28),0_10px_32px_rgba(168,85,247,0.18)] md:-translate-y-1.5'
+          : 'border-[#58D4F2]/40 hover:border-[#A855F7]/65 shadow-[0_0_16px_rgba(88,212,242,0.12),0_4px_18px_rgba(255,46,147,0.08)] opacity-95'
       }`}
     >
       <div>
@@ -223,8 +223,8 @@ export default function InfiniteArsenalSection() {
 
   return (
     <section className="py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
-      <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#58D4F2]/18 to-transparent" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_46%,rgba(14,165,233,0.10)_0%,transparent_72%)]" />
+      <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-[linear-gradient(90deg,transparent_0%,rgba(88,212,242,0.38)_34%,rgba(168,85,247,0.35)_56%,rgba(255,46,147,0.28)_76%,transparent_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_42%_44%,rgba(14,165,233,0.11)_0%,transparent_72%),radial-gradient(ellipse_55%_45%_at_72%_52%,rgba(147,51,234,0.08)_0%,rgba(255,46,147,0.05)_48%,transparent_74%)]" />
       <div className="max-w-5xl mx-auto relative z-10 text-center">
         {/* Título */}
         <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[28px] min-[390px]:text-[33px] sm:text-[38px] md:text-[44px] font-[800] text-center tracking-[-0.03em] leading-[1.08] text-white max-w-4xl mx-auto mb-5 sm:mb-8 px-1">
@@ -283,7 +283,9 @@ export default function InfiniteArsenalSection() {
                 onClick={() => setActiveIndex(idx)}
                 aria-label={`Ver perfil ${p.handle}`}
                 className={`h-2.5 rounded-full transition-all cursor-pointer ${
-                  activeIndex === idx ? 'w-7 bg-[#58D4F2]' : 'w-2.5 bg-neutral-700 hover:bg-neutral-500'
+                  activeIndex === idx
+                    ? 'w-7 bg-gradient-to-r from-[#58D4F2] via-[#A855F7] to-[#FF2E93]'
+                    : 'w-2.5 bg-neutral-700 hover:bg-neutral-500'
                 }`}
               />
             ))}
@@ -293,7 +295,8 @@ export default function InfiniteArsenalSection() {
         {/* Dois Cartões Abaixo do Carrossel */}
         <div className="grid grid-cols-2 gap-2.5 sm:gap-5 max-w-[520px] mx-auto mt-5 sm:mt-7">
           {/* Poste em Menos de 30 segundos! */}
-          <div className="bg-[#060911] border border-[#58D4F2]/75 rounded-2xl px-2.5 sm:px-5 py-5 sm:py-6 flex flex-col items-center justify-center text-center shadow-[0_0_20px_rgba(88,212,242,0.16)] hover:border-[#58D4F2] hover:shadow-[0_0_26px_rgba(88,212,242,0.3)] transition-all duration-200">
+          <div className="relative overflow-hidden bg-[linear-gradient(165deg,rgba(8,18,36,0.95)_0%,rgba(6,9,17,0.96)_72%,rgba(26,12,42,0.55)_100%)] border border-[#58D4F2]/70 rounded-2xl px-2.5 sm:px-5 py-5 sm:py-6 flex flex-col items-center justify-center text-center shadow-[0_0_20px_rgba(88,212,242,0.16),0_8px_22px_rgba(147,51,234,0.12)] hover:border-[#58D4F2] hover:shadow-[0_0_26px_rgba(88,212,242,0.28),0_8px_26px_rgba(168,85,247,0.2)] transition-all duration-200">
+            <div className="pointer-events-none absolute top-0 inset-x-4 h-[1px] bg-gradient-to-r from-transparent via-[#58D4F2]/80 to-[#A855F7]/50" aria-hidden="true" />
             <div className="mb-3 text-[#58D4F2] drop-shadow-[0_0_10px_rgba(88,212,242,0.75)]">
               <svg viewBox="0 0 48 48" fill="none" className="w-11 h-11 sm:w-12 sm:h-12" aria-hidden="true">
                 <circle cx="24" cy="24" r="19" fill="currentColor" />
@@ -308,7 +311,8 @@ export default function InfiniteArsenalSection() {
           </div>
 
           {/* Ideal para perfis anônimos */}
-          <div className="bg-[#060911] border border-[#58D4F2]/75 rounded-2xl px-2.5 sm:px-5 py-5 sm:py-6 flex flex-col items-center justify-center text-center shadow-[0_0_20px_rgba(88,212,242,0.16)] hover:border-[#58D4F2] hover:shadow-[0_0_26px_rgba(88,212,242,0.3)] transition-all duration-200">
+          <div className="relative overflow-hidden bg-[linear-gradient(165deg,rgba(8,18,36,0.95)_0%,rgba(6,9,17,0.96)_72%,rgba(44,12,38,0.48)_100%)] border border-[#58D4F2]/65 hover:border-[#FF4DA6]/80 rounded-2xl px-2.5 sm:px-5 py-5 sm:py-6 flex flex-col items-center justify-center text-center shadow-[0_0_20px_rgba(88,212,242,0.14),0_8px_22px_rgba(255,46,147,0.12)] hover:shadow-[0_0_26px_rgba(88,212,242,0.24),0_8px_26px_rgba(255,46,147,0.2)] transition-all duration-200">
+            <div className="pointer-events-none absolute top-0 inset-x-4 h-[1px] bg-gradient-to-r from-[#58D4F2]/50 via-[#FF4DA6]/75 to-[#FF8C42]/50" aria-hidden="true" />
             <div className="mb-3 text-[#58D4F2] drop-shadow-[0_0_10px_rgba(88,212,242,0.75)]">
               <svg viewBox="0 0 48 48" fill="none" className="w-11 h-11 sm:w-12 sm:h-12" aria-hidden="true">
                 {/* Hat crown */}

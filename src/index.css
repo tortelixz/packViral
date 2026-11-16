@@ -90,10 +90,10 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #172338;
+  background: linear-gradient(180deg, #172338 0%, #24193c 100%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #58D4F2;
+  background: linear-gradient(180deg, #58D4F2 0%, #A855F7 65%, #FF2E93 100%);
 }
