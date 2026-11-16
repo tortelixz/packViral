@@ -119,6 +119,99 @@ export default function Gta6BonusSection({ onScrollToOffers }: Gta6BonusSectionP
             </div>
           </div>
         </div>
+
+        {/* BÔNUS EXCLUSIVO ADICIONAL — PACK DE FRUTINHAS FALANTES */}
+        <div className="relative rounded-3xl overflow-hidden border border-[#58D4F2]/40 bg-[#070D19]/95 shadow-[0_20px_55px_rgba(0,0,0,0.65)] mt-5 sm:mt-7">
+          {/* Top neon bar matching page palette */}
+          <div
+            className="pointer-events-none absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-[#58D4F2] via-[#A855F7] to-[#FFD60A] z-20"
+            aria-hidden="true"
+          />
+
+          <div className="relative z-10 p-4 sm:p-6 md:p-8">
+            {/* Faixa Superior BÔNUS EXCLUSIVO + BÔNUS GRÁTIS */}
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-3 sm:mb-4">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-gradient-to-r from-[#FFD60A] via-[#FACC15] to-[#FF9F1C] text-[#050912] font-[900] text-xs sm:text-sm uppercase tracking-[0.14em] shadow-[0_4px_18px_rgba(250,204,21,0.3)]">
+                <Flame className="w-4 h-4 fill-[#050912] shrink-0" aria-hidden="true" />
+                <span>BÔNUS GRÁTIS</span>
+              </div>
+            </div>
+
+            {/* Título do Bônus */}
+            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] font-[800] text-[22px] min-[390px]:text-[25px] sm:text-[32px] md:text-[36px] leading-[1.12] tracking-[-0.02em] text-white text-center max-w-4xl mx-auto text-balance">
+              <span className="text-[#FFD60A] font-[900]">
+                BÔNUS EXCLUSIVO:
+              </span>{' '}
+              <span className="gradient-blue-text drop-shadow-[0_0_20px_rgba(88,212,242,0.4)]">
+                PACK DE FRUTINHAS FALANTES
+              </span>
+            </h2>
+
+            {/* Grid 2 Colunas Desktop / Vertical Mobile */}
+            <div className="mt-4 sm:mt-6 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-7 items-center">
+              {/* Representação Visual das Frutinhas Falantes */}
+              <div className="lg:col-span-6 flex flex-col items-center justify-center relative">
+                <div
+                  className="pointer-events-none absolute inset-2 rounded-full bg-[radial-gradient(circle,rgba(88,212,242,0.20)_0%,rgba(250,204,21,0.10)_52%,transparent_74%)]"
+                  aria-hidden="true"
+                />
+                <div className="relative z-10 w-full rounded-2xl overflow-hidden bg-[#000000] border border-[#58D4F2]/45 p-1.5 sm:p-2 shadow-[0_12px_30px_rgba(0,0,0,0.75)]">
+                  <img
+                    src="/assets/aistudio/Banner_de_Frutinhas_Virais__50.000_V_deos_59d8d6fc.png"
+                    alt="Pack Frutinhas Virais - +50.000 vídeos de frutinhas falantes prontos para postar"
+                    width={1666}
+                    height={944}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-auto rounded-xl object-contain select-none"
+                    draggable={false}
+                  />
+                </div>
+              </div>
+
+              {/* Descrição e Destaque Bônus Grátis */}
+              <div className="lg:col-span-6 space-y-3.5 text-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#05D321]/15 border border-[#05D321]/50 text-[#4EE949] font-[800] text-xs uppercase tracking-wider">
+                  <span>🎁 BÔNUS GRÁTIS AO ADQUIRIR O PACK VIRAL</span>
+                </div>
+
+                <p className="text-[15px] sm:text-[17px] text-neutral-100 leading-[1.6]">
+                  Receba também um pack exclusivo com{' '}
+                  <strong className="text-white font-bold">50.000 vídeos de frutinhas falantes</strong>, prontos para publicar no{' '}
+                  <strong className="text-white font-bold">TikTok, Instagram Reels e YouTube Shorts</strong>, sem precisar criar ou editar do zero.
+                </p>
+
+                {/* Destaque Visual */}
+                <div className="rounded-2xl bg-[linear-gradient(135deg,rgba(88,212,242,0.12)_0%,rgba(147,51,234,0.14)_55%,rgba(255,46,147,0.12)_100%)] border border-[#58D4F2]/45 p-3.5 sm:p-4">
+                  <p className="font-['Plus_Jakarta_Sans',sans-serif] text-[15px] sm:text-[17px] font-[800] text-white leading-[1.4]">
+                    Você leva esse pacote completo como{' '}
+                    <span className="text-[#4EE949]">BÔNUS GRÁTIS</span>{' '}
+                    garantindo seu acesso hoje ao Pack Viral!
+                  </p>
+                </div>
+
+                {/* Caixa Numérica */}
+                <div className="rounded-2xl bg-[#050912]/85 border border-[#58D4F2]/45 p-3.5 sm:p-4 text-center">
+                  <p className="font-['Plus_Jakarta_Sans',sans-serif] text-[20px] sm:text-[26px] font-[900] leading-tight tracking-tight tabular-nums bg-[linear-gradient(90deg,#FFD60A_0%,#58D4F2_52%,#4EE949_100%)] bg-clip-text text-transparent">
+                    +50.000 VÍDEOS DE FRUTINHAS FALANTES!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="mt-5 sm:mt-6 flex justify-center">
+              <button
+                type="button"
+                onClick={onScrollToOffers}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-[#05D321] hover:bg-[#04b81c] text-white font-[900] text-[15px] sm:text-base uppercase tracking-wider shadow-[0_0_24px_rgba(5,211,33,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+              >
+                <span>QUERO GARANTIR MEU ACESSO</span>
+                <ArrowDown className="w-4 h-4 shrink-0" />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
