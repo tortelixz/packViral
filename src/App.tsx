@@ -760,56 +760,6 @@ export default function App() {
       {/* NOVA SEÇÃO PERSUASIVA EXCLUSIVA — BÔNUS GTA 6 */}
       <Gta6BonusSection onScrollToOffers={scrollToOffers} />
 
-      {/* SEÇÃO - PARA QUEM É O PACK VIRAL? */}
-      <section className="py-6 sm:py-8 px-3 sm:px-4 bg-transparent relative overflow-hidden">
-        <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-[linear-gradient(90deg,transparent_0%,rgba(88,212,242,0.34)_35%,rgba(168,85,247,0.32)_62%,transparent_100%)]" aria-hidden="true" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_46%,rgba(14,165,233,0.09)_0%,rgba(147,51,234,0.07)_46%,transparent_76%)]" aria-hidden="true" />
-        <div className="max-w-2xl mx-auto relative z-10">
-          {/* Header com Título e Logo do Personagem PackViral */}
-          <div className="flex flex-col items-center text-center mb-5 sm:mb-6">
-            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[22px] min-[390px]:text-[26px] sm:text-[32px] md:text-[36px] font-[800] text-white tracking-wide uppercase leading-tight">
-              PARA QUEM É O
-            </h2>
-            <div className="mt-2 flex items-center justify-center">
-              <img
-                src="/assets/logo-packviral-personagem.webp"
-                alt="Pack Viral"
-                width={384}
-                height={256}
-                loading="eager"
-                decoding="async"
-                className="w-52 min-[390px]:w-60 sm:w-68 md:w-76 max-w-full h-auto object-contain select-none"
-                draggable={false}
-              />
-            </div>
-          </div>
-
-          {/* 6 Benefit Items Stacked Vertically */}
-          <div className="max-w-[580px] mx-auto flex flex-col gap-2.5 sm:gap-3 px-1 sm:px-0">
-            {[
-              "Para quem quer ganhar dinheiro postando vídeos sem aparecer.",
-              "Para quem não quer perder tempo criando ou editando.",
-              "Para iniciantes, mesmo sem seguidores.",
-              "Para quem quer começar usando apenas o celular.",
-              "Para quem busca renda extra nas redes sociais.",
-              "Para quem trabalha ou estuda e tem pouco tempo."
-            ].map((text, idx) => (
-              <div
-                key={idx}
-                className="relative flex items-center gap-3 p-3.5 sm:p-4 rounded-xl bg-[linear-gradient(135deg,rgba(7,13,25,0.96)_0%,rgba(11,16,34,0.95)_100%)] border border-[#58D4F2]/30 hover:border-[#58D4F2]/70 transition-all duration-200 shadow-sm"
-              >
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#05D321]/15 border border-[#05D321]/40 flex items-center justify-center shrink-0 text-[#05D321]">
-                  <Check className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={3} />
-                </div>
-                <p className="flex-1 text-[14.5px] min-[390px]:text-[15.5px] sm:text-[16.5px] text-neutral-100 font-semibold leading-[1.4]">
-                  {text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* O ACESSO É SIMPLES + BENEFÍCIOS */}
       <section className="py-6 sm:py-10 px-2 sm:px-4 bg-transparent relative overflow-hidden">
         <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-[linear-gradient(90deg,transparent_0%,rgba(88,212,242,0.36)_35%,rgba(168,85,247,0.34)_60%,rgba(255,46,147,0.28)_80%,transparent_100%)]" aria-hidden="true" />
@@ -896,6 +846,56 @@ export default function App() {
             })}
           </div>
 
+        </div>
+      </section>
+
+      {/* SEÇÃO - PARA QUEM É O PACK VIRAL? */}
+      <section className="py-6 sm:py-8 px-3 sm:px-4 bg-transparent relative overflow-hidden">
+        <div className="pointer-events-none absolute top-0 inset-x-0 h-px bg-[linear-gradient(90deg,transparent_0%,rgba(88,212,242,0.34)_35%,rgba(168,85,247,0.32)_62%,transparent_100%)]" aria-hidden="true" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_46%,rgba(14,165,233,0.09)_0%,rgba(147,51,234,0.07)_46%,transparent_76%)]" aria-hidden="true" />
+        <div className="max-w-2xl mx-auto relative z-10">
+          {/* Header com Título e Logo do Personagem PackViral */}
+          <div className="flex flex-col items-center text-center mb-5 sm:mb-6">
+            <h2 className="font-['Plus_Jakarta_Sans',sans-serif] text-[22px] min-[390px]:text-[26px] sm:text-[32px] md:text-[36px] font-[800] text-white tracking-wide uppercase leading-tight">
+              PARA QUEM É O
+            </h2>
+            <div className="mt-2 flex items-center justify-center">
+              <img
+                src="/assets/logo-packviral-personagem.webp"
+                alt="Pack Viral"
+                width={384}
+                height={256}
+                loading="eager"
+                decoding="async"
+                className="w-52 min-[390px]:w-60 sm:w-68 md:w-76 max-w-full h-auto object-contain select-none"
+                draggable={false}
+              />
+            </div>
+          </div>
+
+          {/* 6 Benefit Items Stacked Vertically */}
+          <div className="max-w-[580px] mx-auto flex flex-col gap-2.5 sm:gap-3 px-1 sm:px-0">
+            {[
+              "Para quem quer ganhar dinheiro postando vídeos sem aparecer.",
+              "Para quem não quer perder tempo criando ou editando.",
+              "Para iniciantes, mesmo sem seguidores.",
+              "Para quem quer começar usando apenas o celular.",
+              "Para quem busca renda extra nas redes sociais.",
+              "Para quem trabalha ou estuda e tem pouco tempo."
+            ].map((text, idx) => (
+              <div
+                key={idx}
+                className="relative flex items-center gap-3 p-3.5 sm:p-4 rounded-xl bg-[linear-gradient(135deg,rgba(7,13,25,0.96)_0%,rgba(11,16,34,0.95)_100%)] border border-[#58D4F2]/30 hover:border-[#58D4F2]/70 transition-all duration-200 shadow-sm"
+              >
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#05D321]/15 border border-[#05D321]/40 flex items-center justify-center shrink-0 text-[#05D321]">
+                  <Check className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={3} />
+                </div>
+                <p className="flex-1 text-[14.5px] min-[390px]:text-[15.5px] sm:text-[16.5px] text-neutral-100 font-semibold leading-[1.4]">
+                  {text}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
