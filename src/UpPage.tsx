@@ -31,7 +31,7 @@ export default function UpPage() {
   };
 
   const featureItems = [
-    { text: '100.000 Mil Cortes Virais', isBold: true },
+    { text: '100.000 Cortes Virais', isBold: true },
     { text: '41 Nichos Diferentes', isBold: true },
     { text: '100% Sem Copyright (Livre de Direitos Autorais)', isBold: true },
     { text: 'Todos os Vídeos Sem Marca d\'Água', isBold: true },

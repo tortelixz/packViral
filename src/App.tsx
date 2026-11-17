@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, lazy, Suspense, memo } from 'react'
 import WhatsAppButton from './components/WhatsAppButton';
 import InfiniteArsenalSection from './components/InfiniteArsenalSection';
 import Gta6BonusSection from './components/Gta6BonusSection';
+import VSLPlayer from './components/VSLPlayer';
 import { 
   trackPageView, 
   trackViewContent, 
@@ -119,7 +120,7 @@ const categories = [
   },
   {
     image: '/assets/aistudio/AVIACAO-47-1_71ffc73e.webp',
-    description: 'Mais de 2500 cortes de Varios Animes.'
+    description: 'Mais de 2.500 cortes de Vários Animes.'
   },
   {
     image: '/assets/aistudio/Design-sem-nome-4-1-1_8062e2f9.webp',
@@ -328,7 +329,7 @@ export default function App() {
                   <ul className="space-y-0 text-center font-bold italic text-[15px] sm:text-base text-white leading-snug">
                     <li className="flex items-center justify-center gap-2.5 py-1.5">
                       <CheckCircle className="w-5 h-5 text-[#4EE949] shrink-0 fill-[#4EE949] text-black" />
-                      <span>100.000 Mil Cortes Virais</span>
+                      <span>100.000 Cortes Virais</span>
                     </li>
                     <div className="w-[85%] border-t border-dotted border-neutral-700 mx-auto" />
 
@@ -527,7 +528,8 @@ export default function App() {
             />
           </div>
 
-
+          {/* VSL PRINCIPAL */}
+          <VSLPlayer className="mt-4 sm:mt-6 px-3 sm:px-4" />
 
           {/* Main CTA Button */}
           <button 
@@ -569,7 +571,7 @@ export default function App() {
               {
                 number: '1',
                 whiteLine: 'Escolha um',
-                cyanLines: ['video pronto'],
+                cyanLines: ['vídeo pronto'],
                 icon: (
                   <svg viewBox="5 3 38 40" fill="none" className="w-[58px] h-[58px] sm:w-[74px] sm:h-[74px] text-[#58D4F2]" aria-hidden="true">
                     <path d="M9 17.5L38 11.5L36.2 6.8C35.8 5.6 34.5 4.9 33.3 5.2L9.8 10.1C8.5 10.4 7.7 11.6 8 12.9L9 17.5Z" stroke="currentColor" strokeWidth="2.4" strokeLinejoin="round" />
@@ -769,7 +771,7 @@ export default function App() {
                 <Layers className="w-7 h-7 sm:w-8 sm:h-8" />
               </div>
               <p className="text-[15.5px] sm:text-[17px] text-neutral-100 leading-relaxed">
-                Você terá acesso ao pacote Premium com <strong className="text-white font-bold">+100mil cortes virais</strong> através de um área de membros premium, <strong className="text-white font-bold">organizado por nicho</strong>. O link de acesso é enviado imediatamente no <strong className="text-white font-bold">e-mail cadastrado na compra e também no seu WhatsApp.</strong>
+                Você terá acesso ao pacote Premium com <strong className="text-white font-bold">+100mil cortes virais</strong> através de uma área de membros premium, <strong className="text-white font-bold">organizada por nicho</strong>. O link de acesso é enviado imediatamente no <strong className="text-white font-bold">e-mail cadastrado na compra e também no seu WhatsApp.</strong>
               </p>
             </div>
 
@@ -778,7 +780,7 @@ export default function App() {
                 <CloudDownload className="w-7 h-7 sm:w-8 sm:h-8" />
               </div>
               <p className="text-[15.5px] sm:text-[17px] text-neutral-100 leading-relaxed">
-                Você terá acesso a um pacote com os melhores cortes do momento, prontos para utilizar nas principais plataformas, como: <strong className="text-white font-bold">TikTok, Instagram, Youtube, Kwai,</strong> etc. Basta baixar e postar!
+                Você terá acesso a um pacote com os melhores cortes do momento, prontos para utilizar nas principais plataformas, como: <strong className="text-white font-bold">TikTok, Instagram, YouTube, Kwai,</strong> etc. Basta baixar e postar!
               </p>
             </div>
 
