@@ -125,7 +125,7 @@ function preconnectYouTube() {
   }
 }
 
-const DEFAULT_VIDEO_ID = 'n9zFXC2wg1M';
+const DEFAULT_VIDEO_ID = '28nEQDYo1Ig';
 
 const VSLPlayer = memo(function VSLPlayer({
   videoId = DEFAULT_VIDEO_ID,
@@ -538,19 +538,19 @@ const VSLPlayer = memo(function VSLPlayer({
           aria-hidden="true"
         />
 
-        {/* Static cover before first play or after end so there is never a black screen or related videos */}
+        {/* Instant 0 KB branded cover before first play or after end (no black box, no mismatched frame, no extra network request) */}
         {(!hasStarted || isEnded) && (
-          <img
-            src="/assets/vsl-cover.webp"
-            alt="Vídeo de apresentação Pack Viral"
-            width={400}
-            height={711}
-            loading="eager"
-            fetchPriority="low"
-            decoding="async"
-            className="absolute inset-0 w-full h-full object-cover z-15 pointer-events-none select-none"
-            draggable={false}
-          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 z-15 pointer-events-none select-none bg-[radial-gradient(ellipse_85%_60%_at_50%_35%,rgba(14,165,233,0.22)_0%,rgba(88,212,242,0.08)_40%,#050912_85%)]"
+          >
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_75%,rgba(168,85,247,0.16)_0%,transparent_65%)]" />
+            <div className="absolute top-6 inset-x-4 text-center">
+              <span className="inline-block px-3 py-1 rounded-full bg-[#080E1A]/90 border border-[#58D4F2]/40 text-[10px] sm:text-[11px] font-extrabold uppercase tracking-[0.16em] text-[#58D4F2]">
+                APRESENTAÇÃO PACK VIRAL
+              </span>
+            </div>
+          </div>
         )}
 
         {/* Transparent interaction layer blocking YouTube native scrub/seek/double-tap & toggling Play/Pause */}

@@ -80,6 +80,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Skip offscreen layout and paint work on below-the-fold sections for instant render & smooth scroll */
+section:not(:first-of-type) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 650px;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

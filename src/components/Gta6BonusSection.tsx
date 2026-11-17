@@ -157,10 +157,10 @@ export default function Gta6BonusSection({ onScrollToOffers }: Gta6BonusSectionP
                 />
                 <div className="relative z-10 w-full rounded-2xl overflow-hidden bg-[#000000] border border-[#58D4F2]/45 p-1.5 sm:p-2 shadow-[0_12px_30px_rgba(0,0,0,0.75)]">
                   <img
-                    src="/assets/aistudio/Banner_de_Frutinhas_Virais__50.000_V_deos_59d8d6fc.png"
+                    src="/assets/banner-frutinhas-virais.webp"
                     alt="Pack Frutinhas Virais - +50.000 vídeos de frutinhas falantes prontos para postar"
-                    width={1666}
-                    height={944}
+                    width={800}
+                    height={453}
                     loading="lazy"
                     decoding="async"
                     className="w-full h-auto rounded-xl object-contain select-none"
