@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, lazy, Suspense, memo } from 'react'
 import WhatsAppButton from './components/WhatsAppButton';
 import InfiniteArsenalSection from './components/InfiniteArsenalSection';
 import Gta6BonusSection from './components/Gta6BonusSection';
-import VSLPlayer from './components/VSLPlayer';
 import { 
   trackPageView, 
   trackViewContent, 
@@ -527,9 +526,6 @@ export default function App() {
               draggable={false}
             />
           </div>
-
-          {/* VSL PRINCIPAL */}
-          <VSLPlayer className="mt-4 sm:mt-6 px-3 sm:px-4" />
 
           {/* Main CTA Button */}
           <button 
